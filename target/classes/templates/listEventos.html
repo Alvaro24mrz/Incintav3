@@ -60,9 +60,9 @@
     								<td th:text="${ev.tTitulo}"></td>
     								<td th:text="${ev.tDescripcion}"></td>
     								<td th:text="${ev.hInicio}"></td>
-    								<td th:text="${ev.hfin}"></td>
+    								<td th:text="${ev.hFin}"></td>
     								<td th:text="${ev.boolTodoDia}"></td>
-    								<td th:text="${ev.qRepeticion;}"></td>
+    								<td th:text="${ev.qRepeticion}"></td>
     								
     								<td><a th:href="@{/eventos/eliminar?id=}+${ev.idEventos}">Eliminar</a></td>    								
     								<td><a th:href="@{'/eventos/modificar/'}+${ev.idEventos}">Modificar</a></td>

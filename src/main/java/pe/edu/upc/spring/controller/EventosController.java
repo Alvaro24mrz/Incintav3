@@ -62,7 +62,7 @@ public class EventosController {
 		else {
 			boolean flag = rService.grabar(objEventos);
 			if (flag)
-				return "redirect:/insertEventos/listar";
+				return "redirect:/eventos/listar";
 			else {
 				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
 				return "redirect:/insertEventos/irRegistrar";
