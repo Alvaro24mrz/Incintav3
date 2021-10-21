@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1"></meta>
+		<title>Pet</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>
+				
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+    		<form th:action="@{/preguntasGestante/registrar}" method="post" th:object="${preguntasGestante}">
+    			<div class="form-group">
+    				<label for="idPreguntasGestante">ID:</label>
+    				<input type="text" class="form-control" th:field="*{idPreguntasGestante}"></input>
+    				
+    				<div class="form-group">
+    					<label for="nombre">NOMBRE:</label>
+    					<input type="text" class="form-control" th:field="*{nTitulo}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nTitulo')}" 
+								th:errors="*{nTitulo}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="nombre">CLIENTE:</label>
+    					<select class="form-control" th:field="*{usuario.usuarioID}">
+    					<option th:each="r: ${listaPreguntasGestante}"
+    						th:value="${r.usuarioID}"
+    						th:text="${r.nUsuario}"
+    						th:selected="(${r.usuarioID}==*{usuario.usuarioID})">
+    					</option>
+    					</select>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="nombre">pregunta:</label>
+    					<input type="text" class="form-control" th:field="*{tPregunta}" id="nombrepregunta"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('tPregunta')}" 
+								th:errors="*{tPregunta}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="nombre">FEC-PREGUNTA:</label>
+    					<input type="date" class="form-control" th:field="*{fecha}" id="fechadepregunta"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('fecha')}" 
+								th:errors="*{fecha}">
+						</div>
+    					
+    				</div>
+    				
+    			
+    				
+    			
+    				
+    				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Aceptar</button>
+    			<a href="/preguntasGestante/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>

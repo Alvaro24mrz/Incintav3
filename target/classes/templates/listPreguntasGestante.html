@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="UTF-8"></meta>
+		<title>Mascotas</title>
+		
+		<script type="text/javascript"
+				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+    		<form id="myform">
+    			<div class="row clearfix">
+    				<div class="col-md-12 column">
+    					
+    					<a 	style="border-bottom-color: green" th:href="@{/preguntasGestante/irRegistrar}"
+    						id="add-row" type="button" class="btn btn-primary btn-md left-block">
+    						<span class="glyphicon glyphicon-plus"></span> Pregunta
+    					</a>
+    					
+						<a 	style="border-bottom-color: green" th:href="@{/preguntasGestante/irBuscar}"
+    						id="add-row" type="button" class="btn btn-primary btn-md left-block">
+    						<span class="glyphicon glyphicon-search"></span> Buscar
+    					</a>
+    					
+    					<table class="table table-bordered table-hover table-striped" id="tab_logic">
+    						<thead>
+    							<tr>
+    								<th class="text-center">CODIGO</th>
+    								<th class="text-center">nombre</th>
+    								<th class="text-center">pregunta</th>
+    								<th class="text-center">FECHA </th>
+    								<th class="text-center">usuario</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+    							<tr th:each="pg: ${listaPreguntasGestante}">
+    								<td th:text="${pg.idPreguntasGestante}"></td>
+    								<td th:text="${pg.nTitulo}"></td>
+    								<td th:text="${pg.tPregunta}"></td>
+    								<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
+    								<td th:text="${pg.usuario.nUsuario}"></td>
+    								
+    								<td><a th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}">Modificar</a></td>
+    							</tr>
+    						</tbody>
+    					</table> 
+    					
+    				</div>
+    			</div>
+    			<div th:if="${mensaje}" class="alert alert-danger">
+    				<p th:text="${mensaje}"></p>
+    			</div>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>
