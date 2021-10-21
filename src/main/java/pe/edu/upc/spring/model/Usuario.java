@@ -42,11 +42,9 @@ public class Usuario implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dNacimiento;
 	
-	/*
 	@ManyToOne
 	@JoinColumn(name="iDTipoIdentificacion", nullable=false)
 	private TipoIdentificacion iDTipoIdentificacion;
-	*/
 	
 	@ManyToOne
 	@JoinColumn(name="iDPais", nullable=false)
@@ -63,10 +61,11 @@ public class Usuario implements Serializable {
 
 	public Usuario() {
 		super();
-	}	// CONSTRUCTOR
+	}
 
 	public Usuario(int usuarioID, String nUsuario, String uApellido, String uCorreo, String uPassword,
-			String numIdentificacion, Date dNacimiento, Pais iDPais, MetodoDePago iDMetodoPago, int numMetodoPago, int semanaGestacion) {
+			String numIdentificacion, Date dNacimiento, TipoIdentificacion iDTipoIdentificacion, Pais iDPais,
+			MetodoDePago iDMetodoPago, int numMetodoPago, int semanaGestacion) {
 		super();
 		this.usuarioID = usuarioID;
 		this.nUsuario = nUsuario;
@@ -75,11 +74,12 @@ public class Usuario implements Serializable {
 		this.uPassword = uPassword;
 		this.numIdentificacion = numIdentificacion;
 		this.dNacimiento = dNacimiento;
+		this.iDTipoIdentificacion = iDTipoIdentificacion;
 		this.iDPais = iDPais;
 		this.iDMetodoPago = iDMetodoPago;
 		this.numMetodoPago = numMetodoPago;
 		this.semanaGestacion = semanaGestacion;
-	} // GETTERS AND SETTERS
+	}
 
 	public int getUsuarioID() {
 		return usuarioID;
@@ -137,12 +137,12 @@ public class Usuario implements Serializable {
 		this.dNacimiento = dNacimiento;
 	}
 
-	public int getNumMetodoPago() {
-		return numMetodoPago;
+	public TipoIdentificacion getiDTipoIdentificacion() {
+		return iDTipoIdentificacion;
 	}
 
-	public void setNumMetodoPago(int numMetodoPago) {
-		this.numMetodoPago = numMetodoPago;
+	public void setiDTipoIdentificacion(TipoIdentificacion iDTipoIdentificacion) {
+		this.iDTipoIdentificacion = iDTipoIdentificacion;
 	}
 
 	public Pais getiDPais() {
@@ -161,11 +161,20 @@ public class Usuario implements Serializable {
 		this.iDMetodoPago = iDMetodoPago;
 	}
 
+	public int getNumMetodoPago() {
+		return numMetodoPago;
+	}
+
+	public void setNumMetodoPago(int numMetodoPago) {
+		this.numMetodoPago = numMetodoPago;
+	}
+
 	public int getSemanaGestacion() {
 		return semanaGestacion;
 	}
 
 	public void setSemanaGestacion(int semanaGestacion) {
 		this.semanaGestacion = semanaGestacion;
-	}
+	}	
+
 }

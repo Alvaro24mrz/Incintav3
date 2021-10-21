@@ -41,7 +41,7 @@
     				<div class="form-group">
     					<label for="nombre">CLIENTE:</label>
     					<select class="form-control" th:field="*{usuario.usuarioID}">
-    					<option th:each="r: ${listaUsuario}"
+    					<option th:each="r: ${listaUsuarios}"
     						th:value="${r.usuarioID}"
     						th:text="${r.nUsuario}"
     						th:selected="(${r.usuarioID}==*{usuario.usuarioID})">
