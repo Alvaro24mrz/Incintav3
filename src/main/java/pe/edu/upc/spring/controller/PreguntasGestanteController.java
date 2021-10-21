@@ -62,7 +62,7 @@ public class PreguntasGestanteController {
 		else {
 			boolean flag = pService.grabar(objPg);
 			if (flag)
-				return "redirect:/insertPreguntasGestante/listar";
+				return "redirect:/preguntasGestante/listar";
 			else {
 				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
 				return "redirect:/insertPreguntasGestante/irRegistrar";
