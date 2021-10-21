@@ -41,7 +41,7 @@ public class PreguntasGestanteController {
 
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
-		model.addAttribute("listaUsuario", uService.listar());
+		model.addAttribute("listaUsuarios", uService.listar());
 		
 		model.addAttribute("preguntasGestante", new PreguntasGestante());
 		model.addAttribute("usuario", new Usuario());
@@ -56,7 +56,7 @@ public class PreguntasGestanteController {
 	{
 		if (binRes.hasErrors())
 		{
-			model.addAttribute("listaUsuario", uService.listar());
+			model.addAttribute("listaUsuarios", uService.listar());
 			return "insertPreguntasGestante";
 		}
 		else {

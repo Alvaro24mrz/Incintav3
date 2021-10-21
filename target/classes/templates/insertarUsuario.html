@@ -69,6 +69,17 @@
     				</div>
     				
     				<div class="form-group">
+    					<label for="nombre">TIPO DE IDENTIFICACION:</label>
+    					<select class="form-control" th:field="*{iDTipoIdentificacion.idTipoIdentificacion}">
+    						<option th:each="ti: ${listaTipoIdentificacion}"
+    								th:value="${ti.idTipoIdentificacion}"
+    								th:text="${ti.nIdentificacion}"
+    								th:selected="(${ti.idTipoIdentificacion} == *{iDTipoIdentificacion.idTipoIdentificacion})">
+    						</option>
+    					</select>
+    				</div>
+    				
+    				<div class="form-group">
     					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label>
     					<input type="text" class="form-control" th:field="*{numIdentificacion}" id="numID"></input>
 

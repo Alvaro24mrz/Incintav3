@@ -56,7 +56,7 @@ public class EventosController {
 		if (binRes.hasErrors())
 		{
 			
-			model.addAttribute("listaUsuario", uService.listar());
+			model.addAttribute("listaUsuarios", uService.listar());
 			return "insertEventos";
 		}
 		else {
