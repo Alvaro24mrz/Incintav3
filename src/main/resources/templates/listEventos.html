@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="UTF-8"></meta>
+		<title>Mascotas</title>
+		
+		<script type="text/javascript"
+				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+    		<form id="myform">
+    			<div class="row clearfix">
+    				<div class="col-md-12 column">
+    					
+    					<a 	style="border-bottom-color: green" th:href="@{/eventos/irRegistrar}"
+    						id="add-row" type="button" class="btn btn-primary btn-md left-block">
+    						<span class="glyphicon glyphicon-plus"></span> Eventos
+    					</a>
+    					
+						<a 	style="border-bottom-color: green" th:href="@{/eventos/irBuscar}"
+    						id="add-row" type="button" class="btn btn-primary btn-md left-block">
+    						<span class="glyphicon glyphicon-search"></span> Buscar
+    					</a>
+    					
+    					<table class="table table-bordered table-hover table-striped" id="tab_logic">
+    						<thead>
+    							<tr>
+    								<th class="text-center">CODIGO</th>
+    								<th class="text-center">USUARIO</th>
+    								<th class="text-center">TITULO</th>
+    								<th class="text-center">DESCRIPCION</th>
+    								<th class="text-center">HINICIO</th>
+    								<th class="text-center">HFIN</th>
+    								<th class="text-center">BOOL</th>
+    								<th class="text-center">REPETICION</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+    							<tr th:each="ev: ${listaEventos}">
+    								<td th:text="${ev.idEventos}"></td>
+    								<td th:text="${ev.usuario.nUsuario}"></td>
+    								<td th:text="${ev.tTitulo}"></td>
+    								<td th:text="${ev.tDescripcion}"></td>
+    								<td th:text="${ev.hInicio}"></td>
+    								<td th:text="${ev.hfin}"></td>
+    								<td th:text="${ev.boolTodoDia}"></td>
+    								<td th:text="${ev.qRepeticion;}"></td>
+    								
+    								<td><a th:href="@{/eventos/eliminar?id=}+${ev.idEventos}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/eventos/modificar/'}+${ev.idEventos}">Modificar</a></td>
+    							</tr>
+    						</tbody>
+    					</table> 
+    					
+    				</div>
+    			</div>
+    			<div th:if="${mensaje}" class="alert alert-danger">
+    				<p th:text="${mensaje}"></p>
+    			</div>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1"></meta>
+		<title>Pet</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>
+				
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+    		<form th:action="@{/eventos/registrar}" method="post" th:object="${eventos}">
+    			<div class="form-group">
+    				<label for="idEventos">ID:</label>
+    				<input type="text" class="form-control" th:field="*{idEventos}"></input>
+    				
+    				<div class="form-group">
+    					<label for="nombre">NOMBRE:</label>
+    					<input type="text" class="form-control" th:field="*{tTitulo}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('tTitulo')}" 
+								th:errors="*{tTitulo}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="descripcion">DESCRIPCION:</label>
+    					<input type="text" class="form-control" th:field="*{tTitulo}" id="descripcion"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('tTitulo')}" 
+								th:errors="*{tDescripcion}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="inicio">INICIO:</label>
+    					<input type="text" class="form-control" th:field="*{hInicio}" id="inicio"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('hInicio')}" 
+								th:errors="*{hInicio}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="fin">FIN:</label>
+    					<input type="text" class="form-control" th:field="*{hFin}" id="fin"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('hFin')}" 
+								th:errors="*{hFin}">
+						</div>
+    					
+    				</div>
+    				
+    				<!--<div class="form-group">
+    					<label for="fin">FIN:</label>
+    					<input type="text" class="form-control" th:field="*{hFin}" id="fin"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('hFin')}" 
+								th:errors="*{hFin}">
+						</div>
+    					
+    				</div>  -->
+    				
+    				<div class="form-group">
+    					<label for="todoeldia">TODO EL DIA:</label>
+    					<input type="text" class="form-control" th:field="*{boolTodoDia}" id="todoeldia"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('boolTodoDia')}" 
+								th:errors="*{boolTodoDia}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="repeticion">REPETICION:</label>
+    					<input type="text" class="form-control" th:field="*{qRepeticion}" id="repeticion"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('qRepeticion')}" 
+								th:errors="*{qRepeticion}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="nombre">CLIENTE:</label>
+    					<select class="form-control" th:field="*{usuario.usuarioID}">
+    					<option th:each="r: ${listaEventos}"
+    						th:value="${r.usuarioID}"
+    						th:text="${r.nUsuario}"
+    						th:selected="(${r.usuarioID}==*{usuario.usuarioID})">
+    					</option>
+    					</select>
+    					
+    				</div>
+    				
+    				
+    				
+    				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Aceptar</button>
+    			<a href="/eventos/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>
