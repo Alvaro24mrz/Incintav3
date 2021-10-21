@@ -41,7 +41,8 @@ public class EventosController {
 
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
-		model.addAttribute("listaUsuario", uService.listar());
+		
+		model.addAttribute("listaUsuarios", uService.listar());
 		
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("eventos", new Eventos());
