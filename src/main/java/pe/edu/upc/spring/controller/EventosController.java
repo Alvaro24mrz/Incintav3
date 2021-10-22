@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -108,5 +109,32 @@ public class EventosController {
 		model.put("listaEventos", rService.listar());
 		return "listEventos";
 	}
+	
+	@RequestMapping("/irBuscar")
+	public String irBuscar(Model model) 
+	{
+		model.addAttribute("eventos", new Eventos());
+		return "buscarEventos";
+	}	
+
+	
+
+	@RequestMapping("/buscar")
+	public String buscar(Map<String, Object> model, @ModelAttribute Eventos eventos ) 
+	throws ParseException
+	{
+		
+		List<Eventos> listaEventos;
+		eventos.settTitulo(eventos.gettTitulo()); //capturo lo de la cajita de lista
+		listaEventos = rService.buscarNombre(eventos.gettTitulo()); //hago mi busqueda
+		
+		
+		if (listaEventos.isEmpty()) {
+			model.put("mensaje", "No existen coincidencias");
+		}
+		
+		model.put("listaEventos", listaEventos);
+		return "buscarEventos";
+	}	
 	
 }
