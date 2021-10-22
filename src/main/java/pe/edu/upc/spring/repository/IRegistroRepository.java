@@ -12,6 +12,6 @@ import pe.edu.upc.spring.model.Registro;
 
 @Repository
 public interface IRegistroRepository  extends JpaRepository<Registro, Integer>{
-	List<Registro> findByfechaRegistro(Date fechaRegistro);
+	List<Registro> findByFechaRegistro(Date fechaRegistro);
 
 }

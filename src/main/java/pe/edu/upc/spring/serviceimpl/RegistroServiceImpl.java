@@ -48,8 +48,8 @@ public class RegistroServiceImpl implements IRegistroService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Registro> findByfechaRegistro(Date fechaRegistro){
-		return dRegistro.findByfechaRegistro(fechaRegistro);
+	public List<Registro> findByFechaRegistro(Date fechaRegistro){
+		return dRegistro.findByFechaRegistro(fechaRegistro);
 		
 	}
 

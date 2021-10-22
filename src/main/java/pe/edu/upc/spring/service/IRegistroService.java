@@ -12,5 +12,5 @@ public interface IRegistroService {
 	public Optional<Registro> listarId(int idRegistro);
 	public List<Registro> listar();
 	
-	public List<Registro> findByfechaRegistro(Date fechaRegistro);
+	public List<Registro> findByFechaRegistro(Date fechaRegistro);
 }

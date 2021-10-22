@@ -141,7 +141,7 @@ public class RegistroController {
 	{
 		List<Registro> listaRegistros;
 		registro.setFechaRegistro(registro.getFechaRegistro());
-		listaRegistros = rService.findByfechaRegistro(registro.getFechaRegistro());
+		listaRegistros = rService.findByFechaRegistro(registro.getFechaRegistro());
 		
 		
 		if(listaRegistros.isEmpty()) {
