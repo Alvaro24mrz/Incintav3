@@ -11,5 +11,5 @@ public interface IEventosService {
 	public void eliminar(int idEventos);
 	public Optional<Eventos> listarId(int idEventos);
 	public List<Eventos> listar();
-	public List<Eventos> buscarNombre(String nTitutlo);
+	public List<Eventos> buscarNombre(String tTitulo);
 }

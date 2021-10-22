@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="Eventos")
@@ -33,20 +28,20 @@ public class Eventos implements Serializable {
 	@Column(name="nombreTitulo", length=60, nullable=false)
 	private String tTitulo;
 	
-	@Column(name="nombreDescripcion", length=60, nullable=true)
-	private Date tDescripcion;
+	@Column(name="nombreDescripcion", length=60, nullable=false)
+	private String tDescripcion;
 	
-	@Column(name="fechaInicio", length=60, nullable=true)
+	@Column(name="fechaInicio", length=60, nullable=false)
 	private String hInicio;
 	
-	@Column(name="fechaFin", length=60, nullable=true)
+	@Column(name="fechaFin", length=60, nullable=false)
 	private String hFin;
 	
 	
-	@Column(name="todoElDia", length=60, nullable=true)
+	@Column(name="todoElDia", length=60, nullable=false)
 	private String boolTodoDia;
 	
-	@Column(name="Repeticion", length=60, nullable=true)
+	@Column(name="Repeticion", length=60, nullable=false)
 	private int qRepeticion;
 
 	public Eventos() {
@@ -54,7 +49,7 @@ public class Eventos implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Eventos(int idEventos, Usuario usuario, String tTitulo, Date tDescripcion, String hInicio, String hFin,
+	public Eventos(int idEventos, Usuario usuario, String tTitulo, String tDescripcion, String hInicio, String hFin,
 			String boolTodoDia, int qRepeticion) {
 		super();
 		this.idEventos = idEventos;
@@ -91,11 +86,11 @@ public class Eventos implements Serializable {
 		this.tTitulo = tTitulo;
 	}
 
-	public Date gettDescripcion() {
+	public String gettDescripcion() {
 		return tDescripcion;
 	}
 
-	public void settDescripcion(Date tDescripcion) {
+	public void settDescripcion(String tDescripcion) {
 		this.tDescripcion = tDescripcion;
 	}
 
@@ -131,7 +126,7 @@ public class Eventos implements Serializable {
 		this.qRepeticion = qRepeticion;
 	}
 
-	
+
 
 	
 }
