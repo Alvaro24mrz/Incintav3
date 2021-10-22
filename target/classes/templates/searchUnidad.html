@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8"></meta>
+<title>Busqueda de Unidades</title>
+
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<div class="row clearfix">
+			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
+			<form th:action="@{/unidad/searchUnidad}" method="post"
+				th:object="${unidad}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" th:field="*{nUnidad}"
+							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/unidad/listar" class="btn btn-dark">Cancelar</a>
+
+						</div>
+					</div>
+
+				</div>
+
+
+			</form>
+		</div>
+
+
+		<hr class="sidebar-divider">
+
+		<table class="table table-bordered table-hover table-striped"
+			id="tab_logic">
+			<thead>
+				<tr>
+					<th class="text-center">CODIGO</th>
+					<th class="text-center">UNIDAD</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p: ${listaUnidades}">
+					<td th:text="${p.idUnidad}"></td>
+					<td th:text="${p.nUnidad}"></td>
+
+
+
+				</tr>
+			</tbody>
+		</table>
+
+
+		<p th:text="${mensaje}" class="form-text text-dark"></p>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
