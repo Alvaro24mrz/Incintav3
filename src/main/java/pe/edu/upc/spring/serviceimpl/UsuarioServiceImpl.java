@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,10 +17,17 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	@Autowired
 	private IUsuarioRepository dUsuario;
 	
+	//nuevo
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	@Override
 	@Transactional
 	public boolean insertar(Usuario user) {
+		//nuevo password:
+		user.setuPassword(passwordEncoder.encode(user.getuPassword()));
 		Usuario objUser = dUsuario.save(user);
+		
 		if (objUser == null)
 			return false;
 		else
@@ -75,4 +83,12 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	public List<Usuario> buscarDNI(int numIdentificacion) {
 		return dUsuario.buscarDNI(numIdentificacion);
 	}
+	
+	
+	
+	//nuevo
+	public Usuario findBynUsuario(String nUsuario) {
+		return dUsuario.findBynUsuario(nUsuario);
+	}
+
 }

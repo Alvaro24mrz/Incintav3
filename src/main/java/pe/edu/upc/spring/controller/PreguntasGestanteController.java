@@ -2,6 +2,7 @@ package pe.edu.upc.spring.controller;
 
 import java.util.Map;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,37 +39,44 @@ public class PreguntasGestanteController {
 		model.put("listaPreguntasGestantes", pService.listar());
 		return "listPreguntasGestante"; // "listPreguntasGestante" es una pagina del frontEnd para listar
 	}
+	
+	
 
 	@RequestMapping("/irRegistrar")
-	public String irPaginaRegistrar(Model model) {
-		model.addAttribute("listaUsuarios", uService.listar());
-		
-		model.addAttribute("preguntasGestante", new PreguntasGestante());
-		model.addAttribute("usuario", new Usuario());
-		
-		
-		return "insertPreguntasGestante"; // "race" es una pagina del frontEnd para insertar y/o modificar
-	}
+    public String irPaginaRegistrar(Model model) {
+        model.addAttribute("listaUsuario", uService.listar());
+
+        model.addAttribute("preguntasGestante", new PreguntasGestante());
+        model.addAttribute("usuario", new Usuario());
+
+
+        return "insertPreguntasGestante"; 
+    }
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute PreguntasGestante objPg, BindingResult binRes, Model model) 
-		throws ParseException
-	{
-		if (binRes.hasErrors())
-		{
-			model.addAttribute("listaUsuarios", uService.listar());
-			return "insertPreguntasGestante";
-		}
-		else {
-			boolean flag = pService.grabar(objPg);
-			if (flag)
-				return "redirect:/preguntasGestante/listar";
-			else {
-				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
-				return "redirect:/insertPreguntasGestante/irRegistrar";
-			}
-		}
-	}
+    public String registrar(@ModelAttribute PreguntasGestante objPg, BindingResult binRes, Model model) 
+        throws ParseException
+    {
+        if (binRes.hasErrors())
+        {
+            model.addAttribute("listaUsuario", uService.listar());
+            return "insertPreguntasGestante";
+        }
+        else {
+            boolean flag = pService.grabar(objPg);
+            if (flag)
+                return "redirect:/preguntasGestante/listar";
+            else {
+                model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
+                return "redirect:/insertPreguntasGestante/irRegistrar";
+            }
+        }
+    }
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 

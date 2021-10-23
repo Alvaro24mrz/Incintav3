@@ -14,4 +14,7 @@ public interface IUsuarioService {
 	public List<Usuario> buscarNombre(String nUser);
 	public List<Usuario> buscarApellido(String uApellido);
 	public List<Usuario> buscarDNI(int numIdentificacion);
+	
+	public Usuario findBynUsuario(String nUsuario);
+
 }

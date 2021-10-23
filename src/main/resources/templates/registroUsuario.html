@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1"></meta>
+		<title>RegistroP</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/usuario.js}"></script>
+				
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+    		<form th:action="@{/auth/registroUsuario}" method="post" th:object="${usuario}">
+    			<div class="form-group">
+    				<label for="idPais">ID:</label>
+    				<input type="text" class="form-control" th:field="*{usuarioID}"></input>
+    				
+    				<div class="form-group">
+    					<label for="nombre">NOMBRE:</label>
+    					<input type="text" class="form-control" th:field="*{nUsuario}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nUsuario')}" 
+								th:errors="*{nUsuario}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="apellido">APELLIDO:</label>
+    					<input type="text" class="form-control" th:field="*{uApellido}" id="apellido"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('uApellido')}" 
+								th:errors="*{uApellido}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="correo">CORREO:</label>
+    					<input type="text" class="form-control" th:field="*{uCorreo}" id="correo"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('uCorreo')}" 
+								th:errors="*{uCorreo}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="password">PASSWORD:</label>
+    					<input type="text" class="form-control" th:field="*{uPassword}" id="password"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('uPassword')}" 
+								th:errors="*{uPassword}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="nombre">TIPO DE IDENTIFICACION:</label>
+    					<select class="form-control" th:field="*{iDTipoIdentificacion.idTipoIdentificacion}">
+    						<option th:each="ti: ${listaTipoIdentificacion}"
+    								th:value="${ti.idTipoIdentificacion}"
+    								th:text="${ti.nIdentificacion}"
+    								th:selected="(${ti.idTipoIdentificacion} == *{iDTipoIdentificacion.idTipoIdentificacion})">
+    						</option>
+    					</select>
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label>
+    					<input type="text" class="form-control" th:field="*{numIdentificacion}" id="numID"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('numIdentificacion')}" 
+								th:errors="*{numIdentificacion}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="fnacimiento">FECHA DE NACIMIENTO:</label>
+    					<input type="date" class="form-control" th:field="*{dNacimiento}" id="fnacimiento"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('dNacimiento')}" 
+								th:errors="*{dNacimiento}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="nombre">PAIS:</label>
+    					<select class="form-control" th:field="*{iDPais.idPais}">
+    						<option th:each="p: ${listaPaises}"
+    								th:value="${p.idPais}"
+    								th:text="${p.nombrePais}"
+    								th:selected="(${p.idPais} == *{iDPais.idPais})">
+    						</option>
+    					</select>
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="nombre">MÉTODO DE PAGO:</label>
+    					<select class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
+    						<option th:each="mp: ${listaMDP}"
+    								th:value="${mp.iDMetodoPago}"
+    								th:text="${mp.nombreMetodoPago}"
+    								th:selected="(${mp.iDMetodoPago} == *{iDMetodoPago.iDMetodoPago})">
+    						</option>
+    					</select>
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="ntarjeta">NÚMERO DE TARJETA:</label>
+    					<input type="text" class="form-control" th:field="*{numMetodoPago}" id="ntarjeta"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('numMetodoPago')}" 
+								th:errors="*{numMetodoPago}">
+						</div>
+    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="SG">SEMANA DE GESTACIÓN:</label>
+    					<input type="text" class="form-control" th:field="*{semanaGestacion}" id="SG"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('semanaGestacion')}" 
+								th:errors="*{semanaGestacion}">
+						</div>
+    					
+    				</div>
+    				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Aceptar</button>
+    			<a href="/insertarUsuario/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>

@@ -19,4 +19,6 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer>{
 	
 	@Query("from Usuario u where u.numIdentificacion like %:numIdentificacion%")
 	List<Usuario> buscarDNI(@Param("numIdentificacion") int numIdentificacion);
+	
+	public Usuario findBynUsuario(String nUsuario);
 }
