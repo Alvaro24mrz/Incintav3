@@ -40,15 +40,9 @@
 
 				</div>
 
-				<div class="form-group">
-					<label for="nombre"> id CLIENTE:</label> 
-					<input type="number"
-						class="form-control" th:field="*{usuario.usuarioID}" value="(${session.usuario.usuarioID} == *{usuario.usuarioID})"> 
-						</input>
-
-
-				</div>
-
+				
+                    
+                    
 				<div class="form-group">
 					<label for="nombre">pregunta:</label> <input type="text"
 						class="form-control" th:field="*{tPregunta}" id="nombrepregunta"></input>
@@ -69,7 +63,18 @@
 
 				</div>
 
+				<!-- ESTA ES LA PARTE DONDE SOLO SE MUESTRA EL CLIENTE -->
+				<div class="form-group">
+                        <label for="nombre">CLIENTE:</label> <!-- FALTA HACER ESTO INVISIBLE -->
+                        <select class="form-control" th:field="*{usuario.usuarioID}" style="visibility:hidden">
+                        <option th:each="r: ${listaUsuario}"
+                            th:value="${session.usuario.usuarioID}"
+                            th:text="${session.usuario.nUsuario}"
+                            th:selected="(${session.usuario.usuarioID}==*{usuario.usuarioID})">
+                        </option>
+                        </select>
 
+                    </div>
 
 
 
