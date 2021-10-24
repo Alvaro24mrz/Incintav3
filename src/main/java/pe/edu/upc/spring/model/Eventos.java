@@ -1,6 +1,7 @@
 package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="Eventos")
@@ -31,11 +36,15 @@ public class Eventos implements Serializable {
 	@Column(name="nombreDescripcion", length=60, nullable=false)
 	private String tDescripcion;
 	
-	@Column(name="fechaInicio", length=60, nullable=false)
-	private String hInicio;
+	@Temporal(TemporalType.TIME)
+	@Column(name="horaInicio")
+	@DateTimeFormat(pattern = "HH:mm")
+	private Date hInicio;
 	
-	@Column(name="fechaFin", length=60, nullable=false)
-	private String hFin;
+	@Temporal(TemporalType.TIME)
+	@Column(name="horaFin")
+	@DateTimeFormat(pattern = "HH:mm")
+	private Date hFin;
 	
 	
 	@Column(name="todoElDia", length=60, nullable=false)
@@ -49,7 +58,7 @@ public class Eventos implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Eventos(int idEventos, Usuario usuario, String tTitulo, String tDescripcion, String hInicio, String hFin,
+	public Eventos(int idEventos, Usuario usuario, String tTitulo, String tDescripcion, Date hInicio, Date hFin,
 			String boolTodoDia, int qRepeticion) {
 		super();
 		this.idEventos = idEventos;
@@ -94,19 +103,19 @@ public class Eventos implements Serializable {
 		this.tDescripcion = tDescripcion;
 	}
 
-	public String gethInicio() {
+	public Date gethInicio() {
 		return hInicio;
 	}
 
-	public void sethInicio(String hInicio) {
+	public void sethInicio(Date hInicio) {
 		this.hInicio = hInicio;
 	}
 
-	public String gethFin() {
+	public Date gethFin() {
 		return hFin;
 	}
 
-	public void sethFin(String hFin) {
+	public void sethFin(Date hFin) {
 		this.hFin = hFin;
 	}
 
@@ -125,8 +134,5 @@ public class Eventos implements Serializable {
 	public void setqRepeticion(int qRepeticion) {
 		this.qRepeticion = qRepeticion;
 	}
-
-
-
 	
 }

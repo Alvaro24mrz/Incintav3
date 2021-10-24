@@ -51,7 +51,10 @@
     							</tr>
     						</thead>
     						<tbody>
-    							<tr th:each="pg: ${listaPreguntasGestante}">
+    							<tr 
+    							th:each="pg: ${listaPreguntasGestante}" 
+    							th:object="${pg}"
+    							th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
     								<td th:text="${pg.idPreguntasGestante}"></td>
     								<td th:text="${pg.nTitulo}"></td>
     								<td th:text="${pg.tPregunta}"></td>
