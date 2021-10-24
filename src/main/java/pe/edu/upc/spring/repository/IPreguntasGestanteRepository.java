@@ -13,4 +13,8 @@ import pe.edu.upc.spring.model.PreguntasGestante;
 public interface IPreguntasGestanteRepository extends JpaRepository<PreguntasGestante, Integer>{
 	@Query("from PreguntasGestante r where r.nTitulo like %:nTitulo%")
 	List<PreguntasGestante> buscarNombre(@Param("nTitulo") String nTitulo);
+	
+	
+	
+	
 }

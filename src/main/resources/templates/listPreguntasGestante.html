@@ -51,16 +51,18 @@
     							</tr>
     						</thead>
     						<tbody>
-    							<tr th:each="pg: ${listaPreguntasGestante}">
-    								<td th:text="${pg.idPreguntasGestante}"></td>
-    								<td th:text="${pg.nTitulo}"></td>
-    								<td th:text="${pg.tPregunta}"></td>
-    								<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
-    								<td th:text="${pg.usuario.usuarioID}"></td>
-    								
-    								<td><a th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}">Modificar</a></td>
-    							</tr>
+    						<tr  th:each="pg: ${listaPreguntasGestante}" 
+                                th:object="${pg}"
+                                th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
+                                    <td th:text="${pg.idPreguntasGestante}"></td>
+                                    <td th:text="${pg.nTitulo}"></td>
+                                    <td th:text="${pg.tPregunta}"></td>
+                                    <td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
+                                    <td th:text="${pg.usuario.usuarioID}"></td>
+
+                                    <td><a th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}">Eliminar</a></td>
+                                    <td><a th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}">Modificar</a></td>
+                                </tr>
     						</tbody>
     					</table> 
     					
