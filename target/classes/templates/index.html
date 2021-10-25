@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="ISO-8859-1"></meta>
+<title>Login</title>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+<script type="text/javascript" th:src="@{/js/usuario.js}"></script>
+
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-3">
+				<div class="card card-body">
+					<span th:if="${session.usuario !=null}">Bienvenido/a <span
+						class="font-italic" th:text="${session.usuario.nUsuario}"></span>
+					</span>
+					<form th:action="@{/logout}" method="POST">
+					<button type="submit" class="btn btn-primary mt-3">Salir</button>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>
