@@ -103,21 +103,33 @@ public class UsuarioController {
 		return "listUsuarios";
 	}
 	
-	@RequestMapping("/irBucar")
+	@RequestMapping("/irSearch")
 	public String irBuscar(Model model) 
 	throws ParseException
 	{
 		model.addAttribute("usuario", new Usuario());
-		return "buscar";
+		return "searchUsuario";
 	}
 	
-	@RequestMapping("/buscar")
+	@RequestMapping("/searchUsuario")
 	public String buscar(Map<String, Object> model, @ModelAttribute Usuario usuario) 
 	throws ParseException
 	{
 		List<Usuario> listaUsuarios;
 		usuario.setnUsuario(usuario.getnUsuario());
 		listaUsuarios = rService.buscarNombre(usuario.getnUsuario());
+		
+		if(listaUsuarios.isEmpty()) {
+			listaUsuarios = rService.buscarApellido(usuario.getnUsuario());
+		}
+		
+		if(listaUsuarios.isEmpty()) {
+			listaUsuarios = rService.buscarDNI(usuario.getnUsuario());
+		}
+		
+		if(listaUsuarios.isEmpty()) {
+			listaUsuarios = rService.buscarCorreo(usuario.getnUsuario());
+		}
 		
 		if(listaUsuarios.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");

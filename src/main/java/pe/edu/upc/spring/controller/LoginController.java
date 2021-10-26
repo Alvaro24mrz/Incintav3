@@ -1,5 +1,7 @@
 package pe.edu.upc.spring.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +60,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/auth/registrar")
-	public String registrar(@Validated @ModelAttribute Usuario objUsuario, BindingResult binRes, Model model) 
+	public String registrar(@Validated @ModelAttribute Usuario objUsuario, BindingResult binRes, Model model, Map<String, Object> model2) 
 		
 	{
 		if (binRes.hasErrors())
@@ -76,7 +78,7 @@ public class LoginController {
 				return "redirect:/auth/login";
 			else
 			{
-				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
+				model2.put("mensaje", "CORREO REGISTRADO");
 				return "redirect:/auth/irRegistrar";
 			}
 		}
