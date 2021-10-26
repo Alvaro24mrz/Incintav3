@@ -24,7 +24,12 @@
 </head>
 
 <body>
-	<div th:replace="fragments/header :: header"></div>
+	<div th:if="${session.usuario.admin == 1}">
+		<div th:replace="fragments/headerAdmin :: header"></div>
+	</div>
+	<div th:if="${session.usuario.admin == 2}">
+		<div th:replace="fragments/headerUsuario :: header"></div>
+	</div>
 	<div class="container">
 		<div class="row clearfix">
 			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
@@ -76,7 +81,7 @@
 					<td th:text="${p.tAnotaciones}"></td>
 
 
-					
+
 				</tr>
 			</tbody>
 		</table>

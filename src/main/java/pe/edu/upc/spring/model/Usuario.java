@@ -58,6 +58,8 @@ public class Usuario implements Serializable {
 	private int numMetodoPago;
 	
 	private int semanaGestacion;
+	
+	private int admin;
 
 	public Usuario() {
 		super();
@@ -65,7 +67,7 @@ public class Usuario implements Serializable {
 
 	public Usuario(int usuarioID, String nUsuario, String uApellido, String uCorreo, String uPassword,
 			String numIdentificacion, Date dNacimiento, TipoIdentificacion iDTipoIdentificacion, Pais iDPais,
-			MetodoDePago iDMetodoPago, int numMetodoPago, int semanaGestacion) {
+			MetodoDePago iDMetodoPago, int numMetodoPago, int semanaGestacion, int admin) {
 		super();
 		this.usuarioID = usuarioID;
 		this.nUsuario = nUsuario;
@@ -79,6 +81,7 @@ public class Usuario implements Serializable {
 		this.iDMetodoPago = iDMetodoPago;
 		this.numMetodoPago = numMetodoPago;
 		this.semanaGestacion = semanaGestacion;
+		this.admin = admin;
 	}
 
 	public int getUsuarioID() {
@@ -175,6 +178,14 @@ public class Usuario implements Serializable {
 
 	public void setSemanaGestacion(int semanaGestacion) {
 		this.semanaGestacion = semanaGestacion;
+	}
+
+	public int getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(int admin) {
+		this.admin = admin;
 	}	
 
 }

@@ -24,11 +24,15 @@
 <body>
 
 
-	<div th:replace="fragments/headerInicio :: header"></div>
-
+	<div th:if="${session.usuario.admin == 1}">
+		<div th:replace="fragments/headerAdmin :: header"></div>
+	</div>
+	<div th:if="${session.usuario.admin == 2}">
+		<div th:replace="fragments/headerUsuario :: header"></div>
+	</div>
 
 	<div class="container">
-		<form th:action="@{/auth/registrar}" method="post"
+		<form th:action="@{/insertarUsuario/registrar}" method="post"
 			th:object="${usuario}">
 
 			<div th:if="${mensaje}" class="alert alert-danger">

@@ -8,11 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.MetodoDePago;
 import pe.edu.upc.spring.model.Pais;
@@ -34,7 +30,7 @@ public class LoginController {
 	@Autowired
 	private ITipoIdentificacionService tiService;
 	
-	@GetMapping("/auth/login")
+	@RequestMapping("/auth/login")
 	public String login(Model model) {
 		model.addAttribute("usuario", new Usuario());
 		
@@ -73,6 +69,7 @@ public class LoginController {
 		}
 		else 
 		{
+			objUsuario.setAdmin(2);
 			boolean flag = uService.insertar(objUsuario);
 			if (flag)
 				return "redirect:/auth/login";

@@ -22,30 +22,36 @@
 </head>
 
 <body>
-	<div th:replace="fragments/header :: header"></div>
+	<div th:if="${session.usuario.admin == 1}">
+		<div th:replace="fragments/headerAdmin :: header"></div>
+	</div>
+	<div th:if="${session.usuario.admin == 2}">
+		<div th:replace="fragments/headerUsuario :: header"></div>
+	</div>
 	<div class="container">
 		<form th:action="@{/registro/registrar}" method="post"
 			th:object="${registro}">
+			<div th:if="${mensaje}" class="alert alert-danger">
+				<p th:text="${mensaje}"></p>
+			</div>
 			<div class="form-group">
 
 
 				<input type="text" class="form-control" th:field="*{idRegistro}"
-					style="visibility: hidden"></input> 
-					
-					
-					
-					<div class="form-group">
-					<select class="form-control" th:field="*{usuario.usuarioID}" style="visibility:hidden">
-                        <option th:each="r: ${listaUsuario}"
-                            th:value="${session.usuario.usuarioID}"
-                            th:text="${session.usuario.nUsuario}"
-                            th:selected="(${session.usuario.usuarioID}==*{usuario.usuarioID})">
-                        </option>
-                        </select>
-				</div>
-					
-					
+					style="visibility: hidden"></input>
 
+
+
+				<div class="form-group">
+					<select class="form-control" th:field="*{usuario.usuarioID}"
+						style="visibility: hidden">
+						<option th:each="r: ${listaUsuario}"
+							th:value="${session.usuario.usuarioID}"
+							th:text="${session.usuario.nUsuario}"
+							th:selected="(${session.usuario.usuarioID}==*{usuario.usuarioID})">
+						</option>
+					</select>
+				</div>
 
 
 
