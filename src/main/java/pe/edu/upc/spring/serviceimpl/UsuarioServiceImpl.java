@@ -24,7 +24,26 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	@Override
 	@Transactional
 	public boolean insertar(Usuario user) {
+		
+		dUsuario.buscarCorreo(user.getuCorreo());
+		
+		List<Usuario> listaUsuarios;
+		listaUsuarios = dUsuario.buscarCorreo(user.getuCorreo());
+		
+		if(listaUsuarios.isEmpty()) {
+			user.setuPassword(passwordEncoder.encode(user.getuPassword()));
+			Usuario objUser = dUsuario.save(user);
+			
+			if (objUser == null)
+				return false;
+			else
+				return true;
+		}
+		else
+			return false;
+		
 		//nuevo password:
+		/*
 		user.setuPassword(passwordEncoder.encode(user.getuPassword()));
 		Usuario objUser = dUsuario.save(user);
 		
@@ -32,6 +51,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 			return false;
 		else
 			return true;
+		*/
 	}
 
 	@Override
@@ -80,11 +100,15 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Usuario> buscarDNI(int numIdentificacion) {
+	public List<Usuario> buscarDNI(String numIdentificacion) {
 		return dUsuario.buscarDNI(numIdentificacion);
 	}
 	
-	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Usuario> buscarCorreo(String uCorreo) {
+		return dUsuario.buscarCorreo(uCorreo);
+	}
 	
 	//nuevo
 	public Usuario findBynUsuario(String nUsuario) {

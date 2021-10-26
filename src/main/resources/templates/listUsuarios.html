@@ -30,12 +30,12 @@
     			<div class="row clearfix">
     				<div class="col-md-12 column">
     					
-    					<a 	style="border-bottom-color: green" th:href="@{/insertarUsuario/irRegistrar}"
+    					<a 	style="border-bottom-color: green" th:href="@{/usuario/irRegistrar}"
     						id="add-row" type="button" class="btn btn-primary btn-md left-block">
     						<span class="glyphicon glyphicon-plus"></span> Usuario
     					</a>
     					
-    					<a 	style="border-bottom-color: green" th:href="@{/insertarUsuario/irBuscar}"
+    					<a 	style="border-bottom-color: green" th:href="@{/usuario/irSearch}"
     						id="add-row" type="button" class="btn btn-primary btn-md left-block">
     						<span class="glyphicon glyphicon-search"></span> Buscar
     					</a>
@@ -73,8 +73,8 @@
     								<td th:text="${u.iDMetodoPago.nombreMetodoPago}"></td>
     								<td th:text="${u.numMetodoPago}"></td>
     								<td th:text="${u.semanaGestacion}"></td>
-    								<td><a th:href="@{/insertarUsuario/eliminar?id=}+${u.usuarioID}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/insertarUsuario/modificar/'}+${u.usuarioID}">Modificar</a></td>
+    								<td><a th:href="@{/usuario/eliminar?id=}+${u.usuarioID}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/usuario/modificar/'}+${u.usuarioID}">Modificar</a></td>
     							</tr>
     						</tbody>
     					</table> 

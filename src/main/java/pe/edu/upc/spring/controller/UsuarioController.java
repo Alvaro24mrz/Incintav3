@@ -1,4 +1,4 @@
- package pe.edu.upc.spring.controller;
+package pe.edu.upc.spring.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -27,7 +27,7 @@ import pe.edu.upc.spring.service.IMetodoDePagoService;
 import pe.edu.upc.spring.service.ITipoIdentificacionService;
 
 @Controller
-@RequestMapping("/insertarUsuario")
+@RequestMapping("/usuario")
 public class UsuarioController {
 
 	@Autowired
@@ -38,133 +38,131 @@ public class UsuarioController {
 	private IMetodoDePagoService mpService;
 	@Autowired
 	private ITipoIdentificacionService tiService;
-	
+
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
-		return "bienvenido"; 
+		return "bienvenido";
 	}
-	
+
 	@RequestMapping("/")
 	public String irPaginaListadoUsuarios(Map<String, Object> model) {
 		model.put("listaUsuarios", rService.listar());
-		return "listUsuarios"; 
+		return "listUsuarios";
 	}
 
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
-		
+
 		model.addAttribute("listaTipoIdentificacion", tiService.listar());
 		model.addAttribute("listaPaises", pService.listar());
 		model.addAttribute("listaMDP", mpService.listar());
-		
+
 		model.addAttribute("ti", new TipoIdentificacion());
 		model.addAttribute("pais", new Pais());
 		model.addAttribute("mdp", new MetodoDePago());
-		
+
 		model.addAttribute("usuario", new Usuario());
-		
-		return "insertarUsuario"; 
+
+		return "insertUsuario";
 	}
-	
+
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Usuario objUsuario, BindingResult binRes, Model model) 
-		throws ParseException
-	{
-		if (binRes.hasErrors())
-		{	
+	public String registrar(@ModelAttribute Usuario objUsuario, BindingResult binRes, Model model, Map<String, Object> model2)
+			throws ParseException {
+		if (binRes.hasErrors()) {
 			model.addAttribute("listaTipoIdentificacion", tiService.listar());
 			model.addAttribute("listaPaises", pService.listar());
 			model.addAttribute("listaMDP", mpService.listar());
-			
-			return "insertarUsuario";
-		}
-		else 
-		{
+
+			return "insertUsuario";
+		} else {
 			boolean flag = rService.insertar(objUsuario);
 			if (flag)
-				return "redirect:/insertarUsuario/listar";
-			else
-			{
-				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
-				return "redirect:/insertarUsuario/irRegistrar";
+				return "redirect:/usuario/listar";
+			else {
+				model2.put("mensaje", "Correo registrado");
+				return "registroUsuario";
 			}
+
 		}
 	}
-	
+
 	@RequestMapping("/modificar/{id}")
-	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
-		throws ParseException
-	{
+	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
 		Optional<Usuario> objUsuario = rService.listarId(id);
 		if (objUsuario == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche, LUZ ROJA");
-			return "redirect:/insertarUsuario/listar"; //CAMBIAR
-		}
-		else {
+			return "redirect:/usuario/listar";
+		} else {
 			model.addAttribute("listaTipoIdentificacion", tiService.listar());
 			model.addAttribute("listaPaises", pService.listar());
 			model.addAttribute("listaMDP", mpService.listar());
-			
-			if(objUsuario.isPresent())
+
+			if (objUsuario.isPresent())
 				objUsuario.ifPresent(o -> model.addAttribute("usuario", o));
-			
-			return "insertarUsuario";
+
+			return "insertUsuario";
 		}
 	}
-		
+
 	@RequestMapping("/eliminar")
-	public String eliminar(Map<String, Object> model,  @RequestParam(value="id") Integer id) {
+	public String eliminar(Map<String, Object> model, @RequestParam(value = "id") Integer id) {
 		try {
-			if (id!=null && id>0) {
+			if (id != null && id > 0) {
 				rService.eliminar(id);
 				model.put("listaUsuarios", rService.listar());
 			}
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
 			model.put("listaUsuarios", rService.listar());
 		}
 		return "listUsuarios";
 	}
-		
+
 	@RequestMapping("/listar")
-	public String listar(Map<String, Object> model ) {
+	public String listar(Map<String, Object> model) {
 		model.put("listaUsuarios", rService.listar());
 		return "listUsuarios";
 	}
-	
+
 	@RequestMapping("/listarId")
-	public String listarId(Map<String, Object> model, @ModelAttribute Usuario usuario) 
-	throws ParseException
-	{
+	public String listarId(Map<String, Object> model, @ModelAttribute Usuario usuario) throws ParseException {
 		rService.listarId(usuario.getUsuarioID());
 		return "listUsuarios";
 	}
-	
-	@RequestMapping("/irBucar")
-	public String irBuscar(Model model) 
-	throws ParseException
-	{
+
+	@RequestMapping("/irSearch")
+	public String irBuscar(Model model) throws ParseException {
 		model.addAttribute("usuario", new Usuario());
-		return "buscar";
+		return "searchUsuario";
 	}
-	
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Usuario usuario) 
-	throws ParseException
-	{
+
+	@RequestMapping("/searchUsuario")
+	public String buscar(Map<String, Object> model, @ModelAttribute Usuario usuario) throws ParseException {
 		List<Usuario> listaUsuarios;
 		usuario.setnUsuario(usuario.getnUsuario());
 		listaUsuarios = rService.buscarNombre(usuario.getnUsuario());
-		
-		if(listaUsuarios.isEmpty()) {
+
+		if (listaUsuarios.isEmpty()) {
+			listaUsuarios = rService.buscarApellido(usuario.getnUsuario());
+		}
+
+		if (listaUsuarios.isEmpty()) {
+			listaUsuarios = rService.buscarDNI(usuario.getnUsuario());
+		}
+
+		if (listaUsuarios.isEmpty()) {
+			listaUsuarios = rService.buscarCorreo(usuario.getnUsuario());
+		}
+
+		if (listaUsuarios.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}
-		
+
 		model.put("listaUsuarios", listaUsuarios);
-		
-		return "buscar";
+
+		return "searchUsuario";
 	}
-	
+
 }

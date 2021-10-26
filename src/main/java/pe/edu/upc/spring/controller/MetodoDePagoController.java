@@ -19,7 +19,7 @@ import pe.edu.upc.spring.model.MetodoDePago;
 import pe.edu.upc.spring.service.IMetodoDePagoService;
 
 @Controller
-@RequestMapping("/insertarMDP")
+@RequestMapping("/imdp")
 public class MetodoDePagoController {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class MetodoDePagoController {
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
 		model.addAttribute("mdp", new MetodoDePago());
-		return "insertarMDP"; 
+		return "insertMDP"; 
 	}
 	
 	@RequestMapping("/registrar")
@@ -47,14 +47,14 @@ public class MetodoDePagoController {
 		throws ParseException
 	{
 		if (binRes.hasErrors())
-			return "insertarMDP";
+			return "insertMDP";
 		else {
 			boolean flag = rService.insertar(objPais);
 			if (flag)
-				return "redirect:/insertarMDP/listar";
+				return "redirect:/imdp/listar";
 			else {
 				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
-				return "redirect:/insertarMDP/irRegistrar";
+				return "redirect:/imdp/irRegistrar";
 			}
 		}
 	}
@@ -66,11 +66,11 @@ public class MetodoDePagoController {
 		Optional<MetodoDePago> objMDP = rService.listarId(id);
 		if (objMDP == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche, LUZ ROJA");
-			return "redirect:/insertarMDP/listar"; //CAMBIAR
+			return "redirect:/imdp/listar"; //CAMBIAR
 		}
 		else {
 			model.addAttribute("mdp",objMDP);
-			return "insertarMDP";
+			return "insertMDP";
 		}
 	}
 		

@@ -30,7 +30,7 @@
     			<div class="row clearfix">
     				<div class="col-md-12 column">
     					
-    					<a 	style="border-bottom-color: green" th:href="@{/insertarPaises/irRegistrar}"
+    					<a 	style="border-bottom-color: green" th:href="@{/pais/irRegistrar}"
     						id="add-row" type="button" class="btn btn-primary btn-md left-block">
     						<span class="glyphicon glyphicon-plus"></span> Pais
     					</a>
@@ -48,8 +48,8 @@
     							<tr th:each="p: ${listaPaises}">
     								<td th:text="${p.idPais}"></td>
     								<td th:text="${p.nombrePais}"></td>
-    								<td><a th:href="@{/insertarPaises/eliminar?id=}+${p.idPais}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/insertarPaises/modificar/'}+${p.idPais}">Modificar</a></td>
+    								<td><a th:href="@{/pais/eliminar?id=}+${p.idPais}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/pais/modificar/'}+${p.idPais}">Modificar</a></td>
     							</tr>
     						</tbody>
     					</table> 
