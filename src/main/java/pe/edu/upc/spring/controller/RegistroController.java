@@ -77,7 +77,7 @@ public class RegistroController {
 			if (flag)
 				return "redirect:/registro/listar";
 			else {
-				model.addAttribute("mensaje", "Ocurrio un error");
+				model.addAttribute("mensaje", "ERROR");
 				return "redirect:/registro/irRegistrar";
 			}
 		}
@@ -89,7 +89,7 @@ public class RegistroController {
 	{
 		Optional<Registro> objRegistro = rService.listarId(id);
 		if (objRegistro == null) {
-			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
+			objRedir.addFlashAttribute("mensaje", "ERROR");
 			return "redirect:/registro/listar";
 		}
 		else {

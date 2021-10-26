@@ -66,7 +66,7 @@ public class EventosController {
 			if (flag)
 				return "redirect:/eventos/listar";
 			else {
-				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
+				model.addAttribute("mensaje", "ERROR");
 				return "redirect:/insertEventos/irRegistrar";
 			}
 		}
@@ -78,7 +78,7 @@ public class EventosController {
 	{
 		Optional<Eventos> objEventos = rService.listarId(id);
 		if (objEventos == null) {
-			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche, LUZ ROJA");
+			objRedir.addFlashAttribute("mensaje", "ERROR");
 			return "redirect:/insertEventos/listar";
 		}
 		else {

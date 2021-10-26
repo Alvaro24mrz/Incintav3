@@ -53,7 +53,7 @@ public class MetodoDePagoController {
 			if (flag)
 				return "redirect:/insertarMDP/listar";
 			else {
-				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
+				model.addAttribute("mensaje", "ERROR");
 				return "redirect:/insertarMDP/irRegistrar";
 			}
 		}

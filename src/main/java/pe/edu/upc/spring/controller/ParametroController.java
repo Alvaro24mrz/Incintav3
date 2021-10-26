@@ -67,7 +67,7 @@ public class ParametroController {
 			if (flag)
 				return "redirect:/parametro/listar";
 			else {
-				model.addAttribute("mensaje", "Ocurrio un error");
+				model.addAttribute("mensaje", "ERROR");
 				return "redirect:/parametro/irRegistrar";
 			}
 		}
@@ -79,7 +79,7 @@ public class ParametroController {
 	{
 		Optional<Parametro> objParametro = rService.listarId(id);
 		if (objParametro == null) {
-			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
+			objRedir.addFlashAttribute("mensaje", "ERROR");
 			return "redirect:/parametro/listar";
 		}
 		else {

@@ -58,8 +58,8 @@ public class UsuarioController {
 	{
 		Optional<Usuario> objUsuario = rService.listarId(id);
 		if (objUsuario == null) {
-			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche, LUZ ROJA");
-			return "redirect:/insertarUsuario/listar"; //CAMBIAR
+			objRedir.addFlashAttribute("mensaje", "ERROR");
+			return "redirect:/insertarUsuario/listar"; 
 		}
 		else {
 			model.addAttribute("listaTipoIdentificacion", tiService.listar());
