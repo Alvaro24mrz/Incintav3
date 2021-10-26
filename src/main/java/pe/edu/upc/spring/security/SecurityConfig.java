@@ -31,15 +31,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/bienvenido", "/","/auth/**","/css/**", "public/**", "/js/**").permitAll().anyRequest().authenticated()
+		http
+		.authorizeRequests().antMatchers("/bienvenido", "/","/auth/**","/css/**", "public/**", "/js/**").permitAll()
+		.antMatchers("/parametro/listar").hasRole("ADMIN")
+		
 		.and()
 			.formLogin().loginPage("/auth/login").defaultSuccessUrl("/private/index",true).failureUrl("/auth/login?error=true")
 			.loginProcessingUrl("/auth/login-post").permitAll()
 		.and()
 			.logout().logoutUrl("/logout").logoutSuccessUrl("/public/index");
+		
+		
+		
+		
 			
 		
 	}
+	
+	/*
+	  @Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/bienvenido", "/","/auth/**","/css/**", "public/**", "/js/**").permitAll()
+		.anyRequest().authenticated()
+		.and()
+			.formLogin().loginPage("/auth/login").defaultSuccessUrl("/private/index",true).failureUrl("/auth/login?error=true")
+			.loginProcessingUrl("/auth/login-post").permitAll()
+		.and()
+			.logout().logoutUrl("/logout").logoutSuccessUrl("/public/index");
+		
+		
+		.antMatchers("/parametro/listar").hasRole("ADMIN")
+		
+			
+		
+	}
+	 * 
+	 * 
+	 * */
 
 	
 }

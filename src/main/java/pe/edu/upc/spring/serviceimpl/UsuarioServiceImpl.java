@@ -52,7 +52,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 			flag = true;
 		}
 		catch(Exception ex) {
-			System.out.println("Ocurrio un roche, LUZ ROJA");
+			System.out.println("Ocurrio un error");
 		}
 		return flag;
 	}

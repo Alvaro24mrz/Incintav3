@@ -58,14 +58,27 @@ public class Usuario implements Serializable {
 	private int numMetodoPago;
 	
 	private int semanaGestacion;
+	
+	
+	//nuevo
+	/*@Column(name="rolUsuario", nullable=false)
+	private String rol;*/
+	
+	@ManyToOne
+	@JoinColumn(name="idRol", nullable=false)
+	private Role idRol;
+	
+	
 
 	public Usuario() {
 		super();
 	}
 
+
+
 	public Usuario(int usuarioID, String nUsuario, String uApellido, String uCorreo, String uPassword,
 			String numIdentificacion, Date dNacimiento, TipoIdentificacion iDTipoIdentificacion, Pais iDPais,
-			MetodoDePago iDMetodoPago, int numMetodoPago, int semanaGestacion) {
+			MetodoDePago iDMetodoPago, int numMetodoPago, int semanaGestacion, Role idRol) {
 		super();
 		this.usuarioID = usuarioID;
 		this.nUsuario = nUsuario;
@@ -79,102 +92,169 @@ public class Usuario implements Serializable {
 		this.iDMetodoPago = iDMetodoPago;
 		this.numMetodoPago = numMetodoPago;
 		this.semanaGestacion = semanaGestacion;
+		this.idRol = idRol;
 	}
+
+
 
 	public int getUsuarioID() {
 		return usuarioID;
 	}
 
+
+
 	public void setUsuarioID(int usuarioID) {
 		this.usuarioID = usuarioID;
 	}
+
+
 
 	public String getnUsuario() {
 		return nUsuario;
 	}
 
+
+
 	public void setnUsuario(String nUsuario) {
 		this.nUsuario = nUsuario;
 	}
+
+
 
 	public String getuApellido() {
 		return uApellido;
 	}
 
+
+
 	public void setuApellido(String uApellido) {
 		this.uApellido = uApellido;
 	}
+
+
 
 	public String getuCorreo() {
 		return uCorreo;
 	}
 
+
+
 	public void setuCorreo(String uCorreo) {
 		this.uCorreo = uCorreo;
 	}
+
+
 
 	public String getuPassword() {
 		return uPassword;
 	}
 
+
+
 	public void setuPassword(String uPassword) {
 		this.uPassword = uPassword;
 	}
+
+
 
 	public String getNumIdentificacion() {
 		return numIdentificacion;
 	}
 
+
+
 	public void setNumIdentificacion(String numIdentificacion) {
 		this.numIdentificacion = numIdentificacion;
 	}
+
+
 
 	public Date getdNacimiento() {
 		return dNacimiento;
 	}
 
+
+
 	public void setdNacimiento(Date dNacimiento) {
 		this.dNacimiento = dNacimiento;
 	}
+
+
 
 	public TipoIdentificacion getiDTipoIdentificacion() {
 		return iDTipoIdentificacion;
 	}
 
+
+
 	public void setiDTipoIdentificacion(TipoIdentificacion iDTipoIdentificacion) {
 		this.iDTipoIdentificacion = iDTipoIdentificacion;
 	}
+
+
 
 	public Pais getiDPais() {
 		return iDPais;
 	}
 
+
+
 	public void setiDPais(Pais iDPais) {
 		this.iDPais = iDPais;
 	}
+
+
 
 	public MetodoDePago getiDMetodoPago() {
 		return iDMetodoPago;
 	}
 
+
+
 	public void setiDMetodoPago(MetodoDePago iDMetodoPago) {
 		this.iDMetodoPago = iDMetodoPago;
 	}
+
+
 
 	public int getNumMetodoPago() {
 		return numMetodoPago;
 	}
 
+
+
 	public void setNumMetodoPago(int numMetodoPago) {
 		this.numMetodoPago = numMetodoPago;
 	}
+
+
 
 	public int getSemanaGestacion() {
 		return semanaGestacion;
 	}
 
+
+
 	public void setSemanaGestacion(int semanaGestacion) {
 		this.semanaGestacion = semanaGestacion;
-	}	
+	}
 
+
+
+	public Role getIdRol() {
+		return idRol;
+	}
+
+
+
+	public void setIdRol(Role idRol) {
+		this.idRol = idRol;
+	}
+	
+	
+
+
+
+
+	
 }
