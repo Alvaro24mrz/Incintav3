@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.MetodoDePago;
 import pe.edu.upc.spring.model.Pais;
@@ -37,9 +40,10 @@ public class LoginController {
 	}
 	
 	
-	
-	@GetMapping("/auth/registroUsuario")
-	public String registroForm(Model model) {
+	//de usuario controller
+	@RequestMapping("/auth/irRegistrar")
+	public String irPaginaRegistrar(Model model) {
+		
 		model.addAttribute("listaTipoIdentificacion", tiService.listar());
 		model.addAttribute("listaPaises", pService.listar());
 		model.addAttribute("listaMDP", mpService.listar());
@@ -49,33 +53,33 @@ public class LoginController {
 		model.addAttribute("mdp", new MetodoDePago());
 		
 		model.addAttribute("usuario", new Usuario());
-
-		return "registroUsuario";
-
+		
+		return "insertarUsuario"; 
 	}
-
-	@PostMapping("/auth/registroUsuario")
-	public String registroUsuario(@Validated @ModelAttribute Usuario usuario, BindingResult result, Model model) {
-		if(result.hasErrors()) {
+	
+	@RequestMapping("/auth/registrar")
+	public String registrar(@Validated @ModelAttribute Usuario objUsuario, BindingResult binRes, Model model) 
+		
+	{
+		if (binRes.hasErrors())
+		{	
 			model.addAttribute("listaTipoIdentificacion", tiService.listar());
 			model.addAttribute("listaPaises", pService.listar());
 			model.addAttribute("listaMDP", mpService.listar());
 			
-			return "redirect:/auth/registroUsuario";
+			return "redirect:/auth/registrar";
 		}
-		else {
-			
-			boolean flag = uService.insertar(usuario);
+		else 
+		{
+			boolean flag = uService.insertar(objUsuario);
 			if (flag)
 				return "redirect:/auth/login";
 			else
 			{
 				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
-				return "redirect:/auth/registroUsuario";
+				return "redirect:/auth/irRegistrar";
 			}
-			
 		}
-		
 	}
 
 }

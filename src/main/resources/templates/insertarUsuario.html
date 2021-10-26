@@ -4,7 +4,7 @@
 	<head>
 	
 		<meta charset="ISO-8859-1"></meta>
-		<title>Usuario</title>
+		<title>Registro</title>
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		
@@ -23,10 +23,15 @@
 	<body>
     	<div th:replace="fragments/header :: header"></div>
     	<div class="container">
-    		<form th:action="@{/insertarUsuario/registrar}" method="post" th:object="${usuario}">
+    		<form th:action="@{/auth/registrar}" method="post" th:object="${usuario}">
     			<div class="form-group">
-    				<label for="idPais">ID:</label>
-    				<input type="text" class="form-control" th:field="*{usuarioID}"></input>
+    			
+    			
+ 
+    				 <input type="text"
+					class="form-control" th:field="*{usuarioID}" style="visibility:hidden">
+				</input>
+    				
     				
     				<div class="form-group">
     					<label for="nombre">NOMBRE:</label>

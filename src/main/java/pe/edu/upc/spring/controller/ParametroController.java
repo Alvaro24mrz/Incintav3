@@ -67,7 +67,7 @@ public class ParametroController {
 			if (flag)
 				return "redirect:/parametro/listar";
 			else {
-				model.addAttribute("mensaje", "Ocurrio un problema");
+				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/parametro/irRegistrar";
 			}
 		}

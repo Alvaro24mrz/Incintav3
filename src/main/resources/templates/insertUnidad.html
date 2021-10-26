@@ -25,8 +25,11 @@
     	<div class="container">
     		<form th:action="@{/unidad/registrar}" method="post" th:object="${unidad}">
     			<div class="form-group">
-    				<label for="idUnidad">ID:</label>
-    				<input type="text" class="form-control" th:field="*{idUnidad}"></input>
+    				
+    				    				
+    				 <input type="text"
+					class="form-control" th:field="*{idUnidad}" style="visibility:hidden">
+				</input>
     				
     				<div class="form-group">
     					<label for="nombre">NOMBRE:</label>

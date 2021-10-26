@@ -30,8 +30,8 @@
 					<span th:if="${session.usuario !=null}">Bienvenido/a <span
 						class="font-italic" th:text="${session.usuario.nUsuario}"></span>
 					</span>
-					<form th:action="@{/logout}" method="POST">
-					<button type="submit" class="btn btn-primary mt-3">Salir</button>
+					<form th:action="@{/insertarUsuario/bienvenido}" method="POST">
+					<button type="submit" class="btn btn-primary mt-3">Ir a Inicio</button>
 					</form>
 				</div>
 

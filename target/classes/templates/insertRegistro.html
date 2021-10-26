@@ -1,114 +1,113 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-	
-		<meta charset="ISO-8859-1"></meta>
-		<title>Parametro</title>
-		
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		
-		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-				rel="stylesheet" id="bootstrap-css">
-		</link>
+<head>
 
-		<script
-			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+<meta charset="ISO-8859-1"></meta>
+<title>Registro de parametros</title>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
 		</script>
-		
-		<script type="text/javascript" th:src="@{/js/registro.js}"></script>
-				
-	</head>
 
-	<body>
-    	<div th:replace="fragments/header :: header"></div>
-    	<div class="container">
-    		<form th:action="@{/registro/registrar}" method="post" th:object="${registro}">
-    			<div class="form-group">
-    				<label for="idregistro">ID:</label>
-    				<input type="text" class="form-control" th:field="*{idRegistro}"></input>
-    				
-    				
-    				<div class="form-group">
-    					<label for="nombre">USUARIO:</label>
-    					<select class="form-control" th:field="*{usuario.usuarioID}">
-    					<option th:each="u: ${listaUsuarios}"
-    							th:value="${u.usuarioID}"
-    							th:text="${u.nUsuario}"
-    							th:selected="(${u.usuarioID} == *{usuario.usuarioID})">
-    							</option>
-    					
-    					</select>
-    					
-    				</div>
-    				
-    				
-    				<div class="form-group">
-    					<label for="nombre">PARAMETRO:</label>
-    					<select class="form-control" th:field="*{parametro.idParametro}">
-    					<option th:each="u: ${listaParametros}"
-    							th:value="${u.idParametro}"
-    							th:text="${u.nParametro}"
-    							th:selected="(${u.idParametro} == *{parametro.idParametro})">
-    							</option>
-    					
-    					</select>
-    					
-    				</div>
-    				
-    				
-    				
-    				<div class="form-group">
-    					<label for="nombre">VALOR:</label>
-    					<input type="number" class="form-control" th:field="*{numValor}" id="valor"></input>
+<script type="text/javascript" th:src="@{/js/registro.js}"></script>
 
-						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('numValor')}" 
-								th:errors="*{numValor}">
-						</div>
-    					
-    				</div>
-    				
-    				
-    				
-    				
-    				<div class="form-group">
-    					<label for="nombre">FECHA:</label>
-    					<input type="date" class="form-control" th:field="*{fechaRegistro}" id="fechaRegistro"></input>
+</head>
 
-						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('fechaRegistro')}" 
-								th:errors="*{fechaRegistro}">
-						</div>
-    					
-    				</div>
-    				
-    				
-    				
-    				<div class="form-group">
-    					<label for="nombre">ANOTACIONES:</label>
-    					<input type="text" class="form-control" th:field="*{tAnotaciones}" id="nombre"></input>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<form th:action="@{/registro/registrar}" method="post"
+			th:object="${registro}">
+			<div class="form-group">
 
-						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('tAnotaciones')}" 
-								th:errors="*{tAnotaciones}">
-						</div>
-    					
-    				</div>
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    				
-    			</div>
-    			<button type="submit" class="btn btn-primary">Aceptar</button>
-    			<a href="/registro/listar" class="btn btn-danger">Cancelar</a>
-    		</form>
-    	</div>
-    	<div th:replace="fragments/footer :: footer"></div>
-	</body>
+
+				<input type="text" class="form-control" th:field="*{idRegistro}"
+					style="visibility: hidden"></input> 
+					
+					
+					
+					<div class="form-group">
+					<select class="form-control" th:field="*{usuario.usuarioID}" style="visibility:hidden">
+                        <option th:each="r: ${listaUsuario}"
+                            th:value="${session.usuario.usuarioID}"
+                            th:text="${session.usuario.nUsuario}"
+                            th:selected="(${session.usuario.usuarioID}==*{usuario.usuarioID})">
+                        </option>
+                        </select>
+				</div>
+					
+					
+
+
+
+
+				<div class="form-group">
+					<label for="nombre">PARAMETRO:</label> <select class="form-control"
+						th:field="*{parametro.idParametro}">
+						<option th:each="u: ${listaParametros}"
+							th:value="${u.idParametro}" th:text="${u.nParametro}"
+							th:selected="(${u.idParametro} == *{parametro.idParametro})">
+						</option>
+
+					</select>
+
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="nombre">VALOR:</label> <input type="number"
+						class="form-control" th:field="*{numValor}" id="valor"></input>
+
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('numValor')}" th:errors="*{numValor}">
+					</div>
+
+				</div>
+
+
+
+
+				<div class="form-group">
+					<label for="nombre">FECHA:</label> <input type="date"
+						class="form-control" th:field="*{fechaRegistro}"
+						id="fechaRegistro"></input>
+
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('fechaRegistro')}"
+						th:errors="*{fechaRegistro}"></div>
+
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="nombre">ANOTACIONES:</label> <input type="text"
+						class="form-control" th:field="*{tAnotaciones}" id="nombre"></input>
+
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('tAnotaciones')}"
+						th:errors="*{tAnotaciones}"></div>
+
+				</div>
+
+
+
+
+			</div>
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/registro/listar" class="btn btn-danger">Cancelar</a>
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
 
 </html>
