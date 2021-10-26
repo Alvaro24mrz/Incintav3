@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="ISO-8859-1"></meta>
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+	</head>
+
+	<body>
+		<!-- th:fragment define un fragment los cuales sirven para evitar la redundancia de codigo -->
+		<!-- Sintaxis th:fragment="Nombre del fragment" -->
+		<div th:fragment="header">
+			<!-- this is header -->
+			<nav class="navbar navbar-inverse">
+				<div class="container">
+					
+					<div class="navbar-header">
+						<a class="navbar-brand" th:href="@{/insertarUsuario/bienvenido}">BIENVENIDOS A INCINTA</a>
+					</div>
+					
+				</div>
+			</nav>
+		</div>
+	
+	</body>
+	
+</html>

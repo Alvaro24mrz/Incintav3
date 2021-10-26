@@ -22,15 +22,19 @@
 </head>
 
 <body>
-	<div th:replace="fragments/header :: header"></div>
+
+
+	<div th:replace="fragments/headerInicio :: header"></div>
+
+
 	<div class="container">
 		<form th:action="@{/auth/registrar}" method="post"
 			th:object="${usuario}">
-			
+
 			<div th:if="${mensaje}" class="alert alert-danger">
 				<p th:text="${mensaje}"></p>
 			</div>
-			
+
 			<div class="form-group">
 
 				<input type="text" class="form-control" th:field="*{usuarioID}"
@@ -147,7 +151,14 @@
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('semanaGestacion')}"
 						th:errors="*{semanaGestacion}"></div>
+				</div>
 
+				<div class="form-group">
+					<label for="ad">ADMIN:</label> <input type="text"
+						class="form-control" th:field="*{admin}" id="ad"></input>
+
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>
 				</div>
 
 			</div>

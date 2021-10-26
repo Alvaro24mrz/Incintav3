@@ -22,7 +22,12 @@
 </head>
 
 <body>
-	<div th:replace="fragments/header :: header"></div>
+	<div th:if="${session.usuario.admin == 1}">
+		<div th:replace="fragments/headerAdmin :: header"></div>
+	</div>
+	<div th:if="${session.usuario.admin == 2}">
+		<div th:replace="fragments/headerUsuario :: header"></div>
+	</div>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-3">
@@ -31,7 +36,8 @@
 						class="font-italic" th:text="${session.usuario.nUsuario}"></span>
 					</span>
 					<form th:action="@{/insertarUsuario/bienvenido}" method="POST">
-					<button type="submit" class="btn btn-primary mt-3">Ir a Inicio</button>
+						<button type="submit" class="btn btn-primary mt-3">Ir a
+							Inicio</button>
 					</form>
 				</div>
 

@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Eventos;
-import pe.edu.upc.spring.model.Parametro;
 import pe.edu.upc.spring.model.Usuario;
 import pe.edu.upc.spring.service.IEventosService;
 import pe.edu.upc.spring.service.IUsuarioService;
