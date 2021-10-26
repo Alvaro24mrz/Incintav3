@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
+import pe.edu.upc.spring.model.Eventos;
 import pe.edu.upc.spring.model.PreguntasGestante;
 import pe.edu.upc.spring.model.Usuario;
 import pe.edu.upc.spring.service.IPreguntasGestanteService;
@@ -31,13 +33,13 @@ public class PreguntasGestanteController {
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
-		return "bienvenido"; // "bienvenido" es una pagina del frontEnd, pagina de Inicio
+		return "bienvenido"; 
 	}
 	
 	@RequestMapping("/")
 	public String irPaginaListadoPreguntasGestante(Map<String, Object> model) {
-		model.put("listaPreguntasGestantes", pService.listar());
-		return "listPreguntasGestante"; // "listPreguntasGestante" es una pagina del frontEnd para listar
+		model.put("listaPreguntasGestante", pService.listar());
+		return "listPreguntasGestante"; 
 	}
 	
 	
@@ -102,7 +104,7 @@ public class PreguntasGestanteController {
 		try {
 			if (id!=null && id>0) {
 				pService.eliminar(id);
-				model.put("listaPreguntasGestantes", pService.listar());
+				model.put("listaPreguntasGestante", pService.listar());
 			}
 		}
 		catch(Exception ex) {
@@ -119,4 +121,31 @@ public class PreguntasGestanteController {
 		return "listPreguntasGestante";
 	}
 	
+	
+	@RequestMapping("/irBuscar")
+	public String irBuscar(Model model) 
+	{
+		model.addAttribute("preguntasGestante", new PreguntasGestante());
+		return "searchPreguntasGestante";
+	}	
+
+	
+
+	@RequestMapping("/buscar")
+	public String buscar(Map<String, Object> model, @ModelAttribute PreguntasGestante preguntasGestante ) 
+	throws ParseException
+	{
+		
+		List<PreguntasGestante> listaPreguntasGestante;
+		preguntasGestante.setnTitulo(preguntasGestante.getnTitulo());
+		listaPreguntasGestante = pService.buscarNombre(preguntasGestante.getnTitulo());
+		
+		
+		if(listaPreguntasGestante.isEmpty()) {
+			model.put("mensaje", "No existen coincidencias");
+		}
+		
+		model.put("listaPreguntasGestante", listaPreguntasGestante);
+		return "searchPreguntasGestante";
+	}	
 }

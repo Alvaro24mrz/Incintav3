@@ -26,19 +26,19 @@ public class TipoIdentificacionController {
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
-		return "bienvenido"; // "bienvenido" es una pagina del frontEnd, pagina de Inicio
+		return "bienvenido"; 
 	}
 	
 	@RequestMapping("/")
 	public String irPaginaListadoTipoIdentificacion(Map<String, Object> model) {
 		model.put("listaTipoIdentificacion", rService.listar());
-		return "listTipoIdentificacion"; // "listGestante" es una pagina del frontEnd para listar
+		return "listTipoIdentificacion";
 	}
 
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
 		model.addAttribute("tipoIdentificacion", new TipoIdentificacion());
-		return "insertTipoIdentificacion"; // "race" es una pagina del frontEnd para insertar y/o modificar
+		return "insertTipoIdentificacion";
 	}
 	
 	@RequestMapping("/registrar")

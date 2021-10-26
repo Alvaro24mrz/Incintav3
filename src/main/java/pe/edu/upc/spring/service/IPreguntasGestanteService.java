@@ -7,7 +7,7 @@ import pe.edu.upc.spring.model.PreguntasGestante;
 
 public interface IPreguntasGestanteService {
 	public boolean grabar(PreguntasGestante preguntasGestante);
-	//public boolean modificar(Dueno dueno);
+	
 	public void eliminar(int idPreguntasGestante);
 	public Optional<PreguntasGestante> listarId(int idPreguntasGestante);
 	public List<PreguntasGestante> listar();

@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="ISO-8859-1"></meta>
-<title>Pet</title>
+<title>INCINTA</title>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -27,50 +27,46 @@
 		<form th:action="@{/preguntasGestante/registrar}" method="post"
 			th:object="${preguntasGestante}">
 			<div class="form-group">
-				<label for="idPreguntasGestante">ID:</label> <input type="text" style="visibility:hidden"
+				
+				<h1>Nueva Pregunta</h1>
+				
+				 <input type="text" style="visibility:hidden"
 					class="form-control" th:field="*{idPreguntasGestante}"></input>
 
-				<div class="form-group">
-					<label for="nombre">NOMBRE:</label> <input type="text"
-						class="form-control" th:field="*{nTitulo}" id="nombre"></input>
 
+				<div class="form-group">
+					<label for="nombre">TITULO DE LA PREGUNTA:</label> <input type="text"
+						class="form-control" th:field="*{nTitulo}" id="nombre"></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nTitulo')}" th:errors="*{nTitulo}">
 					</div>
-
-				</div>
-
-
-				<div class="form-group">
-					<label for="nombre">CLIENTE:</label> <select class="form-control" style="visibility:hidden"
-						th:field="*{usuario.usuarioID}" th:object="${pg}"
-						th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
-						<option th:each="r: ${listaUsuario}" th:value="${r.usuarioID}"
-							th:text="${r.nUsuario}"
-							th:selected="(${r.usuarioID}==*{usuario.usuarioID})"></option>
-					</select>
-
 				</div>
 
 				<div class="form-group">
 					<label for="nombre">DESCRIPCION:</label> <input type="text"
 						class="form-control" th:field="*{tPregunta}" id="nombrepregunta"></input>
-
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('tPregunta')}" th:errors="*{tPregunta}">
 					</div>
-
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">FEC-PREGUNTA:</label> <input type="date"
+					<label for="nombre">FECHA:</label> <input type="date"
 						class="form-control" th:field="*{fecha}" id="fechadepregunta"></input>
-
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">
 					</div>
-
 				</div>
+				
+				<div class="form-group">
+                        <select class="form-control" th:field="*{usuario.usuarioID}" style="visibility:hidden">
+                        <option th:each="r: ${listaUsuario}"
+                            th:value="${session.usuario.usuarioID}"
+                            th:text="${session.usuario.nUsuario}"
+                            th:selected="(${session.usuario.usuarioID}==*{usuario.usuarioID})">
+                        </option>
+                        </select>
+                    </div>
 
 			</div>
 			<button type="submit" class="btn btn-primary">Aceptar</button>
