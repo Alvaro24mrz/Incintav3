@@ -28,7 +28,7 @@
 	<div class="container">
 		<div class="row clearfix">
 			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
-			<form th:action="@{/usuario/searchUsuario}" method="post"
+			<form th:action="@{/insertarUsuario/searchUsuario}" method="post"
 				th:object="${usuario}">
 				<div class="form-group">
 					<div class="col-sm-12">
@@ -37,7 +37,7 @@
 
 						<div align="left">
 							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/usuario/listar" class="btn btn-dark">Cancelar</a>
+							<a href="/insertarUsuario/listar" class="btn btn-dark">Cancelar</a>
 						</div>
 					</div>
 				</div>
