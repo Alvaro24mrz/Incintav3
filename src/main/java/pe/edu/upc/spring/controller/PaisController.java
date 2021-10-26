@@ -53,7 +53,7 @@ public class PaisController {
 			if (flag)
 				return "redirect:/insertarPaises/listar";
 			else {
-				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
+				model.addAttribute("mensaje", "ERROR");
 				return "redirect:/insertarPaises/irRegistrar";
 			}
 		}
@@ -65,7 +65,7 @@ public class PaisController {
 	{
 		Optional<Pais> objPais = rService.listarId(id);
 		if (objPais == null) {
-			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche, LUZ ROJA");
+			objRedir.addFlashAttribute("mensaje", "ERROR");
 			return "redirect:/insertarPaises/listar"; //CAMBIAR
 		}
 		else {

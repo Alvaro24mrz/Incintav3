@@ -69,7 +69,7 @@ public class PreguntasGestanteController {
             if (flag)
                 return "redirect:/preguntasGestante/listar";
             else {
-                model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
+                model.addAttribute("mensaje", "ERROR");
                 return "redirect:/insertPreguntasGestante/irRegistrar";
             }
         }

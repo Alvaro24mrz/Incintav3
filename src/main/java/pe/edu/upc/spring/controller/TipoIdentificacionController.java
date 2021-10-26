@@ -52,7 +52,7 @@ public class TipoIdentificacionController {
 			if (flag)
 				return "redirect:/tipoIdentificacion/listar";
 			else {
-				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
+				model.addAttribute("mensaje", "ERROR");
 				return "redirect:/insertTipoIdentificacion/irRegistrar";
 			}
 		}
@@ -64,7 +64,7 @@ public class TipoIdentificacionController {
 	{
 		Optional<TipoIdentificacion> objTipoIdentificacion = rService.listarId(id);
 		if (objTipoIdentificacion == null) {
-			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche, LUZ ROJA");
+			objRedir.addFlashAttribute("mensaje", "ERROR");
 			return "redirect:/insertTipoIdentificacion/listar";
 		}
 		else {
@@ -83,7 +83,7 @@ public class TipoIdentificacionController {
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
-			model.put("mensaje", "Ocurrio un error");
+			model.put("mensaje", "ERROR");
 			model.put("listaTipoIdentificacion", rService.listar());
 		}
 		return "listTipoIdentificacion";
