@@ -79,7 +79,7 @@ public class LoginController {
 			else
 			{
 				model2.put("mensaje", "CORREO REGISTRADO");
-				return "redirect:/auth/irRegistrar";
+				return "insertarUsuario";
 			}
 		}
 	}
