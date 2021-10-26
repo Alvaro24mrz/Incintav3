@@ -50,46 +50,7 @@ public class UsuarioController {
 		return "listUsuarios"; 
 	}
 
-	@RequestMapping("/irRegistrar")
-	public String irPaginaRegistrar(Model model) {
-		
-		model.addAttribute("listaTipoIdentificacion", tiService.listar());
-		model.addAttribute("listaPaises", pService.listar());
-		model.addAttribute("listaMDP", mpService.listar());
-		
-		model.addAttribute("ti", new TipoIdentificacion());
-		model.addAttribute("pais", new Pais());
-		model.addAttribute("mdp", new MetodoDePago());
-		
-		model.addAttribute("usuario", new Usuario());
-		
-		return "insertarUsuario"; 
-	}
 	
-	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Usuario objUsuario, BindingResult binRes, Model model) 
-		throws ParseException
-	{
-		if (binRes.hasErrors())
-		{	
-			model.addAttribute("listaTipoIdentificacion", tiService.listar());
-			model.addAttribute("listaPaises", pService.listar());
-			model.addAttribute("listaMDP", mpService.listar());
-			
-			return "insertarUsuario";
-		}
-		else 
-		{
-			boolean flag = rService.insertar(objUsuario);
-			if (flag)
-				return "redirect:/insertarUsuario/listar";
-			else
-			{
-				model.addAttribute("mensaje", "Ocurrio un rochezaso, LUZ ROJA");
-				return "redirect:/insertarUsuario/irRegistrar";
-			}
-		}
-	}
 	
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
