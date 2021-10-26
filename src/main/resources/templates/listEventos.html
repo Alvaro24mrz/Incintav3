@@ -4,7 +4,7 @@
 	<head>
 	
 		<meta charset="UTF-8"></meta>
-		<title>Mascotas</title>
+		<title>INCINTA</title>
 		
 		<script type="text/javascript"
 				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -46,29 +46,25 @@
     					<table class="table table-bordered table-hover table-striped" id="tab_logic">
     						<thead>
     							<tr>
-    								<th class="text-center">CODIGO</th>
-    								<th class="text-center">USUARIO</th>
-    								<th class="text-center">TITULO</th>
-    								<th class="text-center">DESCRIPCION</th>
-    								<th class="text-center">HINICIO</th>
-    								<th class="text-center">HFIN</th>
-    								<th class="text-center">BOOL</th>
-    								<th class="text-center">REPETICION</th>
+    								<th class="text-center">Titulo del evento</th>
+    								<th class="text-center">Descripcion</th>
+    								<th class="text-center">Hora de Inicio</th>
+    								<th class="text-center">Hora de Fin</th>
+    								<th class="text-center">Eliminar</th>
+    								<th class="text-center">Editar</th>
     							</tr>
     						</thead>
     						<tbody>
-    							<tr th:each="ev: ${listaEventos}">
-    								<td th:text="${ev.idEventos}"></td>
-    								<td th:text="${ev.usuario.nUsuario}"></td>
-    								<td th:text="${ev.tTitulo}"></td>
-    								<td th:text="${ev.tDescripcion}"></td>
-    								<td th:text="${ev.hInicio}"></td>
-    								<td th:text="${ev.hFin}"></td>
-    								<td th:text="${ev.boolTodoDia}"></td>
-    								<td th:text="${ev.qRepeticion}"></td>
+    							<tr th:each="pg: ${listaEventos}" 
+    							th:object="${pg}"
+    							th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
+    								<td th:text="${pg.tTitulo}"></td>
+    								<td th:text="${pg.tDescripcion}"></td>
+    								<td th:text="${pg.hInicio}"></td>
+    								<td th:text="${pg.hFin}"></td>
     								
-    								<td><a th:href="@{/eventos/eliminar?id=}+${ev.idEventos}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/eventos/modificar/'}+${ev.idEventos}">Modificar</a></td>
+    								<td><a th:href="@{/eventos/eliminar?id=}+${pg.idEventos}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/eventos/modificar/'}+${pg.idEventos}">Modificar</a></td>
     							</tr>
     						</tbody>
     					</table> 

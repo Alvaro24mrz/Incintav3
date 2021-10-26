@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="UTF-8"></meta>
+		<title>Buscar Preguntas</title>
+		
+		<script type="text/javascript"
+				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+	</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<div class="row clearfix">
+			<h1 class="btn btn-primary btn-md left-block">Buscar Pregunta</h1>
+				<form th:action="@{/preguntasGestante/buscar}" method="post"
+				th:object="${preguntasGestante}">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" th:field="*{nTitulo}"
+							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
+
+						<div align="left">
+							<button type="submit" class="btn btn-primary">Buscar</button>
+							<a href="/preguntasGestante/listar" class="btn btn-dark">Cancelar</a>
+
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</form>
+		</div>
+
+
+		<hr class="sidebar-divider">
+
+		<table class="table table-bordered table-hover table-striped" id="tab_logic">
+    						<thead>
+    							<tr>
+    								<th class="text-center">Titulo de la Pregunta</th>
+    								<th class="text-center">Descripcion</th>
+    								<th class="text-center">Fecha </th>
+    								
+    							</tr>
+    						</thead>
+    						<tbody>
+    							<tr 
+    							th:each="pg: ${listaPreguntasGestante}" 
+    							th:object="${pg}"
+    							th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
+    								<td th:text="${pg.nTitulo}"></td>
+    								<td th:text="${pg.tPregunta}"></td>
+    								<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
+    								
+    							</tr>
+    						</tbody>
+    					</table> 
+
+		<p th:text="${mensaje}" class="form-text text-dark"></p>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+
+
+</html>

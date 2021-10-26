@@ -28,13 +28,12 @@
 	<div class="container">
 		<div class="row clearfix">
 			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
-			<form th:action="@{/eventos/buscar}" method="post" th:object="${eventos}">
+		<form th:action="@{/eventos/buscar}" method="post"
+				th:object="${eventos}">
 				<div class="form-group">
 					<div class="col-sm-12">
 						<input type="text" class="form-control" th:field="*{tTitulo}"
-							id="nombre"
-							placeholder="Ingrese dato a buscar por Nombre, propietario o raza">
-						</input>
+							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
 
 						<div align="left">
 							<button type="submit" class="btn btn-primary">Buscar</button>
@@ -45,7 +44,6 @@
 
 				</div>
 
-
 			</form>
 		</div>
 
@@ -55,26 +53,21 @@
 		<table class="table table-bordered table-hover table-striped" id="tab_logic">
     						<thead>
     							<tr>
-    								<th class="text-center">CODIGO</th>
-    								<th class="text-center">USUARIO</th>
-    								<th class="text-center">TITULO</th>
-    								<th class="text-center">DESCRIPCION</th>
-    								<th class="text-center">HINICIO</th>
-    								<th class="text-center">HFIN</th>
-    								<th class="text-center">BOOL</th>
-    								<th class="text-center">REPETICION</th>
+    								<th class="text-center">Titulo del evento</th>
+    								<th class="text-center">Descripcion</th>
+    								<th class="text-center">Hora de Inicio</th>
+    								<th class="text-center">Hora de Fin</th>
     							</tr>
     						</thead>
     						<tbody>
-    							<tr th:each="ev: ${listaEventos}">
-    								<td th:text="${ev.idEventos}"></td>
-    								<td th:text="${ev.usuario.nUsuario}"></td>
+    							<tr th:each="ev: ${listaEventos}" 
+    							th:object="${ev}"
+    							th:if="${ev.usuario.usuarioID == session.usuario.usuarioID}">
     								<td th:text="${ev.tTitulo}"></td>
     								<td th:text="${ev.tDescripcion}"></td>
     								<td th:text="${ev.hInicio}"></td>
     								<td th:text="${ev.hFin}"></td>
-    								<td th:text="${ev.boolTodoDia}"></td>
-    								<td th:text="${ev.qRepeticion}"></td>
+    							
     								
     							</tr>
     						</tbody>

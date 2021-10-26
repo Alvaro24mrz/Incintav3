@@ -45,21 +45,13 @@ public class Eventos implements Serializable {
 	@Column(name="horaFin")
 	@DateTimeFormat(pattern = "HH:mm")
 	private Date hFin;
-	
-	
-	@Column(name="todoElDia", length=60, nullable=false)
-	private String boolTodoDia;
-	
-	@Column(name="Repeticion", length=60, nullable=false)
-	private int qRepeticion;
 
 	public Eventos() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Eventos(int idEventos, Usuario usuario, String tTitulo, String tDescripcion, Date hInicio, Date hFin,
-			String boolTodoDia, int qRepeticion) {
+	public Eventos(int idEventos, Usuario usuario, String tTitulo, String tDescripcion, Date hInicio, Date hFin) {
 		super();
 		this.idEventos = idEventos;
 		this.usuario = usuario;
@@ -67,8 +59,6 @@ public class Eventos implements Serializable {
 		this.tDescripcion = tDescripcion;
 		this.hInicio = hInicio;
 		this.hFin = hFin;
-		this.boolTodoDia = boolTodoDia;
-		this.qRepeticion = qRepeticion;
 	}
 
 	public int getIdEventos() {
@@ -118,21 +108,7 @@ public class Eventos implements Serializable {
 	public void sethFin(Date hFin) {
 		this.hFin = hFin;
 	}
+	
 
-	public String getBoolTodoDia() {
-		return boolTodoDia;
-	}
-
-	public void setBoolTodoDia(String boolTodoDia) {
-		this.boolTodoDia = boolTodoDia;
-	}
-
-	public int getqRepeticion() {
-		return qRepeticion;
-	}
-
-	public void setqRepeticion(int qRepeticion) {
-		this.qRepeticion = qRepeticion;
-	}
 	
 }

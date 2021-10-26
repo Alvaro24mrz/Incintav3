@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Eventos;
+import pe.edu.upc.spring.model.Parametro;
 import pe.edu.upc.spring.model.Usuario;
 import pe.edu.upc.spring.service.IEventosService;
 import pe.edu.upc.spring.service.IUsuarioService;
@@ -31,13 +32,13 @@ public class EventosController {
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
-		return "bienvenido"; // "bienvenido" es una pagina del frontEnd, pagina de Inicio
+		return "bienvenido"; // 
 	}
 	
 	@RequestMapping("/")
 	public String irPaginaListadoEventos(Map<String, Object> model) {
 		model.put("listaEventos", rService.listar());
-		return "listEventos"; // "listGestante" es una pagina del frontEnd para listar
+		return "listEventos"; 
 	}
 
 	@RequestMapping("/irRegistrar")
@@ -47,7 +48,7 @@ public class EventosController {
 		
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("eventos", new Eventos());
-		return "insertEventos"; // "race" es una pagina del frontEnd para insertar y/o modificar
+		return "insertEventos"; 
 	}
 	
 	@RequestMapping("/registrar")
@@ -81,7 +82,7 @@ public class EventosController {
 			return "redirect:/insertEventos/listar";
 		}
 		else {
-			model.addAttribute("listaUsuario", uService.listar());
+			model.addAttribute("listaUsuarios", uService.listar());
 			if(objEventos.isPresent())
 				objEventos.ifPresent(o->model.addAttribute("eventos",o));
 			return "insertEventos";
@@ -114,7 +115,7 @@ public class EventosController {
 	public String irBuscar(Model model) 
 	{
 		model.addAttribute("eventos", new Eventos());
-		return "buscarEventos";
+		return "searchEventos";
 	}	
 
 	
@@ -125,16 +126,16 @@ public class EventosController {
 	{
 		
 		List<Eventos> listaEventos;
-		eventos.settTitulo(eventos.gettTitulo()); //capturo lo de la cajita de lista
-		listaEventos = rService.buscarNombre(eventos.gettTitulo()); //hago mi busqueda
+		eventos.settTitulo(eventos.gettTitulo());
+		listaEventos = rService.buscarNombre(eventos.gettTitulo());
 		
 		
-		if (listaEventos.isEmpty()) {
+		if(listaEventos.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}
 		
 		model.put("listaEventos", listaEventos);
-		return "buscarEventos";
+		return "searchEventos";
 	}	
 	
 }

@@ -27,19 +27,7 @@ public class EventosServiceImpl implements IEventosService {
 			return true;
 	}
 
-	//@Override
-	//@Transactional
-	//public boolean modificar(Race race) {
-		//boolean flag = false;
-		//try {
-			//dRace.save(race);
-			//flag = true;
-		//}
-		//catch(Exception ex) {
-			//System.out.println("Ocurrio un roche, LUZ ROJA");
-		//}
-		//return flag;
-	//}
+
 
 	@Override
 	@Transactional
