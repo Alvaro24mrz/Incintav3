@@ -24,7 +24,7 @@
 
 </head>
 
-<body>
+<body style="background-color:#FEF0FE">
 
 
 	<div th:if="${session.usuario.admin == 1}">
@@ -37,10 +37,78 @@
 		<form id="myform">
 			<div class="row clearfix">
 				<div class="col-md-12 column" align="center">
-					<img th:src="@{/imagenes/bienvenidaGestante.png}" width="600" height="600"
-						alt="bienvenidaGestante" align="middle"> </img>
+					<h1>Bienvenida a Incinta</h1>
+					<h2>La applicación web que te ayudará a llevar un control de
+						tu embarazo</h2>
+					<img th:src="@{/imagenes/incintaLogo.png}" width="300" height="300"
+						alt="incintaLogo" align="middle"> </img>
 				</div>
 			</div>
+
+
+			<div class="row clearfix">
+				<div class="col-md-6 column" align="Left">
+					<h3>¿Qué podemos hacer por tí?</h3>
+					<p>La aplicación cuenta con 4 secciones principales: Mis
+						Eventos, Mis Parámetros, Mis Preguntas y Mis Registros.</p>
+					<p>Cada una de estas secciones te permiten registrar parámetros
+						que te pueden ser útiles a la hora de ir a citas médicas o solo
+						para tener un registro de tu embarazo.</p>
+					<h3>Detallando un poco más los campos:</h3>
+
+					<ul>
+						<li>Mis Eventos: Podrás agendar tus eventos en una lista para
+							tener todo ordenado. Por ejemplo, podrías enlistar una cita
+							médica.</li>
+						<li>Mis Preguntas: Podrás enlistar preguntas o consultas
+							triviales que quieras hacer a tu médico en alguna cita. De esta
+							manera, no te olvidarás de realizar alguna pregunta.</li>
+						<li>Mis Parámetros: Es una sección para registrar parámetros
+							como "metros", "cm", para que luego puedas registrar valores en
+							caso los necesites. Nosotros te proveemos algunos parámetros, la
+							sección existe por si tu quieres añadir alguno personalmente.</li>
+
+						<li>Mis Registros: Podrás registrar valores de signos vitales
+							importantes que quieras llevar un registro. Por ejemplo, podrás
+							mantener un registro de tu peso.</li>
+
+					</ul>
+
+
+
+				</div>
+
+				<div class="col-md-6 column" align="right">
+					<img th:src="@{/imagenes/bienvenida2.png}" width="400" height="400"
+						alt="bienvenida2" align="middle"> </img>
+				</div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="col-md-6 column" align="Left">
+					<h3>
+						¿Cómo puedes acceder al servicio?
+						</h2>
+						<p>Es una aplicación de costo unico de $4.00</p>
+						<p>Luego de ello tendás acceso a la aplicación</p>
+
+						<h2>Puedes registrarte aquí:
+					</h3>
+					<div class="form-group">
+						<a href="/auth/irRegistrar" class="btn btn-primary">Ir a
+							REGISTRARME</a>
+					</div>
+				</div>
+				<div class="col-md-6 column" align="right">
+					<img th:src="@{/imagenes/lottusLogo.png}" width="400" height="400"
+						alt="logoLottus" align="middle"> </img>
+				</div>
+
+
+			</div>
+
+
+
 		</form>
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>

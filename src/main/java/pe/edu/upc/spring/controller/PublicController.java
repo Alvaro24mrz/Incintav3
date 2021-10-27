@@ -16,5 +16,10 @@ public class PublicController {
 		return "logout";
 		
 	}
+	
+	@RequestMapping("/bienvenidoInicio")
+	public String irPaginaBienvenida() {
+		return "bienvenidoInicio"; 
+	}
 
 }
