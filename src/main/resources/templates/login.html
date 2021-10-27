@@ -26,7 +26,7 @@
     	<div class="alert alert-danger mb-3" th:if="${param.error}" >Credenciales incorrectas</div>
     		
     		
-    		<form th:action="@{/auth/login-post}" method="post">
+    		<form th:action="@{/auth/login}" method="post">
     			<div class="form-group">
     				<label for="idPais">NOMBRE:</label>
     				<input type="text" class="form-control" name="username"></input>
@@ -39,6 +39,15 @@
 
 						
     				</div>
+    				
+    				<div class="form-group">
+    					
+    					<a href="/auth/irRegistrar">Ir a REGISTRARME</a>
+
+						
+    				</div>
+    				
+    				
     				
     				
     				

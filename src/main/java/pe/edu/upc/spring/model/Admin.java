@@ -27,7 +27,7 @@ public class Admin implements Serializable {
 	private String aPassword;
 		
 	//nuevo
-	@Column(name="rolUsuario", nullable=false)
+	@Column(name="rolUsuario")
 	private String rol;
 	
 	

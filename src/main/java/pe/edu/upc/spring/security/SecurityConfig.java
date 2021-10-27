@@ -32,12 +32,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.authorizeRequests().antMatchers("/bienvenido", "/","/auth/**","/css/**", "public/**", "/js/**").permitAll()
-		.antMatchers("/parametro/listar").hasRole("ADMIN")
+		.authorizeRequests()
+		.antMatchers("/bienvenido", "/","/auth/**","/css/**", "public/**", "/js/**").permitAll()
+		.antMatchers("/eventos/listar", "/preguntasGestante/listar", "/registro/listar").hasRole("USER")
+		.antMatchers("/unidad/listar", "/tipoIdentificacion/listar", "/insertarMDP/listar").hasRole("ADMIN")
+
 		
 		.and()
 			.formLogin().loginPage("/auth/login").defaultSuccessUrl("/private/index",true).failureUrl("/auth/login?error=true")
-			.loginProcessingUrl("/auth/login-post").permitAll()
+			.loginProcessingUrl("/auth/login").permitAll()
 		.and()
 			.logout().logoutUrl("/logout").logoutSuccessUrl("/public/index");
 		
@@ -63,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/parametro/listar").hasRole("ADMIN")
 		
 			
-		
+		.anyRequest().authenticated()
 	}
 	 * 
 	 * 

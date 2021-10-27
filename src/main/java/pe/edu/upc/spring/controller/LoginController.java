@@ -3,6 +3,7 @@ package pe.edu.upc.spring.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,9 +35,11 @@ public class LoginController {
 	@Autowired
 	private ITipoIdentificacionService tiService;
 	
-	@GetMapping("/auth/login")
+	@RequestMapping("/auth/login")
 	public String login(Model model) {
 		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("admin", new Admin());
+
 		
 		return "login";
 	}

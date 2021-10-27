@@ -65,7 +65,7 @@ public class Usuario implements Serializable {
 	private String rol;*/
 	
 	@ManyToOne
-	@JoinColumn(name="idRol", nullable=false)
+	@JoinColumn(name="idRol")
 	private Role idRol;
 	
 	

@@ -14,18 +14,22 @@ import pe.edu.upc.spring.model.Admin;
 
 import pe.edu.upc.spring.repository.IAdminRepository;
 import pe.edu.upc.spring.repository.IUsuarioRepository;
+import pe.edu.upc.spring.service.IUsuarioService;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private IUsuarioRepository uDao;
+	@Autowired
 	private IAdminRepository aDao;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario = uDao.findBynUsuario(username);
 		Admin admin = aDao.findBynAdmin(username);
+		
+		
 		
 		UserBuilder builder = null;
 		
@@ -41,7 +45,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			builder = User.withUsername(username);
 			builder.disabled(false);
 			builder.password(admin.getaPassword());
-			builder.authorities(new SimpleGrantedAuthority("ROLE_USER"));
+			builder.authorities(new SimpleGrantedAuthority("ROLE_ADMIN"));
 			
 		}
 		
