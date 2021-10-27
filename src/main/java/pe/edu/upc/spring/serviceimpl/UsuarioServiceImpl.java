@@ -103,5 +103,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	public Usuario findBynUsuario(String nUsuario) {
 		return dUsuario.findBynUsuario(nUsuario);
 	}
+	
+
 
 }

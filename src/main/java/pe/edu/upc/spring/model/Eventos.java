@@ -36,6 +36,12 @@ public class Eventos implements Serializable {
 	@Column(name="nombreDescripcion", length=60, nullable=false)
 	private String tDescripcion;
 	
+	@Temporal(TemporalType.DATE)
+	@Column(name="fechaEv")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date fechaEvento;
+
+	
 	@Temporal(TemporalType.TIME)
 	@Column(name="horaInicio")
 	@DateTimeFormat(pattern = "HH:mm")
@@ -51,12 +57,14 @@ public class Eventos implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Eventos(int idEventos, Usuario usuario, String tTitulo, String tDescripcion, Date hInicio, Date hFin) {
+	public Eventos(int idEventos, Usuario usuario, String tTitulo, String tDescripcion, Date fechaEvento, Date hInicio,
+			Date hFin) {
 		super();
 		this.idEventos = idEventos;
 		this.usuario = usuario;
 		this.tTitulo = tTitulo;
 		this.tDescripcion = tDescripcion;
+		this.fechaEvento = fechaEvento;
 		this.hInicio = hInicio;
 		this.hFin = hFin;
 	}
@@ -93,6 +101,14 @@ public class Eventos implements Serializable {
 		this.tDescripcion = tDescripcion;
 	}
 
+	public Date getFechaEvento() {
+		return fechaEvento;
+	}
+
+	public void setFechaEvento(Date fechaEvento) {
+		this.fechaEvento = fechaEvento;
+	}
+
 	public Date gethInicio() {
 		return hInicio;
 	}
@@ -108,6 +124,7 @@ public class Eventos implements Serializable {
 	public void sethFin(Date hFin) {
 		this.hFin = hFin;
 	}
+
 	
 
 	

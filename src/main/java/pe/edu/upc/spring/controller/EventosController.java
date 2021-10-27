@@ -125,8 +125,8 @@ public class EventosController {
 	{
 		
 		List<Eventos> listaEventos;
-		eventos.settTitulo(eventos.gettTitulo());
-		listaEventos = rService.buscarNombre(eventos.gettTitulo());
+		eventos.setFechaEvento(eventos.getFechaEvento());
+		listaEventos = rService.findByFechaEvento(eventos.getFechaEvento());
 		
 		
 		if(listaEventos.isEmpty()) {
