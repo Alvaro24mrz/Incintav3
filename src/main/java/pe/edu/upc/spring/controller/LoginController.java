@@ -75,7 +75,7 @@ public class LoginController {
 				return "redirect:/auth/login";
 			else
 			{
-				model2.put("mensaje", "CORREO REGISTRADO");
+				model2.put("mensaje", "CORREO YA REGISTRADO");
 				return "insertarUsuario";
 			}
 		}

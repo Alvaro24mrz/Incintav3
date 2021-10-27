@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.serviceimpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,10 +48,12 @@ public class EventosServiceImpl implements IEventosService {
 		return dEventos.findAll();
 	}
 
+
+
 	@Override
 	@Transactional(readOnly = true)
-	public List<Eventos> buscarNombre(String tTitulo) {
-		return dEventos.buscarNombre(tTitulo);
+	public List<Eventos> findByFechaEvento(Date fechaEvento){
+		return dEventos.findByFechaEvento(fechaEvento);
+		
 	}
-
 }

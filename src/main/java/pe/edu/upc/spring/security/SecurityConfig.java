@@ -31,12 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/bienvenido", "/","/auth/**","/css/**", "public/**", "/js/**").permitAll().anyRequest().authenticated()
+		http.authorizeRequests().antMatchers("/public/**","/auth/**","/css/**","/public/**").permitAll().anyRequest().authenticated()
 		.and()
-			.formLogin().loginPage("/auth/login").defaultSuccessUrl("/private/index",true).failureUrl("/auth/login?error=true")
+			.formLogin().loginPage("/public/bienvenidoInicio").defaultSuccessUrl("/private/index",true).failureUrl("/auth/login?error=true")
 			.loginProcessingUrl("/auth/login").permitAll()
 		.and()
-			.logout().logoutUrl("/logout").logoutSuccessUrl("/public/index");
+			.logout().logoutUrl("/logout").logoutSuccessUrl("/public/logout");
 			
 		
 	}

@@ -186,6 +186,14 @@ public class Usuario implements Serializable {
 
 	public void setAdmin(int admin) {
 		this.admin = admin;
-	}	
+	}
+	
+	
 
+
+
+	
+	
+
+	
 }
