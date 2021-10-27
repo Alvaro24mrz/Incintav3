@@ -154,8 +154,9 @@
 				</div>
 
 				<div class="form-group">
-					<label for="ad">ADMIN:</label> <input type="text"
-						class="form-control" th:field="*{admin}" id="ad"></input>
+					
+					<input type="text"
+						class="form-control" th:field="*{admin}" id="ad" style="visibility: hidden"></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>

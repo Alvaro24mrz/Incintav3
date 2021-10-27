@@ -17,35 +17,48 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
 		</script>
 
-<script type="text/javascript" th:src="@{/js/usuario.js}"></script>
+<script type="text/javascript"></script>
 
 </head>
 
-<body>
+<body style="background-color:#FEF0FE">
 	<div th:replace="fragments/headerInicio :: header"></div>
 	<div class="container">
-		<div class="alert alert-danger mb-3" th:if="${param.error}">Credenciales
-			incorrectas</div>
-
-
-		<form th:action="@{/auth/login}" method="post">
-			<div class="form-group">
-				<label for="idPais">NOMBRE:</label> <input type="text"
-					class="form-control" name="username"></input>
-
-				<div class="form-group">
-					<label for="password">PASSWORD:</label> <input type="password"
-						class="form-control" name="password"></input>
-				</div>
-
+		
+			<div class="col-md-6 column" align="center">
+				<img th:src="@{/imagenes/bienvenidaGestante.png}" width="500"
+					height="500" alt="bienvenidaGestante" align="middle"> </img>
 			</div>
-			<button type="submit" class="btn btn-primary">Aceptar</button>
-			<a href="/insertarUsuario/listar" class="btn btn-danger">Cancelar</a>
-		</form>
-		<br>
-		<div class="form-group">
-			<a href="/auth/irRegistrar">Ir a REGISTRARME</a>
+		
+
+		<div class="col-md-6 column" align="left">
+
+			<div class="alert alert-danger mb-3" th:if="${param.error}">Credenciales
+				incorrectas</div>
+
+
+			<form th:action="@{/auth/login}" method="post">
+				<div class="form-group">
+					<label for="correo">CORREO:</label> <input type="text"
+						class="form-control" name="username"></input>
+
+					<div class="form-group">
+						<label for="password">PASSWORD:</label> <input type="password"
+							class="form-control" name="password"></input>
+					</div>
+
+				</div>
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/insertarUsuario/listar" class="btn btn-danger">Cancelar</a>
+			</form>
+			<br>
+			<div class="form-group">
+				<a href="/auth/irRegistrar">Ir a REGISTRARME (Costo unico de $4.00)</a>
+			</div>
+
 		</div>
+
+
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>
 </body>
