@@ -43,7 +43,7 @@
 
 				<div class="form-group">
 					<label for="nombre">NOMBRE:</label> <input type="text"
-						class="form-control" th:field="*{nUsuario}" id="nombre"></input>
+						class="form-control" th:field="*{nUsuario}" id="nombre" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
@@ -53,7 +53,7 @@
 
 				<div class="form-group">
 					<label for="apellido">APELLIDO:</label> <input type="text"
-						class="form-control" th:field="*{uApellido}" id="apellido"></input>
+						class="form-control" th:field="*{uApellido}" id="apellido" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uApellido')}" th:errors="*{uApellido}">
@@ -63,7 +63,7 @@
 
 				<div class="form-group">
 					<label for="correo">CORREO:</label> <input type="text"
-						class="form-control" th:field="*{uCorreo}" id="correo"></input>
+						class="form-control" th:field="*{uCorreo}" id="correo" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uCorreo')}" th:errors="*{uCorreo}">
@@ -73,7 +73,7 @@
 
 				<div class="form-group">
 					<label for="password">PASSWORD:</label> <input type="text"
-						class="form-control" th:field="*{uPassword}" id="password"></input>
+						class="form-control" th:field="*{uPassword}" id="password" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uPassword')}" th:errors="*{uPassword}">
@@ -107,7 +107,7 @@
 				<div class="form-group">
 					<label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input
 						type="date" class="form-control" th:field="*{dNacimiento}"
-						id="fnacimiento"></input>
+						id="fnacimiento" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('dNacimiento')}"
@@ -136,7 +136,7 @@
 
 				<div class="form-group">
 					<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input type="text"
-						class="form-control" th:field="*{numMetodoPago}" id="ntarjeta"></input>
+						class="form-control" th:field="*{numMetodoPago}" id="ntarjeta" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numMetodoPago')}"
@@ -146,7 +146,7 @@
 
 				<div class="form-group">
 					<label for="SG">SEMANA DE GESTACIÓN:</label> <input type="text"
-						class="form-control" th:field="*{semanaGestacion}" id="SG"></input>
+						class="form-control" th:field="*{semanaGestacion}" id="SG" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('semanaGestacion')}"
@@ -154,8 +154,8 @@
 				</div>
 
 				<div class="form-group">
-					<label for="ad">ADMIN:</label> <input type="text"
-						class="form-control" th:field="*{admin}" id="ad"></input>
+					<input type="text"
+						class="form-control" th:field="*{admin}" id="ad" style="visibility: hidden"> </input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>

@@ -65,7 +65,7 @@
 								<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
 
 								<td><a
-									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}">Eliminar</a></td>
+									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i class="glyphicon glyphicon-trash"></a></td>
 								<td><a
 									th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}">Modificar</a></td>
 							</tr>
@@ -77,9 +77,9 @@
 								<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
 
 								<td><a
-									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}">Eliminar</a></td>
+									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i class="glyphicon glyphicon-trash"></i></a></td>
 								<td><a
-									th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}">Modificar</a></td>
+									th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i class="glyphicon glyphicon-pencil"></i></a></td>
 							</tr>
 						</tbody>
 					</table>

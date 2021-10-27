@@ -71,7 +71,7 @@
 
 				<div class="form-group">
 					<label for="nombre">VALOR:</label> <input type="number"
-						class="form-control" th:field="*{numValor}" id="valor"></input>
+						class="form-control" th:field="*{numValor}" id="valor" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numValor')}" th:errors="*{numValor}">
@@ -85,7 +85,7 @@
 				<div class="form-group">
 					<label for="nombre">FECHA:</label> <input type="date"
 						class="form-control" th:field="*{fechaRegistro}"
-						id="fechaRegistro"></input>
+						id="fechaRegistro" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('fechaRegistro')}"
@@ -97,7 +97,7 @@
 
 				<div class="form-group">
 					<label for="nombre">ANOTACIONES:</label> <input type="text"
-						class="form-control" th:field="*{tAnotaciones}" id="nombre"></input>
+						class="form-control" th:field="*{tAnotaciones}" id="nombre" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('tAnotaciones')}"

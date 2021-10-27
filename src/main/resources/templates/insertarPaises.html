@@ -37,7 +37,7 @@
 
 				<div class="form-group">
 					<label for="nombre">NOMBRE:</label> <input type="text"
-						class="form-control" th:field="*{nombrePais}" id="nombre"></input>
+						class="form-control" th:field="*{nombrePais}" id="nombre" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nombrePais')}"

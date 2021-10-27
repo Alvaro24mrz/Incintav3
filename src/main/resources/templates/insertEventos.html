@@ -40,7 +40,7 @@
 
 				<div class="form-group">
 					<label for="nombre">Titulo:</label> <input type="text"
-						class="form-control" th:field="*{tTitulo}" id="nombre"></input>
+						class="form-control" th:field="*{tTitulo}" id="nombre" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('tTitulo')}" th:errors="*{tTitulo}">
@@ -49,17 +49,17 @@
 
 				<div class="form-group">
 					<label for="inicio">Fecha de Inicio:</label> <input
-						class="form-control" type="time" th:field="*{hInicio}" />
+						class="form-control" type="time" th:field="*{hInicio}" required/>
 				</div>
 
 				<div class="form-group">
 					<label for="fin">Fecha de Fin:</label> <input class="form-control"
-						type="time" th:field="*{hFin}" />
+						type="time" th:field="*{hFin}" required/>
 				</div>
 
 				<div class="form-group">
 					<label for="descripcion">Comentario:</label> <input type="text"
-						class="form-control" th:field="*{tDescripcion}" id="descripcion"></input>
+						class="form-control" th:field="*{tDescripcion}" id="descripcion" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('tDescripcion')}"
 						th:errors="*{tDescripcion}"></div>

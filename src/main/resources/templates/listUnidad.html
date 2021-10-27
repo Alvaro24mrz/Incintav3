@@ -65,8 +65,8 @@
 							<tr th:each="rac: ${listaUnidades}">
 								<td th:text="${rac.idUnidad}"></td>
 								<td th:text="${rac.nUnidad}"></td>
-								<td><a th:href="@{/unidad/eliminar?id=}+${rac.idUnidad}">Eliminar</a></td>
-								<td><a th:href="@{'/unidad/modificar/'}+${rac.idUnidad}">Modificar</a></td>
+								<td><a th:href="@{/unidad/eliminar?id=}+${rac.idUnidad}"><i class="glyphicon glyphicon-trash"></i></a></td>
+								<td><a th:href="@{'/unidad/modificar/'}+${rac.idUnidad}"><i class="glyphicon glyphicon-pencil"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
