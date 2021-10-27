@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,5 +12,5 @@ public interface IEventosService {
 	public void eliminar(int idEventos);
 	public Optional<Eventos> listarId(int idEventos);
 	public List<Eventos> listar();
-	public List<Eventos> buscarNombre(String tTitulo);
+	public List<Eventos> findByFechaEvento(Date fechaEvento);
 }
