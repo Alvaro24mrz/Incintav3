@@ -33,11 +33,11 @@
 			th:object="${tipoIdentificacion}">
 			<div class="form-group">
 				<label for="idTipoIdentificacion">ID:</label> <input type="text"
-					class="form-control" th:field="*{idTipoIdentificacion}"></input>
+					class="form-control" th:field="*{idTipoIdentificacion}" required></input>
 
 				<div class="form-group">
 					<label for="nombre">NOMBRE:</label> <input type="text"
-						class="form-control" th:field="*{nIdentificacion}" id="nombre"></input>
+						class="form-control" th:field="*{nIdentificacion}" id="nombre" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nIdentificacion')}"

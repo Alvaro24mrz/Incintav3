@@ -80,9 +80,9 @@
 								<td th:text="${u.numMetodoPago}"></td>
 								<td th:text="${u.semanaGestacion}"></td>
 								<td><a
-									th:href="@{/insertarUsuario/eliminar?id=}+${u.usuarioID}">Eliminar</a></td>
+									th:href="@{/insertarUsuario/eliminar?id=}+${u.usuarioID}"><i class="glyphicon glyphicon-trash"></i></a></td>
 								<td><a
-									th:href="@{'/insertarUsuario/modificar/'}+${u.usuarioID}">Modificar</a></td>
+									th:href="@{'/insertarUsuario/modificar/'}+${u.usuarioID}"><i class="glyphicon glyphicon-pencil"></i></a></td>
 							</tr>
 						</tbody>
 					</table>

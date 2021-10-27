@@ -41,7 +41,7 @@
 
 				<div class="form-group">
 					<label for="nombre">TITULO DE LA PREGUNTA:</label> <input
-						type="text" class="form-control" th:field="*{nTitulo}" id="nombre"></input>
+						type="text" class="form-control" th:field="*{nTitulo}" id="nombre" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nTitulo')}" th:errors="*{nTitulo}">
 					</div>
@@ -49,7 +49,7 @@
 
 				<div class="form-group">
 					<label for="nombre">DESCRIPCION:</label> <input type="text"
-						class="form-control" th:field="*{tPregunta}" id="nombrepregunta"></input>
+						class="form-control" th:field="*{tPregunta}" id="nombrepregunta" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('tPregunta')}" th:errors="*{tPregunta}">
 					</div>
@@ -57,7 +57,7 @@
 
 				<div class="form-group">
 					<label for="nombre">FECHA:</label> <input type="date"
-						class="form-control" th:field="*{fecha}" id="fechadepregunta"></input>
+						class="form-control" th:field="*{fecha}" id="fechadepregunta" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">
 					</div>
@@ -66,7 +66,7 @@
 				<div class="form-group">
 					<select class="form-control" th:field="*{usuario.usuarioID}"
 						style="visibility: hidden">
-						<option th:each="r: ${listaUsuario}"
+						<option th:each="r: ${listaUsuarios}"
 							th:value="${session.usuario.usuarioID}"
 							th:text="${session.usuario.nUsuario}"
 							th:selected="(${session.usuario.usuarioID}==*{usuario.usuarioID})">
