@@ -94,7 +94,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
+					<label for="numID">NÃšMERO DE IDENTIFICACIÃ“N:</label> <input
 						type="text" class="form-control" th:field="*{numIdentificacion}"
 						id="numID"></input>
 
@@ -125,7 +125,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">MÉTODO DE PAGO:</label> <select
+					<label for="nombre">MÃ‰TODO DE PAGO:</label> <select
 						class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
 						<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 							th:text="${mp.nombreMetodoPago}"
@@ -135,8 +135,8 @@
 				</div>
 
 				<div class="form-group">
-					<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input type="text"
-						class="form-control" th:field="*{numMetodoPago}" id="ntarjeta"></input>
+					<label for="ntarjeta">NÃšMERO DE TARJETA:</label> <input type="text"
+						class="form-control" th:field="*{numMetodoPago}" id="ntarjeta" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numMetodoPago')}"
@@ -145,16 +145,15 @@
 				</div>
 
 				<div class="form-group">
-					<label for="SG">SEMANA DE GESTACIÓN:</label> <input type="text"
-						class="form-control" th:field="*{semanaGestacion}" id="SG"></input>
+					<label for="SG">SEMANA DE GESTACIÃ“N:</label> <input type="text"
+						class="form-control" th:field="*{semanaGestacion}" id="SG" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('semanaGestacion')}"
 						th:errors="*{semanaGestacion}"></div>
 				</div>
 
-				<div class="form-group">
-					
+				<div class="form-group">	
 					<input type="text"
 						class="form-control" th:field="*{admin}" id="ad" style="visibility: hidden"></input>
 
