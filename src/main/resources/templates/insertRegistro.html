@@ -45,7 +45,7 @@
 				<div class="form-group">
 					<select class="form-control" th:field="*{usuario.usuarioID}"
 						style="visibility: hidden">
-						<option th:each="r: ${listaUsuario}"
+						<option th:each="r: ${listaUsuarios}"
 							th:value="${session.usuario.usuarioID}"
 							th:text="${session.usuario.nUsuario}"
 							th:selected="(${session.usuario.usuarioID}==*{usuario.usuarioID})">

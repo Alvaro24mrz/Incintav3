@@ -70,8 +70,8 @@
 								<td th:text="${p.tAnotaciones}"></td>
 
 
-								<td><a th:href="@{/registro/eliminar?id=}+${p.idRegistro}">Eliminar</a></td>
-								<td><a th:href="@{'/registro/modificar/'}+${p.idRegistro}">Modificar</a></td>
+								<td><a th:href="@{/registro/eliminar?id=}+${p.idRegistro}"> <i class="glyphicon glyphicon-trash"></i> </a></td>
+								<td><a th:href="@{'/registro/modificar/'}+${p.idRegistro}"> <i class="glyphicon glyphicon-pencil"></i> </a></td>
 							</tr>
 						</tbody>
 						<tbody th:if="${session.usuario.admin == 1}">
@@ -84,8 +84,9 @@
 								<td th:text="${p.tAnotaciones}"></td>
 
 
-								<td><a th:href="@{/registro/eliminar?id=}+${p.idRegistro}">Eliminar</a></td>
-								<td><a th:href="@{'/registro/modificar/'}+${p.idRegistro}">Modificar</a></td>
+
+								<td><a th:href="@{/registro/eliminar?id=}+${p.idRegistro}"><i class="glyphicon glyphicon-trash"></i> </a></td>
+								<td><a th:href="@{'/registro/modificar/'}+${p.idRegistro}"> <i class="glyphicon glyphicon-pencil"></i> </a></td>
 							</tr>
 						</tbody>
 					</table>
