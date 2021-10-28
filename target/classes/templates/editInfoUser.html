@@ -21,16 +21,15 @@
 
 </head>
 
-<body style="background-color:#FEF0FE">
+<body>
 
 
-	<div th:replace="fragments/headerInicio :: header"></div>
+	<div th:replace="fragments/headerUsuario :: header"></div>
 
 
 	<div class="container">
-		<form th:action="@{/auth/registrar}" method="post"
+		<form th:action="@{/public/guardar}" method="post"
 			th:object="${usuario}">
-			<h1>Nuevo Registro</h1>
 
 			<div th:if="${mensaje}" class="alert alert-danger">
 				<p th:text="${mensaje}"></p>
@@ -42,70 +41,41 @@
 					style="visibility: hidden"> </input>
 
 
-
-				<div class="row">
-				
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="nombre">NOMBRE:</label> <input type="text"
+				<div class="form-group">
+					<label for="nombre">NOMBRE:</label> <input type="text"
 						class="form-control" th:field="*{nUsuario}" id="nombre" required></input>
+
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
 					</div>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				  
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="apellido">APELLIDO:</label> <input type="text"
+
+				</div>
+
+				<div class="form-group">
+					<label for="apellido">APELLIDO:</label> <input type="text"
 						class="form-control" th:field="*{uApellido}" id="apellido"
 						required></input>
 
-						<div class="alert alert-danger"
-							th:if="${#fields.hasErrors('uApellido')}" th:errors="*{uApellido}">
-						</div>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				  
-				</div><!-- /.row -->
-				
-				
-				
-				<div class="row">
-				
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="correo">CORREO:</label> <input type="email"
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('uApellido')}" th:errors="*{uApellido}">
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<label for="correo">CORREO:</label> <input type="email"
 						class="form-control" th:field="*{uCorreo}" id="correo" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uCorreo')}" th:errors="*{uCorreo}">
 					</div>
 
-				</div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				  
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="password">PASSWORD:</label> <input type="text"
-
-						class="form-control" th:field="*{uPassword}" id="password"
-						required></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('uPassword')}" th:errors="*{uPassword}">
-					</div>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				  
-				</div><!-- /.row -->
+				</div>
 
 				
 
-				<div class="row">
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="nombre">TIPO DE IDENTIFICACION:</label> <select
+				<div class="form-group">
+					<label for="nombre">TIPO DE IDENTIFICACION:</label> <select
 						class="form-control"
 						th:field="*{iDTipoIdentificacion.idTipoIdentificacion}">
 						<option th:each="ti: ${listaTipoIdentificacion}"
@@ -114,81 +84,62 @@
 							th:selected="(${ti.idTipoIdentificacion} == *{iDTipoIdentificacion.idTipoIdentificacion})">
 						</option>
 					</select>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				  
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
+				</div>
+
+				<div class="form-group">
+					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
 						type="text" class="form-control" th:field="*{numIdentificacion}"
 						id="numID"></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numIdentificacion')}"
 						th:errors="*{numIdentificacion}"></div>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				</div><!-- /.row -->
 
+				</div>
 
-				<div class="row">
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input
+				<div class="form-group">
+					<label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input
 						type="date" class="form-control" th:field="*{dNacimiento}"
 						id="fnacimiento" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('dNacimiento')}"
 						th:errors="*{dNacimiento}"></div>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				  
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="nombre">PAIS:</label> <select class="form-control"
+
+				</div>
+
+				<div class="form-group">
+					<label for="nombre">PAIS:</label> <select class="form-control"
 						th:field="*{iDPais.idPais}">
 						<option th:each="p: ${listaPaises}" th:value="${p.idPais}"
 							th:text="${p.nombrePais}"
 							th:selected="(${p.idPais} == *{iDPais.idPais})"></option>
 					</select>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				</div><!-- /.row -->
+				</div>
 
-
-				<div class="row">
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="nombre">MÉTODO DE PAGO:</label> <select
+				<div class="form-group">
+					<label for="nombre">MÉTODO DE PAGO:</label> <select
 						class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
 						<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 							th:text="${mp.nombreMetodoPago}"
 							th:selected="(${mp.iDMetodoPago} == *{iDMetodoPago.iDMetodoPago})">
 						</option>
 					</select>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				  
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
+				</div>
+
+				<div class="form-group">
+					<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
 						type="text" class="form-control" th:field="*{numMetodoPago}"
 						id="ntarjeta" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numMetodoPago')}"
 						th:errors="*{numMetodoPago}"></div>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				</div><!-- /.row -->
-				
-				
-				
-				<div class="row">
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control"
+
+				</div>
+
+				<div class="form-group">
+					<label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control"
 						th:field="*{semanaGestacion}">
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -233,29 +184,26 @@
 							<option value="41">41</option>
 							<option value="42">42</option>
 					</select>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				  
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <input type="text" class="form-control" th:field="*{admin}" id="ad"
-						style="visibility: hidden"></input>
+				</div>
+
+				<input type="text" class="form-control" th:field="*{admin}"
+						style="visibility: hidden"> </input>
+						
+				<div class="form-group">
+					<label for="password">CONFIRMAR CONTRASE�A:</label> 
+					<input 
+					type="password"	class="form-control" th:field="*{uPassword}" id="password"
+					></input>
 
 					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
-				</div><!-- /.row -->
-			
-			
+						th:if="${#fields.hasErrors('uPassword')}" th:errors="*{uPassword}">
+					</div>
 
-		
-
-
+				</div>
 
 			</div>
-			<button type="submit" class="btn btn-primary" style="background-color:#9D186F; width:250px">Aceptar</button>
-			<a href="/insertarUsuario/listar" class="btn btn-danger" style="background-color:#FEF0FE; width: 250px; color: black">Cancelar</a>
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}" class="btn btn-danger">Cancelar</a>
 		</form>
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>

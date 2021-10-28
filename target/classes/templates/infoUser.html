@@ -24,7 +24,7 @@
 <body>
 
 
-	<div th:replace="fragments/headerUser :: header"></div>
+	<div th:replace="fragments/headerUsuario :: header"></div>
 
 
 	<div class="container">
@@ -40,10 +40,9 @@
 				<input type="text" class="form-control" th:field="*{usuarioID}"
 					style="visibility: hidden"> </input>
 
-
 				<div class="form-group">
 					<label for="nombre">NOMBRE:</label> <input type="text"
-						class="form-control" th:field="*{nUsuario}" id="nombre" required></input>
+						class="form-control" th:field="*{nUsuario}" id="nombre" readonly></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
@@ -54,7 +53,7 @@
 				<div class="form-group">
 					<label for="apellido">APELLIDO:</label> <input type="text"
 						class="form-control" th:field="*{uApellido}" id="apellido"
-						required></input>
+						readonly></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uApellido')}" th:errors="*{uApellido}">
@@ -64,7 +63,7 @@
 
 				<div class="form-group">
 					<label for="correo">CORREO:</label> <input type="email"
-						class="form-control" th:field="*{uCorreo}" id="correo" required></input>
+						class="form-control" th:field="*{uCorreo}" id="correo" readonly></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uCorreo')}" th:errors="*{uCorreo}">
@@ -73,32 +72,16 @@
 				</div>
 
 				<div class="form-group">
-					<label for="password">PASSWORD:</label> <input type="text"
-						class="form-control" th:field="*{uPassword}" id="password"
-						required></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('uPassword')}" th:errors="*{uPassword}">
-					</div>
-
+					<label for="nombre">TIPO DE IDENTIFICACION:</label> 
+					<input type="text"
+					class="form-control" th:field="*{iDTipoIdentificacion.nIdentificacion}" id="text"
+					readonly></input>
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">TIPO DE IDENTIFICACION:</label> <select
-						class="form-control"
-						th:field="*{iDTipoIdentificacion.idTipoIdentificacion}">
-						<option th:each="ti: ${listaTipoIdentificacion}"
-							th:value="${ti.idTipoIdentificacion}"
-							th:text="${ti.nIdentificacion}"
-							th:selected="(${ti.idTipoIdentificacion} == *{iDTipoIdentificacion.idTipoIdentificacion})">
-						</option>
-					</select>
-				</div>
-
-				<div class="form-group">
-					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
+					<label for="numID">NÃšMERO DE IDENTIFICACIÃ“N:</label> <input
 						type="text" class="form-control" th:field="*{numIdentificacion}"
-						id="numID"></input>
+						id="numID" readonly></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numIdentificacion')}"
@@ -109,7 +92,7 @@
 				<div class="form-group">
 					<label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input
 						type="date" class="form-control" th:field="*{dNacimiento}"
-						id="fnacimiento" required></input>
+						id="fnacimiento" readonly></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('dNacimiento')}"
@@ -118,94 +101,47 @@
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">PAIS:</label> <select class="form-control"
-						th:field="*{iDPais.idPais}">
-						<option th:each="p: ${listaPaises}" th:value="${p.idPais}"
-							th:text="${p.nombrePais}"
-							th:selected="(${p.idPais} == *{iDPais.idPais})"></option>
-					</select>
+					<label for="nombre">PAIS:</label> 
+					<input type="text"
+					class="form-control" th:field="*{iDPais.nombrePais}" id="text"
+					readonly></input>
+				</div>
+				
+				<div class="form-group">
+					<label for="nombre">MÃ‰TODO DE PAGO:</label> 
+					<input type="text"
+					class="form-control" th:field="*{iDMetodoPago.nombreMetodoPago}" id="text"
+					readonly></input>
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">MÉTODO DE PAGO:</label> <select
-						class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
-						<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
-							th:text="${mp.nombreMetodoPago}"
-							th:selected="(${mp.iDMetodoPago} == *{iDMetodoPago.iDMetodoPago})">
-						</option>
-					</select>
-				</div>
-
-				<div class="form-group">
-					<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
+					<label for="ntarjeta">NÃšMERO DE TARJETA:</label> <input
 						type="text" class="form-control" th:field="*{numMetodoPago}"
-						id="ntarjeta" required></input>
+						id="ntarjeta" readonly></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numMetodoPago')}"
 						th:errors="*{numMetodoPago}"></div>
-
 				</div>
-
+				
 				<div class="form-group">
-					<label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control"
-						th:field="*{semanaGestacion}">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-							<option value="11">11</option>
-							<option value="12">12</option>
-							<option value="13">13</option>
-							<option value="14">14</option>
-							<option value="15">15</option>
-							<option value="16">16</option>
-							<option value="17">17</option>
-							<option value="18">18</option>
-							<option value="19">19</option>
-							<option value="20">20</option>
-							<option value="21">21</option>
-							<option value="22">22</option>
-							<option value="23">23</option>
-							<option value="24">24</option>
-							<option value="25">25</option>
-							<option value="26">26</option>
-							<option value="27">27</option>
-							<option value="28">28</option>
-							<option value="29">29</option>
-							<option value="30">30</option>
-							<option value="31">31</option>
-							<option value="32">32</option>
-							<option value="33">33</option>
-							<option value="34">34</option>
-							<option value="35">35</option>
-							<option value="36">36</option>
-							<option value="37">37</option>
-							<option value="38">38</option>
-							<option value="39">39</option>
-							<option value="40">40</option>
-							<option value="41">41</option>
-							<option value="42">42</option>
-					</select>
+					<label for="nombre">SEMANA DE GESTACIÃ“N:</label> 
+					<input type="text"
+					class="form-control" th:field="*{semanaGestacion}" id="text"
+					readonly></input>
 				</div>
 
-				<div class="form-group">
-					<input type="text" class="form-control" th:field="*{admin}" id="ad"
-						style="display:none;"></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>
-				</div>
+				<input type="text" class="form-control" th:field="*{admin}"
+						style="visibility: hidden"> </input>
+						
+				<input type="text" class="form-control" th:field="*{uPassword}"
+						style="visibility: hidden"> </input>
 
 			</div>
-			<button type="submit" class="btn btn-primary" style="background-color:#9D186F">Aceptar</button>
-			<a href="/insertarUsuario/listar" class="btn btn-danger" style="background-color:#FEF0FE">Cancelar</a>
+
+			<a th:href="@{'/public/modificar/'}+${session.usuario.usuarioID}" class="btn btn-info">EDITAR</a>
+			<a th:href="@{'/public/modificarP/'}+${session.usuario.usuarioID}" class="btn btn-info">CAMBIAR CONTRASEÑA</a>
+
 		</form>
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>

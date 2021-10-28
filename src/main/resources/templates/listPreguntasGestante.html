@@ -50,7 +50,7 @@
 						id="tab_logic">
 						<thead>
 							<tr>
-
+								<th class="text-center">Nombre de Usuario</th>
 								<th class="text-center">Titulo de la Pregunta</th>
 								<th class="text-center">Descripcion</th>
 								<th class="text-center">Fecha</th>
@@ -66,21 +66,25 @@
 								<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
 
 								<td><a
-									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i class="glyphicon glyphicon-trash"></a></td>
+									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
+										class="glyphicon glyphicon-trash"></a></td>
 								<td><a
 									th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}">Modificar</a></td>
 							</tr>
 						</tbody>
 						<tbody th:if="${session.usuario.admin == 1}">
 							<tr th:each="pg: ${listaPreguntasGestante}">
+								<td th:text="${pg.usuario.nUsuario}"></td>
 								<td th:text="${pg.nTitulo}"></td>
 								<td th:text="${pg.tPregunta}"></td>
 								<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
 
 								<td><a
-									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i class="glyphicon glyphicon-trash"></i></a></td>
+									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
+										class="glyphicon glyphicon-trash"></i></a></td>
 								<td><a
-									th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i class="glyphicon glyphicon-pencil"></i></a></td>
+									th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
+										class="glyphicon glyphicon-pencil"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
