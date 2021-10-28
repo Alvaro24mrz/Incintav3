@@ -32,15 +32,15 @@
 	</div>
 	<div class="container">
 		<form id="myform">
-		<h1>Mis Preguntas</h1>
+			<h1>Mis Preguntas</h1>
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 
-					<a style="background-color:#9D186F; width:250px"
+					<a style="background-color: #9D186F; width: 250px"
 						th:href="@{/preguntasGestante/irRegistrar}" id="add-row"
 						type="button" class="btn btn-primary btn-md left-block"> <span
 						class="glyphicon glyphicon-plus"></span> Pregunta
-					</a> <a style="background-color:#9D186F; width:250px"
+					</a> <a style="background-color: #9D186F; width: 250px"
 						th:href="@{/preguntasGestante/irBuscar}" id="add-row"
 						type="button" class="btn btn-primary btn-md left-block"> <span
 						class="glyphicon glyphicon-search"></span> Buscar
@@ -48,14 +48,24 @@
 
 					<table class="table table-bordered table-hover table-striped"
 						id="tab_logic">
-						<thead>
+						<thead th:if="${session.usuario.admin == 2}">
 							<tr>
-								<th class="text-center">Nombre de Usuario</th>
 								<th class="text-center">Titulo de la Pregunta</th>
 								<th class="text-center">Descripcion</th>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Eliminar</th>
-								<th class="text-center">Editar</th>
+								<th class="text-center">Modificar</th>
+							</tr>
+						</thead>
+
+						<thead th:if="${session.usuario.admin == 1}">
+							<tr>
+								<th class="text-center">Usuario</th>
+								<th class="text-center">Titulo de la Pregunta</th>
+								<th class="text-center">Descripcion</th>
+								<th class="text-center">Fecha</th>
+								<th class="text-center">Eliminar</th>
+								<th class="text-center">Modificar</th>
 							</tr>
 						</thead>
 						<tbody th:if="${session.usuario.admin == 2}">
@@ -69,7 +79,8 @@
 									th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
 										class="glyphicon glyphicon-trash"></a></td>
 								<td><a
-									th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}">Modificar</a></td>
+									th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
+										class="glyphicon glyphicon-pencil"></i></a></td>
 							</tr>
 						</tbody>
 						<tbody th:if="${session.usuario.admin == 1}">
