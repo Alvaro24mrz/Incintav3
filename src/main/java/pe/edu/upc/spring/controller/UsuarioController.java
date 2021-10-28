@@ -109,7 +109,32 @@ public class UsuarioController {
 			if(objUsuario.isPresent())
 				objUsuario.ifPresent(o -> model.addAttribute("usuario", o));
 			
-			return "insertarUsuarioAdmin";
+			return "modificarUsuarioAdmin";
+		}
+	}
+	
+	@RequestMapping("/guardar")
+	public String guardar(@Validated @ModelAttribute Usuario objUsuario, BindingResult binRes, Model model, Map<String, Object> model2) 
+		
+	{
+		if (binRes.hasErrors())
+		{	
+			model.addAttribute("listaTipoIdentificacion", tiService.listar());
+			model.addAttribute("listaPaises", pService.listar());
+			model.addAttribute("listaMDP", mpService.listar());
+			
+			return "redirect:/auth/registrar";
+		}
+		else 
+		{
+			boolean flag = rService.modificar(objUsuario);
+			if (flag)
+				return "redirect:/insertarUsuario/listar";
+			else
+			{
+				model.addAttribute("mensaje", "ERROR");
+				return "redirect:/insertarUsuario/listar";
+			}
 		}
 	}
 		

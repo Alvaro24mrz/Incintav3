@@ -24,11 +24,15 @@
 <body>
 
 
-	<div th:replace="fragments/headerInicio :: header"></div>
-
+	<div th:if="${session.usuario.admin == 1}">
+		<div th:replace="fragments/headerAdmin :: header"></div>
+	</div>
+	<div th:if="${session.usuario.admin == 2}">
+		<div th:replace="fragments/headerUsuario :: header"></div>
+	</div>
 
 	<div class="container">
-		<form th:action="@{/auth/registrar}" method="post"
+		<form th:action="@{/insertarUsuario/guardar}" method="post"
 			th:object="${usuario}">
 
 			<div th:if="${mensaje}" class="alert alert-danger">
@@ -63,7 +67,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="correo">CORREO:</label> <input type="email"
+					<label for="correo">CORREO:</label> <input type="text"
 						class="form-control" th:field="*{uCorreo}" id="correo" required></input>
 
 					<div class="alert alert-danger"
@@ -73,7 +77,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="text">PASSWORD:</label> <input type="text"
+					<label for="password">PASSWORD:</label> <input type="text"
 						class="form-control" th:field="*{uPassword}" id="password"
 						required></input>
 
@@ -96,9 +100,9 @@
 				</div>
 
 				<div class="form-group">
-					<label for="numID">NÃšMERO DE IDENTIFICACIÃ“N:</label> <input
+					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
 						type="text" class="form-control" th:field="*{numIdentificacion}"
-						id="numID"></input>
+						id="numID" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numIdentificacion')}"
@@ -127,7 +131,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">MÃ‰TODO DE PAGO:</label> <select
+					<label for="nombre">MÉTODO DE PAGO:</label> <select
 						class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
 						<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 							th:text="${mp.nombreMetodoPago}"
@@ -137,9 +141,9 @@
 				</div>
 
 				<div class="form-group">
-					<label for="ntarjeta">NÃšMERO DE TARJETA:</label> <input
-						type="text" class="form-control" th:field="*{numMetodoPago}"
-						id="ntarjeta" required></input>
+					<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input type="text"
+						class="form-control" th:field="*{numMetodoPago}" id="ntarjeta"
+						required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numMetodoPago')}"
@@ -196,8 +200,8 @@
 				</div>
 
 				<div class="form-group">
-					<input type="text" class="form-control" th:field="*{admin}" id="ad"
-						style="visibility: hidden"></input>
+					<label for="ad">ADMIN:</label> <input type="text"
+						class="form-control" th:field="*{admin}" id="ad" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>

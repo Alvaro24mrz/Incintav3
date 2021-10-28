@@ -64,7 +64,7 @@
 							th:if="${p.usuario.usuarioID == session.usuario.usuarioID}">
 								<td th:text="${p.idRegistro}"></td>
 								<td th:text="${p.usuario.nUsuario}"></td>
-								<td th:text="${p.parametro.nParametro}" style="background-color:blue"></td>
+								<td th:text="${p.parametro.nParametro}"></td>
 								<td th:text="${p.numValor}"></td>
 								<td th:text="${#dates.format(p.fechaRegistro, 'dd/MM/yyyy')}"></td>
 								<td th:text="${p.tAnotaciones}"></td>

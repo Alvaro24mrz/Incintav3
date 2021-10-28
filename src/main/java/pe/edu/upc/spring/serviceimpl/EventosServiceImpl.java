@@ -29,7 +29,6 @@ public class EventosServiceImpl implements IEventosService {
 	}
 
 
-
 	@Override
 	@Transactional
 	public void eliminar(int idEventos) {
