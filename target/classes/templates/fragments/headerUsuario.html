@@ -12,6 +12,7 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
 		</script>
+
 </head>
 
 <body>
@@ -30,6 +31,13 @@
 
 					<ul class="nav navbar-nav">
 
+						<img class="logo" th:src="@{/imagenes/incintaLogo.png}"
+							style="height: 50px; width: 50px">
+					</ul>
+
+					<ul class="nav navbar-nav">
+
+
 						<li class="active"><a th:href="@{/eventos/listar}">Mis
 								Eventos</a></li>
 						<li class="active"><a th:href="@{/preguntasGestante/listar}">Mis
@@ -38,10 +46,19 @@
 								Parametros</a></li>
 						<li class="active"><a th:href="@{/registro/listar}">Mis
 								Registros</a></li>
+
 						<li class="active"><form th:action="@{/public/logout}"
 								method="post">
 								<button type="submit" class="btn btn-primary mt-3">Log-Out</button>
 							</form>
+								
+						<li class="active"><a th:href="@{'/insertarUsuario/modificar/'}+${session.usuario.usuarioID}"> Mi Perfil </a></li>
+						
+						<li class="active"><form th:action="@{/public/logout}"
+								method="post">
+								<button type="submit" class="btn btn-primary mt-3">Log-Out</button>
+							</form>
+
 					</ul>
 
 				</div>

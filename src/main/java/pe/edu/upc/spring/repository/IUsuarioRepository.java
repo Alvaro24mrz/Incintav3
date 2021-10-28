@@ -24,5 +24,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer>{
 	List<Usuario> buscarCorreo(@Param("uCorreo") String uCorreo);
 	
 	public Usuario findBynUsuario(String nUsuario);
+	
+	
 
 }
