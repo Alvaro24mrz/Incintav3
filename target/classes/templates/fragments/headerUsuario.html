@@ -29,23 +29,20 @@
 
 				<div id="navbar" class="collapse navbar-collapse">
 
-					<ul class="nav navbar-nav">
-						<img class="logo" th:src="@{/imagenes/incintaLogo.png}"  style="height:50px;width:50px">
-					</ul>
 
-					<ul class="nav navbar-nav">
-
-						<li class="active"><a th:href="@{/eventos/listar}">Mis
-								Eventos</a></li>
-						<li class="active"><a th:href="@{/preguntasGestante/listar}">Mis
+					<ul class="nav nav-pills nav-stacked">
+					<li>	<img class="logo" th:src="@{/imagenes/incintaLogo.png}"  style="height:50px;width:50px">
+					</li>
+					
+					  <li role="presentation" ><a th:href="@{/eventos/listar}">Mis Eventos</a></li>
+					  <li role="presentation"><a th:href="@{/preguntasGestante/listar}">Mis
 								Preguntas</a></li>
-						<li class="active"><a th:href="@{/parametro/listar}">Mis
+					  <li role="presentation"><a th:href="@{/parametro/listar}">Mis
 								Parametros</a></li>
-						<li class="active"><a th:href="@{/registro/listar}">Mis
+					   <li role="presentation"><a th:href="@{/registro/listar}">Mis
 								Registros</a></li>
-						<li class="active"><a th:href="@{/public/logout}"
-							class="btn btn-primary mt-3">Log-Out</a>
-					</ul>
+					  <li role="presentation"><a th:href="@{/public/logout}" class="btn btn-primary mt-3">Log-Out</a></li>
+					  </ul>
 
 				</div>
 
