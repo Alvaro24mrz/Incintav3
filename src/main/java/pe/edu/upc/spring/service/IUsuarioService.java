@@ -17,5 +17,4 @@ public interface IUsuarioService {
 	public List<Usuario> buscarCorreo(String uCorreo);
 	
 	public Usuario findBynUsuario(String nUsuario);
-
 }

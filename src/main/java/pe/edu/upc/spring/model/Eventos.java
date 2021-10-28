@@ -40,7 +40,6 @@ public class Eventos implements Serializable {
 	@Column(name="fechaEv")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fechaEvento;
-
 	
 	@Temporal(TemporalType.TIME)
 	@Column(name="horaInicio")
