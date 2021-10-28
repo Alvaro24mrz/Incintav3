@@ -22,7 +22,30 @@
 </head>
 
 <body style="background-color:#FEF0FE">
-	<div th:replace="fragments/headerInicio :: header"></div>
+		<div th:fragment="header">
+		<!-- this is header -->
+		<nav class="navbar navbar-inverse">
+
+			<div class="container">
+			
+			<ul class="nav nav-pills nav-justified">
+			
+			
+			
+			 	<li><p class="navbar-text navbar-left"><img class="logo" th:src="@{/imagenes/incintaLogo.png}"  style="height:50px;width:50px; "></p></li>
+				<li><p class="navbar-text navbar-center"><a th:href="@{/public/bienvenidoInicio}">INCINTA</a></p></li>
+				<li><p class="navbar-text navbar-right"><img class="logo" th:src="@{/imagenes/incintaLogo.png}"  style="height:50px;width:50px; "></p></li>
+			</ul>
+						
+
+
+			</div>
+		</nav>
+	</div>
+	
+	
+	
+	
 	<div class="container">
 		
 			<div class="col-md-6 column" align="center">
@@ -32,14 +55,18 @@
 		
 
 		<div class="col-md-6 column" align="left">
-
+			
+			<!-- <div class="alert alert-danger" role="alert">...</div> -->
+			
 			<div class="alert alert-danger mb-3" th:if="${param.error}">Credenciales
 				incorrectas</div>
 
 
-			<form th:action="@{/auth/login}" method="post">
+<h1 >LOGIN</h1>
+			<form th:action="@{/auth/login-post}" method="post">
+
 				<div class="form-group">
-					<label for="correo">CORREO:</label> <input type="text"
+					<label for="correo">USUARIO:</label> <input type="text"
 						class="form-control" name="username"></input>
 
 					<div class="form-group">
@@ -53,7 +80,7 @@
 			</form>
 			<br>
 			<div class="form-group">
-				<a href="/auth/irRegistrar">Ir a REGISTRARME (Costo unico de $4.00)</a>
+				<a href="/auth/irRegistrar" class="btn btn-danger">Ir a REGISTRARME (Costo unico de $4.00)</a>
 			</div>
 
 		</div>

@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -28,6 +29,7 @@ import pe.edu.upc.spring.service.IUsuarioService;
 @RequestMapping("/public")
 public class PublicController {
 	
+
 	@Autowired
 	private IUsuarioService rService;
 	@Autowired
@@ -38,7 +40,7 @@ public class PublicController {
 	private ITipoIdentificacionService tiService;
 	
 	
-	@RequestMapping("/logout")
+	@GetMapping("/logout")
 	public String index() {
 		
 		return "logout";
