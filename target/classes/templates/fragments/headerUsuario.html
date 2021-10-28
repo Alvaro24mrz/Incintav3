@@ -2,48 +2,54 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-	<link rel="icon" type="image/x-icon" href="/imagenes/incintaLogo.png">
-		<meta charset="ISO-8859-1"></meta>
-		<link
-			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-			rel="stylesheet" id="bootstrap-css">
-		</link>
-		<script
-			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+<head>
+<link rel="icon" type="image/x-icon" href="/imagenes/incintaLogo.png">
+<meta charset="ISO-8859-1"></meta>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
 		</script>
-	</head>
+</head>
 
-	<body>
-		<!-- th:fragment define un fragment los cuales sirven para evitar la redundancia de codigo -->
-		<!-- Sintaxis th:fragment="Nombre del fragment" -->
-		<div th:fragment="header">
-			<!-- this is header -->
-			<nav class="navbar navbar-inverse">
-				<div class="container">
-					
-					<div class="navbar-header">
-						<a class="navbar-brand" th:href="@{/insertarUsuario/bienvenido}">INCINTA</a>
-					</div>
-					
-					<div id="navbar" class="collapse navbar-collapse">
-					
-						<ul class="nav navbar-nav">
-						
-							<li class="active"><a th:href="@{/eventos/listar}">Mis Eventos</a></li>
-							<li class="active"><a th:href="@{/preguntasGestante/listar}">Mis Preguntas</a></li>
-							<li class="active"><a th:href="@{/parametro/listar}">Mis Parametros</a></li>
-							<li class="active"><a th:href="@{/registro/listar}">Mis Registros</a></li>
-							<li class="active"><a th:href="@{/public/logout}" class="btn btn-primary mt-3">Log-Out</a>
+<body>
+	<!-- th:fragment define un fragment los cuales sirven para evitar la redundancia de codigo -->
+	<!-- Sintaxis th:fragment="Nombre del fragment" -->
+	<div th:fragment="header">
+		<!-- this is header -->
+		<nav class="navbar navbar-inverse">
+			<div class="container">
 
-						</ul>
-						 
-					</div>
-					
+				<div class="navbar-header">
+					<a class="navbar-brand" th:href="@{/insertarUsuario/bienvenido}">INCINTA</a>
 				</div>
-			</nav>
-		</div>
-	
-	</body>
-	
+
+				<div id="navbar" class="collapse navbar-collapse">
+
+					<ul class="nav navbar-nav">
+
+						<li class="active"><a th:href="@{/eventos/listar}">Mis
+								Eventos</a></li>
+						<li class="active"><a th:href="@{/preguntasGestante/listar}">Mis
+								Preguntas</a></li>
+						<li class="active"><a th:href="@{/parametro/listar}">Mis
+								Parametros</a></li>
+						<li class="active"><a th:href="@{/registro/listar}">Mis
+								Registros</a></li>
+						<li class="active"><form th:action="@{/public/logout}"
+								method="post">
+								<button type="submit" class="btn btn-primary mt-3">Log-Out</button>
+							</form>
+					</ul>
+
+				</div>
+
+			</div>
+		</nav>
+	</div>
+
+</body>
+
 </html>

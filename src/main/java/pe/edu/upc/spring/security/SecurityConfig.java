@@ -34,10 +34,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests().antMatchers("/public/**","/auth/**","/css/**","/public/**", "/imagenes/**", "/static/imagenes/**").permitAll().anyRequest().authenticated()
 		.and()
 			.formLogin().loginPage("/public/bienvenidoInicio").defaultSuccessUrl("/private/index",true).failureUrl("/auth/login?error=true")
-			.loginProcessingUrl("/auth/login").permitAll()
+			.loginProcessingUrl("/auth/login-post").permitAll()
 		.and()
-			.logout().logoutUrl("/logout").logoutSuccessUrl("/public/logout");
-			
+			.logout().logoutUrl("/public/logout").logoutSuccessUrl("/public/logout");
+			//			.logout(logout ->logout.invalidateHttpSession(true).logoutUrl("/public/logout").logoutSuccessUrl("/public/bienvenidoInicio"));
+
 		
 	}
 
