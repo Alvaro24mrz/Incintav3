@@ -31,6 +31,7 @@
 					<ul class="nav nav-pills nav-stacked"><li>	<img class="logo" th:src="@{/imagenes/incintaLogo.png}" 
 						style="height: 60px; width: 60px"> </li>
 					</ul>
+
 					<ul class="nav nav-tabs">
 							<li role="presentation"><a th:href="@{/eventos/listar}" style="color:black">Mis Eventos</a></li>
 							<li role="presentation"><a th:href="@{/preguntasGestante/listar}" style="color:black">MisPreguntas</a></li>
@@ -39,6 +40,8 @@
 							<li role="presentation" ><a th:href="@{'/insertarUsuario/modificar/'}+${session.usuario.usuarioID}" style="color:black"> Mi Perfil </a></li>
 							<li role="presentation"><form th:action="@{/public/logout}"method="post">
 								<button type="submit" class="btn btn-primary mt-3" style="background-color: #9D186F">Log-Out</button>
+			
+
 							</form>
 					</ul>
 				</div>
