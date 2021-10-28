@@ -24,11 +24,11 @@
 <body>
 
 
-	<div th:replace="fragments/headerInicio :: header"></div>
+	<div th:replace="fragments/headerUsuario :: header"></div>
 
 
 	<div class="container">
-		<form th:action="@{/auth/registrar}" method="post"
+		<form th:action="@{/public/guardar}" method="post"
 			th:object="${usuario}">
 
 			<div th:if="${mensaje}" class="alert alert-danger">
@@ -73,9 +73,10 @@
 				</div>
 
 				<div class="form-group">
-					<label for="text">PASSWORD:</label> <input type="text"
-						class="form-control" th:field="*{uPassword}" id="password"
-						required></input>
+					<label for="password">PASSWORD:</label> 
+					<input 
+					type="text"	class="form-control" th:field="*{uPassword}" id="password"
+					></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uPassword')}" th:errors="*{uPassword}">
@@ -195,17 +196,12 @@
 					</select>
 				</div>
 
-				<div class="form-group">
-					<input type="text" class="form-control" th:field="*{admin}" id="ad"
-						style="visibility: hidden"></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>
-				</div>
+				<input type="text" class="form-control" th:field="*{admin}"
+						style="visibility: hidden"> </input>
 
 			</div>
 			<button type="submit" class="btn btn-primary">Aceptar</button>
-			<a href="/insertarUsuario/listar" class="btn btn-danger">Cancelar</a>
+			<a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}" class="btn btn-danger">Cancelar</a>
 		</form>
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>

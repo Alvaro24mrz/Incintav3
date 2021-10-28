@@ -48,6 +48,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	public boolean modificar(Usuario user) {
 		boolean flag = false;
 		try {
+			user.setuPassword(passwordEncoder.encode(user.getuPassword()));
 			dUsuario.save(user);
 			flag = true;
 		}
