@@ -46,14 +46,22 @@
 						th:if="${#fields.hasErrors('tTitulo')}" th:errors="*{tTitulo}">
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<label for="nombre">Fecha de Evento:</label> <input type="date"
+						class="form-control" th:field="*{fechaEvento}" id="fechaEvento" required></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('fechaEvento')}" th:errors="*{fechaEvento}">
+					</div>
+				</div>
 
 				<div class="form-group">
-					<label for="inicio">Fecha de Inicio:</label> <input
+					<label for="inicio">Hora de Inicio:</label> <input
 						class="form-control" type="time" th:field="*{hInicio}" required/>
 				</div>
 
 				<div class="form-group">
-					<label for="fin">Fecha de Fin:</label> <input class="form-control"
+					<label for="fin">Hora de Fin:</label> <input class="form-control"
 						type="time" th:field="*{hFin}" required/>
 				</div>
 
