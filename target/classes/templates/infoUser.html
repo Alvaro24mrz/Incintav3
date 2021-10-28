@@ -24,7 +24,7 @@
 <body>
 
 
-	<div th:replace="fragments/headerInicio :: header"></div>
+	<div th:replace="fragments/headerUser :: header"></div>
 
 
 	<div class="container">
@@ -197,7 +197,7 @@
 
 				<div class="form-group">
 					<input type="text" class="form-control" th:field="*{admin}" id="ad"
-						style="visibility: hidden"></input>
+						style="display:none;"></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>
