@@ -32,7 +32,7 @@
 		<form th:action="@{/unidad/registrar}" method="post"
 			th:object="${unidad}">
 			<div class="form-group">
-
+				<h1>Nueva Unidad</h1>
 
 				<input type="text" class="form-control" th:field="*{idUnidad}"
 					style="visibility: hidden"> </input>
@@ -48,8 +48,8 @@
 				</div>
 
 			</div>
-			<button type="submit" class="btn btn-primary">Aceptar</button>
-			<a href="/parametro/listar" class="btn btn-danger">Cancelar</a>
+			<button type="submit" class="btn btn-primary" style="background-color:#9D186F; width:250px">Aceptar</button>
+			<a href="/parametro/listar" class="btn btn-danger" style="background-color:#FEF0FE; width: 250px; color: black">Cancelar</a>
 		</form>
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>

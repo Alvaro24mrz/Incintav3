@@ -32,7 +32,7 @@
 	</div>
 	<div class="container">
 		<div class="row clearfix">
-			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
+			<h1 >Busqueda de Eventos</h1>
 			<form th:action="@{/eventos/buscar}" method="post"
 				th:object="${eventos}">
 				<div class="form-group">
@@ -40,9 +40,10 @@
 						<input type="date" class="form-control" th:field="*{fechaEvento}"
 							id="fecha" placeholder="Ingrese la fecha abuscar"> </input>
 
-						<div align="left">
-							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/eventos/listar" class="btn btn-dark">Cancelar</a>
+<hr>
+						<div align="center">
+							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
+							<a href="/eventos/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
 
 						</div>
 					</div>

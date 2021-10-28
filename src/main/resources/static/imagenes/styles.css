@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+body{
+	background-color:#FEF0FE;
+	font: red;
+}
+.navbar {
+	
+		background-color: #FFFFFF !important;
+}
+
+btn{
+		color: red;
+}

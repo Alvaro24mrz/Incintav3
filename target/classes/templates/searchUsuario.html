@@ -32,7 +32,7 @@
 	</div>
 	<div class="container">
 		<div class="row clearfix">
-			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
+			<h1 >Busqueda de Usuario</h1>
 			<form th:action="@{/insertarUsuario/searchUsuario}" method="post"
 				th:object="${usuario}">
 				<div class="form-group">
@@ -40,9 +40,9 @@
 						<input type="text" class="form-control" th:field="*{nUsuario}"
 							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
 
-						<div align="left">
-							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/insertarUsuario/listar" class="btn btn-dark">Cancelar</a>
+						<div align="center">
+							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
+							<a href="/insertarUsuario/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
 						</div>
 					</div>
 				</div>

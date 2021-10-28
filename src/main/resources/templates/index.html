@@ -21,7 +21,7 @@
 
 </head>
 
-<body>
+<body >
 	<div th:if="${session.usuario.admin == 1}">
 		<div th:replace="fragments/headerAdmin :: header"></div>
 	</div>
@@ -39,7 +39,7 @@
 					</span>
 					<div>
 						<form th:action="@{/insertarUsuario/bienvenido}" method="POST">
-							<button type="submit" class="btn btn-primary mt-3">Ir a
+							<button type="submit" class="btn btn-primary mt-3" style="background-color:#9D186F; width:250px">Ir a
 								Inicio</button>
 						</form>
 					</div>
