@@ -32,7 +32,7 @@
 	</div>
 	<div class="container">
 		<div class="row clearfix">
-			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
+			<h1 >Busqueda de Unidad</h1>
 			<form th:action="@{/unidad/searchUnidad}" method="post"
 				th:object="${unidad}">
 				<div class="form-group">
@@ -40,9 +40,9 @@
 						<input type="text" class="form-control" th:field="*{nUnidad}"
 							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
 
-						<div align="left">
-							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/unidad/listar" class="btn btn-dark">Cancelar</a>
+						<div align="center">
+							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
+							<a href="/unidad/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
 
 						</div>
 					</div>

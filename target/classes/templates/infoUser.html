@@ -79,7 +79,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
+					<label for="numID">NÃšMERO DE IDENTIFICACIÃ“N:</label> <input
 						type="text" class="form-control" th:field="*{numIdentificacion}"
 						id="numID" readonly></input>
 
@@ -108,14 +108,14 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="nombre">MÉTODO DE PAGO:</label> 
+					<label for="nombre">MÃ‰TODO DE PAGO:</label> 
 					<input type="text"
 					class="form-control" th:field="*{iDMetodoPago.nombreMetodoPago}" id="text"
 					readonly></input>
 				</div>
 
 				<div class="form-group">
-					<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
+					<label for="ntarjeta">NÃšMERO DE TARJETA:</label> <input
 						type="text" class="form-control" th:field="*{numMetodoPago}"
 						id="ntarjeta" readonly></input>
 
@@ -125,7 +125,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="nombre">SEMANA DE GESTACIÓN:</label> 
+					<label for="nombre">SEMANA DE GESTACIÃ“N:</label> 
 					<input type="text"
 					class="form-control" th:field="*{semanaGestacion}" id="text"
 					readonly></input>
@@ -138,8 +138,10 @@
 						style="visibility: hidden"> </input>
 
 			</div>
+
 			<a th:href="@{'/public/modificar/'}+${session.usuario.usuarioID}" class="btn btn-info">EDITAR</a>
-			<a th:href="@{'/public/modificarP/'}+${session.usuario.usuarioID}" class="btn btn-info">CAMBIAR CONTRASE�A</a>
+			<a th:href="@{'/public/modificarP/'}+${session.usuario.usuarioID}" class="btn btn-info">CAMBIAR CONTRASEÑA</a>
+
 		</form>
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>

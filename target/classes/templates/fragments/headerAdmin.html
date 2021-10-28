@@ -13,6 +13,7 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
 		</script>
+
 </head>
 
 <body>
@@ -20,11 +21,12 @@
 	<!-- Sintaxis th:fragment="Nombre del fragment" -->
 	<div th:fragment="header">
 		<!-- this is header -->
-		<nav class="navbar navbar-inverse">
-			<div class="container">
+	<nav class="navbar navbar-default" style="background-color: #FEF0FE">
+				<div class="container">
 
 				<div class="navbar-header">
-					<a class="navbar-brand" th:href="@{/insertarUsuario/bienvenido}">ADMINISTRADOR</a>
+					<a class="navbar-brand" th:href="@{/insertarUsuario/bienvenido}" style="font-size:35px; color: black">ADMINISTRADOR</a>
+
 				</div>
 
 				<div id="navbar" class="collapse navbar-collapse">

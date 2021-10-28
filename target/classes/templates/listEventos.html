@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
 	<div th:if="${session.usuario.admin == 1}">
 		<div th:replace="fragments/headerAdmin :: header"></div>
 	</div>
@@ -33,14 +34,15 @@
 	<div class="container">
 
 		<form id="myform">
+		<h1>MIS EVENTOS</h1>
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 
-					<a style="border-bottom-color: green"
+					<a style="background-color:#9D186F; width:250px"
 						th:href="@{/eventos/irRegistrar}" id="add-row" type="button"
 						class="btn btn-primary btn-md left-block"> <span
 						class="glyphicon glyphicon-plus"></span> Evento
-					</a> <a style="border-bottom-color: green"
+					</a> <a style="background-color:#9D186F; width:250px"
 						th:href="@{/eventos/irBuscar}" id="add-row" type="button"
 						class="btn btn-primary btn-md left-block"> <span
 						class="glyphicon glyphicon-search"></span> Buscar

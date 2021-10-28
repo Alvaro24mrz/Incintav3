@@ -32,7 +32,7 @@
 	</div>
 	<div class="container">
 		<div class="row clearfix">
-			<h1 class="btn btn-primary btn-md left-block">Busquedas</h1>
+			<h1 >Busqueda de registro</h1>
 			<form th:action="@{/registro/searchRegistro}" method="post"
 				th:object="${registro}">
 				<div class="form-group">
@@ -41,9 +41,9 @@
 							th:field="*{fechaRegistro}" id="fecha"
 							placeholder="Ingrese la fecha a buscar"> </input>
 
-						<div align="left">
-							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/registro/listar" class="btn btn-dark">Cancelar</a>
+						<div align="center">
+							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
+							<a href="/registro/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
 
 						</div>
 					</div>

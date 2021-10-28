@@ -4,6 +4,7 @@
 
 <head>
 <link rel="icon" type="image/x-icon" href="/imagenes/incintaLogo.png">
+<link href="/imagenes/styles.css" rel="stylesheet">
 <meta charset="ISO-8859-1"></meta>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
@@ -15,53 +16,37 @@
 
 </head>
 
-<body>
-	<!-- th:fragment define un fragment los cuales sirven para evitar la redundancia de codigo -->
-	<!-- Sintaxis th:fragment="Nombre del fragment" -->
+<body >
+	
 	<div th:fragment="header">
 		<!-- this is header -->
-		<nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-default" style="background-color: #FEF0FE">
 			<div class="container">
 
 				<div class="navbar-header">
-					<a class="navbar-brand" th:href="@{/insertarUsuario/bienvenido}">INCINTA</a>
+					<a class="navbar-brand" th:href="@{/insertarUsuario/bienvenido}" style="font-size:35px; color: black">INCINTA</a>
 				</div>
 
 				<div id="navbar" class="collapse navbar-collapse">
 
 
-					<ul class="nav nav-pills nav-stacked">
 
-						<li><img class="logo" th:src="@{/imagenes/incintaLogo.png}"
-							style="height: 50px; width: 50px"></li>
+					<ul class="nav nav-pills nav-stacked"><li>	<img class="logo" th:src="@{/imagenes/incintaLogo.png}" 
+						style="height: 60px; width: 60px"> </li>
 					</ul>
 
-					<ul class="nav navbar-nav">
+					<ul class="nav nav-tabs">
+							<li role="presentation"><a th:href="@{/eventos/listar}" style="color:black">Mis Eventos</a></li>
+							<li role="presentation"><a th:href="@{/preguntasGestante/listar}" style="color:black">MisPreguntas</a></li>
+					  		<li role="presentation"><a th:href="@{/parametro/listar}" style="color:black">MisParametros</a></li>
+							<li role="presentation"><a th:href="@{/registro/listar}" style="color:black">Mis Registros</a></li>
+							<li role="presentation" ><a th:href="@{'/insertarUsuario/modificar/'}+${session.usuario.usuarioID}" style="color:black"> Mi Perfil </a></li>
+							<li role="presentation"><form th:action="@{/public/logout}"method="post">
+								<button type="submit" class="btn btn-primary mt-3" style="background-color: #9D186F">Log-Out</button>
 
-
-						<li class="active" role="presentation"><a
-							th:href="@{/eventos/listar}">Mis Eventos</a></li>
-						<li class="active" role="presentation"><a
-							th:href="@{/preguntasGestante/listar}">Mis Preguntas</a></li>
-						<li role="presentation"><a th:href="@{/parametro/listar}">Mis
-								Parametros</a></li>
-
-						<li class="active" role="presentation"><a
-							th:href="@{/registro/listar}">Mis Registros</a></li>
-
-						<li class="active"><a
-							th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}">
-								Mi Perfil </a></li>
-
-						<li class="active" role="presentation"><form
-								th:action="@{/public/logout}" method="post">
-								<button type="submit" class="btn btn-primary mt-3">Log-Out</button>
 							</form>
 					</ul>
-
-
 				</div>
-
 			</div>
 		</nav>
 	</div>
