@@ -31,18 +31,34 @@
 
 
 					<ul class="nav nav-pills nav-stacked">
-					<li>	<img class="logo" th:src="@{/imagenes/incintaLogo.png}"  style="height:50px;width:50px">
-					</li>
-					
-					  <li role="presentation" ><a th:href="@{/eventos/listar}">Mis Eventos</a></li>
-					  <li role="presentation"><a th:href="@{/preguntasGestante/listar}">Mis
+
+					<li>	<img class="logo" th:src="@{/imagenes/incintaLogo.png}"
+                     style="height: 50px; width: 50px"> </li>
+					</ul>
+
+					<ul class="nav navbar-nav">
+
+
+						<li class="active" role="presentation"><a th:href="@{/eventos/listar}">Mis
+								Eventos</a></li>
+						<li class="active" role="presentation"><a th:href="@{/preguntasGestante/listar}">Mis
+
 								Preguntas</a></li>
 					  <li role="presentation"><a th:href="@{/parametro/listar}">Mis
 								Parametros</a></li>
-					   <li role="presentation"><a th:href="@{/registro/listar}">Mis
-								Registros</a></li>
-					  <li role="presentation"><a th:href="@{/public/logout}" class="btn btn-primary mt-3">Log-Out</a></li>
-					  </ul>
+
+						<li class="active" role="presentation"><a th:href="@{/registro/listar}">Mis
+              Registros</a></li>
+								
+						<li class="active" ><a th:href="@{'/insertarUsuario/modificar/'}+${session.usuario.usuarioID}"> Mi Perfil </a></li>
+						
+						<li class="active" role="presentation"><form th:action="@{/public/logout}"
+								method="post">
+								<button type="submit" class="btn btn-primary mt-3">Log-Out</button>
+							</form>
+
+					</ul>
+
 
 				</div>
 

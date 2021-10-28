@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -30,7 +32,8 @@ public class LoginController {
 	@Autowired
 	private ITipoIdentificacionService tiService;
 	
-	@RequestMapping("/auth/login")
+	
+	@GetMapping("/auth/login")
 	public String login(Model model) {
 		model.addAttribute("usuario", new Usuario());
 		
@@ -39,7 +42,7 @@ public class LoginController {
 	
 	
 	//de usuario controller
-	@RequestMapping("/auth/irRegistrar")
+	@GetMapping("/auth/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
 		
 		model.addAttribute("listaTipoIdentificacion", tiService.listar());
@@ -55,7 +58,7 @@ public class LoginController {
 		return "insertarUsuario"; 
 	}
 	
-	@RequestMapping("/auth/registrar")
+	@PostMapping("/auth/registrar")
 	public String registrar(@Validated @ModelAttribute Usuario objUsuario, BindingResult binRes, Model model, Map<String, Object> model2) 
 		
 	{

@@ -61,10 +61,12 @@
 			<div class="alert alert-danger mb-3" th:if="${param.error}">Credenciales
 				incorrectas</div>
 
-			<h1 >LOGIN</h1>
-			<form th:action="@{/auth/login}" method="post">
+
+    <h1 >LOGIN</h1>
+			<form th:action="@{/auth/login-post}" method="post">
+
 				<div class="form-group">
-					<label for="correo">CORREO:</label> <input type="text"
+					<label for="correo">USUARIO:</label> <input type="text"
 						class="form-control" name="username"></input>
 
 					<div class="form-group">
