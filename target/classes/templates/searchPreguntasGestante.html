@@ -32,7 +32,7 @@
 	</div>
 	<div class="container">
 		<div class="row clearfix">
-			<h1 >Buscar Pregunta</h1>
+			<h1>Buscar Pregunta</h1>
 			<form th:action="@{/preguntasGestante/buscar}" method="post"
 				th:object="${preguntasGestante}">
 				<div class="form-group">
@@ -41,8 +41,10 @@
 							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
 
 						<div align="center">
-							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
-							<a href="/preguntasGestante/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
+							<button type="submit" class="btn btn-primary"
+								style="background-color: #9D186F">Buscar</button>
+							<a href="/preguntasGestante/listar" class="btn btn-dark"
+								style="background-color: #FEF0FE">Cancelar</a>
 
 						</div>
 					</div>
@@ -67,13 +69,21 @@
 
 				</tr>
 			</thead>
-			<tbody>
+
+			<tbody th:if="${session.usuario.admin == 2}">
 				<tr th:each="pg: ${listaPreguntasGestante}" th:object="${pg}"
 					th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
 					<td th:text="${pg.nTitulo}"></td>
 					<td th:text="${pg.tPregunta}"></td>
 					<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
-
+				</tr>
+			</tbody>
+			<tbody th:if="${session.usuario.admin == 1}">
+				<tr th:each="pg: ${listaPreguntasGestante}">
+					<td th:text="${pg.usuario.nUsuario}"></td>
+					<td th:text="${pg.nTitulo}"></td>
+					<td th:text="${pg.tPregunta}"></td>
+					<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
 				</tr>
 			</tbody>
 		</table>
