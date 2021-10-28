@@ -72,17 +72,7 @@
 
 				</div>
 
-				<div class="form-group">
-					<label for="password">PASSWORD:</label> 
-					<input 
-					type="text"	class="form-control" th:field="*{uPassword}" id="password"
-					></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('uPassword')}" th:errors="*{uPassword}">
-					</div>
-
-				</div>
+				
 
 				<div class="form-group">
 					<label for="nombre">TIPO DE IDENTIFICACION:</label> <select
@@ -198,6 +188,18 @@
 
 				<input type="text" class="form-control" th:field="*{admin}"
 						style="visibility: hidden"> </input>
+						
+				<div class="form-group">
+					<label for="password">CONFIRMAR CONTRASEÑA:</label> 
+					<input 
+					type="password"	class="form-control" th:field="*{uPassword}" id="password"
+					></input>
+
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('uPassword')}" th:errors="*{uPassword}">
+					</div>
+
+				</div>
 
 			</div>
 			<button type="submit" class="btn btn-primary">Aceptar</button>
