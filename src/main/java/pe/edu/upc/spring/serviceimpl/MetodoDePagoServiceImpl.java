@@ -35,7 +35,7 @@ public class MetodoDePagoServiceImpl implements IMetodoDePagoService{
 			flag = true;
 		}
 		catch(Exception ex) {
-			System.out.println("Ocurrio un roche, LUZ ROJA");
+			System.out.println("Ocurrio un error");
 		}
 		return flag;
 	}
