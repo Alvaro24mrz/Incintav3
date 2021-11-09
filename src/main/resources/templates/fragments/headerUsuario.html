@@ -5,7 +5,7 @@
 <head>
 <link rel="icon" type="image/x-icon" href="/imagenes/incintaLogo.png">
 <link href="/imagenes/styles.css" rel="stylesheet">
-<meta charset="ISO-8859-1"></meta>
+<meta charset="UTF-8"></meta>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -16,39 +16,76 @@
 
 </head>
 
-<body >
-	
+<body>
+
 	<div th:fragment="header">
 		<!-- this is header -->
-		<nav class="navbar navbar-default" style="background-color: #FEF0FE">
-			<div class="container">
 
-				<div class="navbar-header">
-					<a class="navbar-brand" th:href="@{/insertarUsuario/bienvenido}" style="font-size:35px; color: black">INCINTA</a>
-				</div>
-
-				<div id="navbar" class="collapse navbar-collapse">
-
-
-
-					<ul class="nav nav-pills nav-stacked"><li>	<img class="logo" th:src="@{/imagenes/incintaLogo.png}" 
-						style="height: 60px; width: 60px"> </li>
-					</ul>
-
-					<ul class="nav nav-tabs">
-							<li role="presentation"><a th:href="@{/eventos/listar}" style="color:black">Mis Eventos</a></li>
-							<li role="presentation"><a th:href="@{/preguntasGestante/listar}" style="color:black">MisPreguntas</a></li>
-					  		<li role="presentation"><a th:href="@{/parametro/listar}" style="color:black">MisParametros</a></li>
-							<li role="presentation"><a th:href="@{/registro/listar}" style="color:black">Mis Registros</a></li>
-							<li role="presentation" ><a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}" style="color:black"> Mi Perfil </a></li>
-							<li role="presentation"><form th:action="@{/public/logout}"method="post">
-								<button type="submit" class="btn btn-primary mt-3" style="background-color: #9D186F">Log-Out</button>
-
-							</form>
-					</ul>
-				</div>
+		<header>
+			<div class="icon__menu">
+				<i class="fas fa-bars" id="btn_open"></i>
 			</div>
-		</nav>
+		</header>
+		
+		<div class="menu__side" id="menu_side">
+
+			<div class="name__page">
+				<img class="iconper" th:src="@{/imagenes/flor-de-loto.png}">
+				<h4>INCINTA</h4>
+			</div>
+
+			<div class="options__menu">
+
+				<a th:href="@{/insertarUsuario/bienvenido}" class="selected">
+					<div class="option">
+						<i class="fas fa-heart" title="Inicio"></i>
+						<h4>Inicio</h4>
+					</div>
+				</a> <a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}">
+					<div class="option">
+						<i class="fas fa-user-circle" title="Mi Perfil"></i>
+						<h4>Mi Perfil</h4>
+					</div>
+				</a> <a href="#">
+					<div class="option">
+						<i class="fas fa-chart-line" title="Estadísticas"></i>
+						<h4>Estadísticas</h4>
+					</div>
+				</a> <a th:href="@{/eventos/listar}">
+					<div class="option">
+						<i class="far fa-calendar" title="Calendario"></i>
+						<h4>Calendario</h4>
+					</div>
+				</a> <a th:href="@{/preguntasGestante/listar}">
+					<div class="option">
+						<i class="far fa-sticky-note" title="Anotaciones"></i>
+						<h4>Anotaciones</h4>
+					</div>
+				</a> <a th:href="@{/parametro/listar}">
+					<div class="option">
+						<i class="fas fa-heartbeat" title="Parámetros"></i>
+						<h4>Parámetros</h4>
+					</div>
+				</a> <a th:href="@{/registro/listar}">
+					<div class="option">
+						<i class="fas fa-heartbeat" title="Signos Vitales"></i>
+						<h4>Signos Vitales</h4>
+					</div>
+				</a> <a href="#">
+					<div class="option">
+						<i class="fas fa-user-md" title="Obstetras"></i>
+						<h4>Obstetras</h4>
+					</div>
+				</a>
+				<form th:action="@{/public/logout}" method="post">
+					<i class="fas fa-heartbeat" title="Signos Vitales"></i>
+					<button type="submit" class="btn btn-primary mt-3 btnPer">
+						<h4>Log-Out</h4>
+					</button>
+
+				</form>
+			</div>
+		</div>
 	</div>
 
 </body>

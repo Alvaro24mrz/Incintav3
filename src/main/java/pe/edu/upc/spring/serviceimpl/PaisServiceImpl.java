@@ -35,7 +35,7 @@ public class PaisServiceImpl implements IPaisService{
 			flag = true;
 		}
 		catch(Exception ex) {
-			System.out.println("Ocurrio un roche, LUZ ROJA");
+			System.out.println("Ocurrio un error");
 		}
 		return flag;
 	}

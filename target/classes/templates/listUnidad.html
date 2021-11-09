@@ -6,6 +6,12 @@
 <meta charset="UTF-8"></meta>
 <title>Unidades</title>
 
+<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js"
+	crossorigin="anonymous"></script>
+
+
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
 		</script>
@@ -30,6 +36,8 @@
 	<div th:if="${session.usuario.admin == 2}">
 		<div th:replace="fragments/headerUsuario :: header"></div>
 	</div>
+	
+	
 	<div class="container">
 		<form id="myform">
 		<h1>Uidades</h1>
@@ -79,7 +87,11 @@
 			</div>
 		</form>
 	</div>
+	</main>
+	
 	<div th:replace="fragments/footer :: footer"></div>
+	
+	<script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>
