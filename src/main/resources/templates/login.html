@@ -3,10 +3,16 @@
 
 <head>
 
-<meta charset="ISO-8859-1"></meta>
+<meta charset="UTF-8"></meta>
 <title>Login</title>
 
+<link rel="stylesheet" href="" th:href="@{/css/style.css}">
 
+<script src="https://kit.fontawesome.com/41bcea2ae3.js"
+	crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="" th:href="@{/css/estilos1.css}" >
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -24,8 +30,9 @@
 
 </head>
 
-<body style="background-color:#FEF0FE">
-		<div th:fragment="header">
+<body  id ="body" style="background-color:#FEF0FE">
+
+	<div th:fragment="header">
 		<!-- this is header -->
 		<nav class="navbar navbar-inverse" style="background-color: #FFFFFF">
 
@@ -45,9 +52,6 @@
 			</div>
 		</nav>
 	</div>
-	
-	
-	
 	
 	<div class="container">
 		
@@ -90,7 +94,11 @@
 
 
 	</div>
+	
+	
 	<div th:replace="fragments/footer :: footer"></div>
+	
+	<script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

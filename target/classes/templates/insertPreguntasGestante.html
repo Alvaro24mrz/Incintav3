@@ -3,8 +3,14 @@
 
 <head>
 
-<meta charset="ISO-8859-1"></meta>
+<meta charset="UTF-8"></meta>
 <title>Nueva Pregunta</title>
+
+<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js"
+	crossorigin="anonymous"></script>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -21,13 +27,16 @@
 
 </head>
 
-<body>
+<body id="body">
+
 	<div th:if="${session.usuario.admin == 1}">
 		<div th:replace="fragments/headerAdmin :: header"></div>
 	</div>
 	<div th:if="${session.usuario.admin == 2}">
 		<div th:replace="fragments/headerUsuario :: header"></div>
 	</div>
+	
+	<main>
 	<div class="container">
 		<form th:action="@{/preguntasGestante/registrar}" method="post"
 			th:object="${preguntasGestante}">
@@ -79,7 +88,11 @@
 			<a href="/preguntasGestante/listar" class="btn btn-danger" style="background-color:#FEF0FE; width: 250px; color: black">Cancelar</a>
 		</form>
 	</div>
+	</main>
+	
 	<div th:replace="fragments/footer :: footer"></div>
+	
+	<script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

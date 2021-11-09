@@ -6,6 +6,8 @@
 <meta charset="UTF-8"></meta>
 <title>INCINTA</title>
 
+<link rel="stylesheet" th:href="@{/css/estilos1.css}">
+
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
 		</script>
@@ -24,10 +26,10 @@
 
 </head>
 
-<body style="background-color:#FEF0FE">
-
+<body style="background-color: #FEF0FE">
 
 	<div th:replace="fragments/headerInicio :: header"></div>
+
 	<div class="container">
 		<form id="myform">
 			<div class="row clearfix">
@@ -81,40 +83,50 @@
 			<br>
 
 
-		<div class="row">
-		  <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200" alt="logoLottus" > </img>
-		      <div class="caption">
-		        <h3>¿Quienes somos?</h3>
-		        <p>Somos un grupo de estudiantes de la Universidad Peruana de Ciencias Aplicadas </p>
-		        
-		      </div>
-		    </div>
-		  </div>
-		  
-		   <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200" alt="logoLottus" > </img>
-		      <div class="caption">
-		        <h3>¿Qué es INCINTA?</h3>
-		        <p>Incinta es una aplicación dirigida a todas las madres gestantes que deseen mantener un control sobre su ciclo de embarazo</p>
-			       <p>Podrás registrar tus consultas médicas, guardar las preguntas que quieres hacerle a tu doctor, entre otras cosas.</p>
-		     <p><a href="/auth/irRegistrar" style="background-color: #9D186F" class="btn btn-primary" role="button">Ir a REGISTRARME</a> </p>
-			  </div>
-		    </div>
-		  </div>
-		   <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200" alt="logoLottus" > </img>
-		      <div class="caption">
-		        <h3>INCINTA</h3>
-		        <p>Es una aplicación de costo unico de $4.00</p>
-			       <p>Luego de ello tendás acceso a la aplicación</p>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+			<div class="row">
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200"
+							alt="logoLottus"> </img>
+						<div class="caption">
+							<h3>¿Quienes somos?</h3>
+							<p>Somos un grupo de estudiantes de la Universidad Peruana de
+								Ciencias Aplicadas</p>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200"
+							alt="logoLottus"> </img>
+						<div class="caption">
+							<h3>¿Qué es INCINTA?</h3>
+							<p>Incinta es una aplicación dirigida a todas las madres
+								gestantes que deseen mantener un control sobre su ciclo de
+								embarazo</p>
+							<p>Podrás registrar tus consultas médicas, guardar las
+								preguntas que quieres hacerle a tu doctor, entre otras cosas.</p>
+							<p>
+								<a href="/auth/irRegistrar" style="background-color: #9D186F"
+									class="btn btn-primary" role="button">Ir a REGISTRARME</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200"
+							alt="logoLottus"> </img>
+						<div class="caption">
+							<h3>INCINTA</h3>
+							<p>Es una aplicación de costo unico de $4.00</p>
+							<p>Luego de ello tendás acceso a la aplicación</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 

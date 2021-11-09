@@ -6,6 +6,12 @@
 <meta charset="UTF-8"></meta>
 <title>Lista de Eventos</title>
 
+<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js"
+	crossorigin="anonymous"></script>
+
+
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
 		</script>
@@ -23,7 +29,7 @@
 
 </head>
 
-<body>
+<body id="body">
 
 	<div th:if="${session.usuario.admin == 1}">
 		<div th:replace="fragments/headerAdmin :: header"></div>
@@ -31,6 +37,8 @@
 	<div th:if="${session.usuario.admin == 2}">
 		<div th:replace="fragments/headerUsuario :: header"></div>
 	</div>
+	
+	<main>
 	<div class="container">
 
 		<form id="myform">
@@ -97,7 +105,11 @@
 			</div>
 		</form>
 	</div>
+	</main>
+	
 	<div th:replace="fragments/footer :: footer"></div>
+	
+	<script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

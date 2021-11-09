@@ -3,8 +3,13 @@
 
 <head>
 
-<meta charset="ISO-8859-1"></meta>
+<meta charset="UTF-8"></meta>
 <title>Registro</title>
+
+<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js"
+	crossorigin="anonymous"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -21,7 +26,7 @@
 
 </head>
 
-<body style="background-color:#FEF0FE">
+<body id="body" style="background-color:#FEF0FE">
 
 
 	<div th:replace="fragments/headerInicio :: header"></div>
@@ -82,8 +87,7 @@
 						th:if="${#fields.hasErrors('uCorreo')}" th:errors="*{uCorreo}">
 					</div>
 
-
-		</div><!-- /input-group -->
+				</div><!-- /input-group -->
 				  </div><!-- /.col-lg-6 -->
 				  
 				  <div class="col-lg-6">
@@ -120,7 +124,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
+				      <label for="numID">NÃMERO DE IDENTIFICACIÃN:</label> <input
 						type="text" class="form-control" th:field="*{numIdentificacion}"
 						id="numID"></input>
 
@@ -161,7 +165,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">MÉTODO DE PAGO:</label> <select
+				      <label for="nombre">MÃTODO DE PAGO:</label> <select
 						class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
 						<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 							th:text="${mp.nombreMetodoPago}"
@@ -173,7 +177,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
+				      <label for="ntarjeta">NÃMERO DE TARJETA:</label> <input
 						type="text" class="form-control" th:field="*{numMetodoPago}"
 						id="ntarjeta" required></input>
 
@@ -189,7 +193,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control"
+				      <label for="nombre">SEMANA DE GESTACIÃN:</label> <select class="form-control"
 						th:field="*{semanaGestacion}">
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -259,6 +263,7 @@
 			<a href="/insertarUsuario/listar" class="btn btn-danger" style="background-color:#FEF0FE; width: 250px; color: black">Cancelar</a>
 		</form>
 	</div>
+	
 	<div th:replace="fragments/footer :: footer"></div>
 </body>
 
