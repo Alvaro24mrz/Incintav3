@@ -23,17 +23,19 @@
 	<div th:fragment="header">
 		<!-- this is header -->
 
-		<nav class="navbar navbar-inverse" style="background-color: #FFFFFF">
+		<nav class="navbar navbar-default" style="background-color: #FFFFFF">
 
 			<div class="container">
 
 				<ul class="nav nav-pills nav-justified">
-
-					<li><p class="navbar-text navbar-left"
-							style="font-size: 30px;">
-							<a style="color: #9D186F" th:href="@{/public/bienvenidoInicio}">INCINTA</a>
+				<li style="width: 50px;"><p class="navbar-text navbar-left"><img class="logo" th:src="@{/imagenes/incintaLogo.png}"  style="height:70px;width:70px; "></p></li>
+				
+					
+					<li ><p class="navbar-text navbar-center"
+							style="font-size: 30px; text-align:center;">
+							<a style="color: #9D186F" th:href="@{/public/bienvenidoInicio}">INICIO</a>
 						</p></li>
-					<li><p class="navbar-text navbar-center"
+					<li ><p class="navbar-text navbar-right"
 							style="font-size: 30px">
 							<a style="color: #9D186F" th:href="@{/auth/login}">LOGIN</a>
 						</p></li>
