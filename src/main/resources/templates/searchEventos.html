@@ -32,7 +32,7 @@
 	</div>
 	<div class="container">
 		<div class="row clearfix">
-			<h1 >Busqueda de Eventos</h1>
+			<h1>Busqueda de Eventos</h1>
 			<form th:action="@{/eventos/buscar}" method="post"
 				th:object="${eventos}">
 				<div class="form-group">
@@ -40,10 +40,12 @@
 						<input type="date" class="form-control" th:field="*{fechaEvento}"
 							id="fecha" placeholder="Ingrese la fecha abuscar"> </input>
 
-<hr>
+						<hr>
 						<div align="center">
-							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
-							<a href="/eventos/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
+							<button type="submit" class="btn btn-primary"
+								style="background-color: #9D186F">Buscar</button>
+							<a href="/eventos/listar" class="btn btn-dark"
+								style="background-color: #FEF0FE">Cancelar</a>
 
 						</div>
 					</div>
@@ -67,18 +69,27 @@
 					<th class="text-center">Hora de Fin</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr th:each="ev: ${listaEventos}" th:object="${ev}"
-					th:if="${ev.usuario.usuarioID == session.usuario.usuarioID}">
-					<td th:text="${ev.tTitulo}"></td>
-					<td th:text="${ev.tDescripcion}"></td>
-					<td th:text="${ev.fechaEvento}"></td>
-					<td th:text="${ev.hInicio}"></td>
-					<td th:text="${ev.hFin}"></td>
 
-
+			<tbody th:if="${session.usuario.admin == 2}">
+				<tr th:each="pg: ${listaEventos}" th:object="${pg}"
+					th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
+					<td th:text="${pg.tTitulo}"></td>
+					<td th:text="${pg.tDescripcion}"></td>
+					<td th:text="${pg.fechaEvento}"></td>
+					<td th:text="${pg.hInicio}"></td>
+					<td th:text="${pg.hFin}"></td>
 				</tr>
 			</tbody>
+			<tbody th:if="${session.usuario.admin == 1}">
+				<tr th:each="pg: ${listaEventos}">
+					<td th:text="${pg.tTitulo}"></td>
+					<td th:text="${pg.tDescripcion}"></td>
+					<td th:text="${pg.fechaEvento}"></td>
+					<td th:text="${pg.hInicio}"></td>
+					<td th:text="${pg.hFin}"></td>
+				</tr>
+			</tbody>
+
 		</table>
 
 
