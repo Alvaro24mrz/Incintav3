@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/public/**","/auth/**","/static/css/**","/public/**", "/imagenes/**", "/static/imagenes/**", "/static/js/**").permitAll().anyRequest().authenticated()
+
 		.and()
 			.formLogin().loginPage("/public/bienvenidoInicio").defaultSuccessUrl("/private/index",true).failureUrl("/auth/login?error=true")
 			.loginProcessingUrl("/auth/login-post").permitAll()
