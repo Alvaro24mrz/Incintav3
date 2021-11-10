@@ -23,8 +23,10 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query("from Usuario u where u.uCorreo like %:uCorreo%")
 	List<Usuario> buscarCorreo(@Param("uCorreo") String uCorreo);
 	
+	@Query("from Usuario u where u.uCorreo like %:uCorreo%")
+	String recuperarPassword(@Param("uCorreo") String uCorreo);
+	
 	public Usuario findBynUsuario(String nUsuario);
-	
-	
+
 
 }
