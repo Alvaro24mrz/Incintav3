@@ -19,7 +19,7 @@
 <body>
 	<div th:fragment="header">
 		<!-- this is header -->
-    
+
 		<header>
 			<div class="icon__menu">
 				<i class="fas fa-bars" id="btn_open"></i>
@@ -44,28 +44,28 @@
 				<a th:href="@{/insertarPaises/listar}">
 					<div class="option">
 						<i class="fas fa-globe-americas" title="Paises"></i>
-						<h4>Paises</h4>
+						<h4>Países</h4>
 					</div>
 				</a>
 		
 				<a th:href="@{/insertarMDP/listar}">
 					<div class="option">
 						<i class="far fa-credit-card" title="Metodo De Pago"></i>
-						<h4>Metodo De Pago</h4>
+						<h4>Método De Pago</h4>
 					</div>
 				</a>
 				
 				<a th:href="@{/insertarUsuario/listar}">
 					<div class="option">
 						<i class="fas fa-users" title="Usuario"></i>
-						<h4>Usuario</h4>
+						<h4>Usuarios</h4>
 					</div>
 				</a>
 				
 				<a th:href="@{/tipoIdentificacion/listar}">
 					<div class="option">
 						<i class="fas fa-address-card" title="Identificacion"></i>
-						<h4>Identificacion</h4>
+						<h4>Identificación</h4>
 					</div>
 				</a>
 				
@@ -86,19 +86,19 @@
 				<a th:href="@{/parametro/listar}">
 					<div class="option">
 						<i class="fas fa-heartbeat" title="Parametros"></i>
-						<h4>Parametros</h4>
+						<h4>Parámetros</h4>
 					</div>
 				</a>
 				
 				<a th:href="@{/registro/listar}">
 					<div class="option">
-						<i class="fas fa-heartbeat" title="Registros"></i>
+						<i class="fas fa-notes-medical" title="Registros"></i>
 						<h4>Registros</h4>
 					</div>
 				</a>
 				
 				<form th:action="@{/public/logout}" method="post">
-					<i class="fas fa-heartbeat" title="Signos Vitales"></i>
+					<i class="fas fa-power-off" title="Signos Vitales"></i>
 					<button type="submit" class="btn btn-primary mt-3 btnPer">
 						<h4>Log-Out</h4>
 					</button>

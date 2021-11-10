@@ -6,17 +6,13 @@
 <meta charset="UTF-8"></meta>
 <title>Login</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/estilos/stylePublico.css}">
 
 
-<script src="https://kit.fontawesome.com/41bcea2ae3.js"
-	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" th:href="@{/css/styles.css}" />
+
 <!-- link de fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courgette&family=Dongle:wght@300&family=Sacramento&display=swap" rel="stylesheet">
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -24,7 +20,7 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-	
+
 
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
@@ -34,47 +30,61 @@
 
 </head>
 
-<body  id ="body" style="background-color:#FEF0FE">
+<body id="body" style="background-color: #FEF0FE">
 
 	<div th:fragment="header">
 
 		<!-- this is header -->
 		<nav class="navbar navbar-inverse" style="background-color: #FFFFFF">
 
-			<div class="container" >
-			
-			<ul class="nav nav-pills nav-justified" >
-			
-			
-			
-			 	<li><p class="navbar-text navbar-left"><img class="logo" th:src="@{/imagenes/incintaLogo.png}"  style="height:70px;width:70px; "></p></li>
-				<li><p class="navbar-text navbar-center" style="font-size:30px"><a style="color:#9D186F" th:href="@{/public/bienvenidoInicio}">INCINTA</a></p></li>
-				<li><p class="navbar-text navbar-right"><img class="logo" th:src="@{/imagenes/incintaLogo.png}"  style="height:70px;width:70px; "></p></li>
-			</ul>
-						
+			<div class="container">
+
+				<ul class="nav nav-pills nav-justified">
+
+
+
+					<li><p class="navbar-text navbar-left">
+							<img class="logo" th:src="@{/imagenes/incintaLogo.png}"
+								style="height: 70px; width: 70px;">
+						</p></li>
+
+
+					<li>
+						<p class="navbar-text navbar-center" style="font-size: 30px">
+							<a style="color: #9D186F" th:href="@{/public/bienvenidoInicio}">INCINTA</a>
+						</p>
+					</li>
+
+
+					<li><p class="navbar-text navbar-right">
+							<img class="logo" th:src="@{/imagenes/incintaLogo.png}"
+								style="height: 70px; width: 70px;">
+						</p></li>
+				</ul>
+
 
 
 			</div>
 		</nav>
 	</div>
-	
+
 	<div class="container">
-		
-			<div class="col-md-6 column" align="center">
-				<img th:src="@{/imagenes/bienvenidaGestante.png}" width="500"
-					height="500" alt="bienvenidaGestante" align="middle"> </img>
-			</div>
-		
+
+		<div class="col-md-6 column" align="center">
+			<img th:src="@{/imagenes/bienvenidaGestante.png}" width="500"
+				height="500" alt="bienvenidaGestante" align="middle"> </img>
+		</div>
+
 
 		<div class="col-md-6 column" align="left">
-			
+
 			<!-- <div class="alert alert-danger" role="alert">...</div> -->
-			
+
 			<div class="alert alert-danger mb-3" th:if="${param.error}">Credenciales
 				incorrectas</div>
 
 
-    <h1 >LOGIN</h1>
+			<h1>LOGIN</h1>
 			<form th:action="@{/auth/login-post}" method="post">
 
 				<div class="form-group">
@@ -87,23 +97,26 @@
 					</div>
 
 				</div>
-				<button type="submit"  class="btn btn-primary btn2">Login</button>
-				<a href="/insertarUsuario/listar"  class="btn btn-primary btn1" >Regresar a inicio</a>
-		<!-- style="background-color: #FEF0FE; color: black" -->
+				<button type="submit" class="btn btn-primary btn2">Login</button>
+				<a href="/insertarUsuario/listar" class="btn btn-primary btn1">Regresar
+					a inicio</a>
+
+
 			</form>
 			<br>
 			<div class="form-group">
-				<a href="/auth/irRegistrar"  > ¿Aún no tienes una cuenta? Regístrate aquí</a>
+				<a href="/auth/irRegistrar"> ¿Aún no tienes una cuenta?
+					Regístrate aquí</a>
 			</div>
 
 		</div>
 
 
 	</div>
-	
-	
+
+
 	<div th:replace="fragments/footer :: footer"></div>
-	
+
 	<script th:src="@{/js/script.js}"></script>
 </body>
 

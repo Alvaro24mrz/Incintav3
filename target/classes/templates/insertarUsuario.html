@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Registro</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -110,7 +110,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">TIPO DE IDENTIFICACION:</label> <select
+				      <label for="nombre">TIPO DE IDENTIFICACIÓN:</label> <select
 						class="form-control"
 						th:field="*{iDTipoIdentificacion.idTipoIdentificacion}">
 						<option th:each="ti: ${listaTipoIdentificacion}"
@@ -124,7 +124,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="numID">NÃMERO DE IDENTIFICACIÃN:</label> <input
+				      <label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
 						type="text" class="form-control" th:field="*{numIdentificacion}"
 						id="numID"></input>
 
@@ -151,7 +151,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">PAIS:</label> <select class="form-control"
+				      <label for="nombre">PAÍS:</label> <select class="form-control"
 						th:field="*{iDPais.idPais}">
 						<option th:each="p: ${listaPaises}" th:value="${p.idPais}"
 							th:text="${p.nombrePais}"
@@ -165,7 +165,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">MÃTODO DE PAGO:</label> <select
+				      <label for="nombre">MÉTODO DE PAGO:</label> <select
 						class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
 						<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 							th:text="${mp.nombreMetodoPago}"
@@ -177,7 +177,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="ntarjeta">NÃMERO DE TARJETA:</label> <input
+				      <label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
 						type="text" class="form-control" th:field="*{numMetodoPago}"
 						id="ntarjeta" required></input>
 
@@ -193,7 +193,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">SEMANA DE GESTACIÃN:</label> <select class="form-control"
+				      <label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control"
 						th:field="*{semanaGestacion}">
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -259,8 +259,8 @@
 
 
 			</div>
-			<button type="submit" class="btn btn-primary" style="background-color:#9D186F; width:250px">Aceptar</button>
-			<a href="/insertarUsuario/listar" class="btn btn-danger" style="background-color:#FEF0FE; width: 250px; color: black">Cancelar</a>
+			<button type="submit" class="btn btn-primary btn2" >Aceptar</button>
+			<a href="/insertarUsuario/listar" class="btn btn1">Cancelar</a>
 		</form>
 	</div>
 	

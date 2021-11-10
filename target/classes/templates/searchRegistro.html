@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Busqueda de Registro</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -41,7 +41,7 @@
 	<main>
 	<div class="container">
 		<div class="row clearfix">
-			<h1 >Busqueda de registro</h1>
+			<h1 >Búsqueda de registro</h1>
 			<form th:action="@{/registro/searchRegistro}" method="post"
 				th:object="${registro}">
 				<div class="form-group">
@@ -51,8 +51,8 @@
 							placeholder="Ingrese la fecha a buscar"> </input>
 
 						<div align="center">
-							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
-							<a href="/registro/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
+							<button type="submit" class="btn btn-primary btn2" >Buscar</button>
+							<a href="/registro/listar" class="btn  btn1" >Cancelar</a>
 
 						</div>
 					</div>
@@ -70,12 +70,12 @@
 			id="tab_logic">
 			<thead>
 				<tr>
-					<th class="text-center">CODIGO</th>
-					<th class="text-center">USUARIO</th>
-					<th class="text-center">PARAMETRO</th>
-					<th class="text-center">VALOR</th>
-					<th class="text-center">FECHA</th>
-					<th class="text-center">ANOTACIONES</th>
+					<th class="text-center">Código</th>
+					<th class="text-center">Usuario</th>
+					<th class="text-center">Parámetro</th>
+					<th class="text-center">Valor</th>
+					<th class="text-center">Fecha</th>
+					<th class="text-center">Anotaciones</th>
 
 
 				</tr>

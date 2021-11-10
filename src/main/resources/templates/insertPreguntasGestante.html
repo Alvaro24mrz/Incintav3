@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Nueva Pregunta</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -49,7 +49,7 @@
 
 
 				<div class="form-group">
-					<label for="nombre">TITULO DE LA PREGUNTA:</label> <input
+					<label for="nombre">TÍTULO DE LA PREGUNTA:</label> <input
 						type="text" class="form-control" th:field="*{nTitulo}" id="nombre" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nTitulo')}" th:errors="*{nTitulo}">
@@ -57,7 +57,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">DESCRIPCION:</label> <input type="text"
+					<label for="nombre">DESCRIPCIÓN:</label> <input type="text"
 						class="form-control" th:field="*{tPregunta}" id="nombrepregunta" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('tPregunta')}" th:errors="*{tPregunta}">
@@ -84,8 +84,8 @@
 				</div>
 
 			</div>
-			<button type="submit" class="btn btn-primary" style="background-color:#9D186F; width:250px">Aceptar</button>
-			<a href="/preguntasGestante/listar" class="btn btn-danger" style="background-color:#FEF0FE; width: 250px; color: black">Cancelar</a>
+			<button type="submit" class="btn btn-primary btn2" >Aceptar</button>
+			<a href="/preguntasGestante/listar" class="btn btn-danger btn1" >Cancelar</a>
 		</form>
 	</div>
 	</main>

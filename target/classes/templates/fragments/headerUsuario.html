@@ -4,7 +4,7 @@
 
 <head>
 <link rel="icon" type="image/x-icon" href="/imagenes/incintaLogo.png">
-<link href="/imagenes/styles.css" rel="stylesheet">
+
 <meta charset="UTF-8"></meta>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
@@ -25,8 +25,9 @@
 			<div class="icon__menu">
 				<i class="fas fa-bars" id="btn_open"></i>
 			</div>
+			<div style="text-align:right"><h1 >INCINTA</h1></div>
 		</header>
-		
+
 		<div class="menu__side" id="menu_side">
 
 			<div class="name__page">
@@ -46,39 +47,30 @@
 						<i class="fas fa-user-circle" title="Mi Perfil"></i>
 						<h4>Mi Perfil</h4>
 					</div>
-				</a> <a href="#">
-					<div class="option">
-						<i class="fas fa-chart-line" title="Estadísticas"></i>
-						<h4>Estadísticas</h4>
-					</div>
 				</a> <a th:href="@{/eventos/listar}">
 					<div class="option">
 						<i class="far fa-calendar" title="Calendario"></i>
-						<h4>Calendario</h4>
+						<h4>Mis Eventos</h4>
 					</div>
 				</a> <a th:href="@{/preguntasGestante/listar}">
 					<div class="option">
 						<i class="far fa-sticky-note" title="Anotaciones"></i>
-						<h4>Anotaciones</h4>
+						<h4>Mis Preguntas</h4>
 					</div>
 				</a> <a th:href="@{/parametro/listar}">
 					<div class="option">
-						<i class="fas fa-heartbeat" title="Parámetros"></i>
-						<h4>Parámetros</h4>
+						<i class="fas fa-notes-medical" title="Parámetros"></i>
+						<h4>Mis Parámetros</h4>
 					</div>
 				</a> <a th:href="@{/registro/listar}">
 					<div class="option">
 						<i class="fas fa-heartbeat" title="Signos Vitales"></i>
-						<h4>Signos Vitales</h4>
-					</div>
-				</a> <a href="#">
-					<div class="option">
-						<i class="fas fa-user-md" title="Obstetras"></i>
-						<h4>Obstetras</h4>
+						<h4>Mis Registros</h4>
 					</div>
 				</a>
+
 				<form th:action="@{/public/logout}" method="post">
-					<i class="fas fa-heartbeat" title="Signos Vitales"></i>
+					<i class="fas fa-power-off" title="Signos Vitales"></i>
 					<button type="submit" class="btn btn-primary mt-3 btnPer">
 						<h4>Log-Out</h4>
 					</button>

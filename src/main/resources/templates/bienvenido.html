@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>INCINTA</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+<link rel="stylesheet" href="" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@
 
 </head>
 
-<body  id="body" style="background-color: #FEF0FE">
+<body id="body" style="background-color: #FEF0FE">
 
 	<div th:if="${session.usuario.admin == 1}">
 		<div th:replace="fragments/headerAdmin :: header"></div>
@@ -60,28 +60,29 @@
 							médicas o solo para tener un registro de tu embarazo.</p>
 						<h3>Detallando un poco más los campos:</h3>
 
-						<ul>
-							<li>Mis Eventos: Podrás agendar tus eventos en una lista
-								para tener todo ordenado. Por ejemplo, podrías enlistar una cita
-								médica.</li>
-							<li>Mis Preguntas: Podrás enlistar preguntas o consultas
-								triviales que quieras hacer a tu médico en alguna cita. De esta
-								manera, no te olvidarás de realizar alguna pregunta.</li>
-							<li>Mis Parámetros: Es una sección para registrar parámetros
-								como "metros", "cm", para que luego puedas registrar valores en
-								caso los necesites. Nosotros te proveemos algunos parámetros, la
-								sección existe por si tu quieres añadir alguno personalmente.</li>
-							<li>Mis Registros: Podrás registrar valores de signos
-								vitales importantes que quieras llevar un registro. Por ejemplo,
-								podrás mantener un registro de tu peso.</li>
-						</ul>
+						<p>Mis Eventos: Podrás agendar tus eventos en una lista para
+							tener todo ordenado. Por ejemplo, podrías enlistar una cita
+							médica.</p>
+
+						<p>Mis Preguntas: Podrás enlistar preguntas o consultas
+							triviales que quieras hacer a tu médico en alguna cita. De esta
+							manera, no te olvidarás de realizar alguna pregunta.</p>
+
+						<p>Mis Parámetros: Es una sección para registrar parámetros
+							como "metros", "cm", para que luego puedas registrar valores en
+							caso los necesites. Nosotros te proveemos algunos parámetros, la
+							sección existe por si tu quieres añadir alguno personalmente.</p>
+
+						<p>Mis Registros: Podrás registrar valores de signos vitales
+							importantes que quieras llevar un registro. Por ejemplo, podrás
+							mantener un registro de tu peso.</p>
 					</div>
 
 					<div class="col-md-6 column" align="right">
 						<img th:src="@{/imagenes/bienvenida2.png}" width="400"
 							height="400" alt="bienvenida2" align="middle"> </img>
 					</div>
-					
+
 				</div>
 
 				<br>
@@ -108,8 +109,8 @@
 								<p>Es una aplicación de costo unico de $4.00</p>
 								<p>Luego de ello tendás acceso a la aplicación</p>
 								<p>
-									<a href="/auth/irRegistrar" style="background-color: #9D186F"
-										class="btn btn-primary" role="button">Ir a REGISTRARME</a>
+									<a href="/auth/irRegistrar"
+										class="btn btn-primary btn2" role="button">Ir a registrarme</a>
 								</p>
 							</div>
 						</div>
@@ -131,7 +132,7 @@
 	</main>
 
 	<div th:replace="fragments/footer :: footer"></div>
-	
+
 	<script th:src="@{/js/script.js}"></script>
 </body>
 

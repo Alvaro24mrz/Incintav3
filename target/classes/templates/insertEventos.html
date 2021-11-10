@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Eventos</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -48,7 +48,7 @@
 					style="visibility: hidden"> </input>
 
 				<div class="form-group">
-					<label for="nombre">Titulo:</label> <input type="text"
+					<label for="nombre">TÍTULO:</label> <input type="text"
 						class="form-control" th:field="*{tTitulo}" id="nombre" required></input>
 
 					<div class="alert alert-danger"
@@ -57,7 +57,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="nombre">Fecha de Evento:</label> <input type="date"
+					<label for="nombre">FECHA DE EVENTO:</label> <input type="date"
 						class="form-control" th:field="*{fechaEvento}" id="fechaEvento" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('fechaEvento')}" th:errors="*{fechaEvento}">
@@ -65,17 +65,17 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inicio">Hora de Inicio:</label> <input
+					<label for="inicio">HORA DE INICIO:</label> <input
 						class="form-control" type="time" th:field="*{hInicio}" required/>
 				</div>
 
 				<div class="form-group">
-					<label for="fin">Hora de Fin:</label> <input class="form-control"
+					<label for="fin">HORA DE FIN:</label> <input class="form-control"
 						type="time" th:field="*{hFin}" required/>
 				</div>
 
 				<div class="form-group">
-					<label for="descripcion">Comentario:</label> <input type="text"
+					<label for="descripcion">COMENTARIO:</label> <input type="text"
 						class="form-control" th:field="*{tDescripcion}" id="descripcion" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('tDescripcion')}"
@@ -95,8 +95,8 @@
 
 
 			</div>
-			<button type="submit" class="btn btn-primary" style="background-color:#9D186F; width:250px">Aceptar</button>
-			<a href="/eventos/listar" class="btn btn-danger" style="background-color:#FEF0FE; width: 250px; color: black">Cancelar</a>
+			<button type="submit" class="btn btn-primary btn2">Aceptar</button>
+			<a href="/eventos/listar" class="btn btn1" >Cancelar</a>
 		</form>
 	</div>
 	</main>

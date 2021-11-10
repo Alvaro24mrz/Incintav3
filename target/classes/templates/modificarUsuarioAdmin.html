@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Registro</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -94,7 +94,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">TIPO DE IDENTIFICACION:</label> <select
+					<label for="nombre">TIPO DE IDENTIFICACIÓN:</label> <select
 						class="form-control"
 						th:field="*{iDTipoIdentificacion.idTipoIdentificacion}">
 						<option th:each="ti: ${listaTipoIdentificacion}"
@@ -128,7 +128,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">PAIS:</label> <select class="form-control"
+					<label for="nombre">PAÍS:</label> <select class="form-control"
 						th:field="*{iDPais.idPais}">
 						<option th:each="p: ${listaPaises}" th:value="${p.idPais}"
 							th:text="${p.nombrePais}"

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Courgette&family=Dongle:wght@300&family=Lato&family=Sacramento&display=swap')
+	;
+
+.letra1 {
+	color: red;
+}
+
+h1 {
+	text-align: center;
+	font-family: 'Courgette', cursive !important;
+	font-size: 40px !important;
+}
+
+h2 {
+	text-align: center;
+	font-family: 'Courgette', cursive !important;
+	font-size: 30px !important;
+}
+
+h3 {
+	text-align: center;
+	font-family: 'Courgette', cursive !important;
+	font-size: 25px !important;
+}
+
+label {
+	font-family: 'Lato', sans-serif !important;
+	text-align: justify;
+	font-size: 18px !important;
+}
+
+body {
+	font-family: 'Lato', sans-serif !important;
+	text-align: justify;
+	font-size: 18px !important;
+}
+
+p {
+	font-family: 'Lato', sans-serif !important;
+	text-align: justify;
+	font-size: 18px !important;
+}
+
+.btn1 {
+	background-color: #FEF0FE !important;
+	color: black !important;
+	font-family: 'Lato', sans-serif !important;
+	font-size: 18px !important;
+	height: auto !important;
+	border-color: #9D186F !important;
+}
+
+.btn2 {
+	background-color: #9D186F !important;
+	font-family: 'Lato', sans-serif !important;
+	font-size: 18px !important;
+	height: auto !important;
+	border-color: #9D186F !important;
+}
