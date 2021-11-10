@@ -20,10 +20,23 @@ h2 {
 	font-size: 30px !important;
 }
 
+.especial {
+	text-align: center;
+	font-family: 'Sacramento', cursive !important;
+	font-size: 40px !important;
+}
+
 h3 {
 	text-align: center;
 	font-family: 'Courgette', cursive !important;
 	font-size: 25px !important;
+}
+
+h4 {
+	text-align: left;
+	font-family: 'Lato', sans-serif !important;
+	font-size: 20px !important;
+	font-weight: bold !important;
 }
 
 label {
@@ -47,7 +60,7 @@ p {
 input {
 	font-family: 'Lato', sans-serif !important;
 	text-align: justify;
-	font-size: 14px !important;
+	font-size: 15px !important;
 }
 
 .btn1 {
@@ -69,16 +82,33 @@ input {
 	margin-right: 5px;
 }
 
-
-@media (min-width: 768px) {
-  .navbar-nav.navbar-center {
-    position: absolute;
-    left: 50%;
-    transform: translatex(-50%);
-  }
+@media ( min-width : 768px) {
+	.navbar-nav.navbar-center {
+		position: absolute;
+		left: 50%;
+		transform: translatex(-50%);
+	}
 }
 
-.img-inicio{
+.img-inicio {
 	margin-right: 50px;
 	margin-left: 50px;
+}
+
+.img-formato {
+	width: 100% !important;
+	height: 100% !important;
+	border: 10px solid white !important;
+	padding: 15px;
+	border-radius: 10%;
+}
+
+.img-cartas{
+	width: 100% !important;
+	height: 100% !important;
+	border-radius: 10%;
+}
+
+hr {
+	border-color: black !important;
 }
