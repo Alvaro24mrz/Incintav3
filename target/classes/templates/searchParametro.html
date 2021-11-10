@@ -37,61 +37,86 @@
 	<div th:if="${session.usuario.admin == 2}">
 		<div th:replace="fragments/headerUsuario :: header"></div>
 	</div>
-	
+
 	<main>
-	<div class="container">
-		<div class="row clearfix">
-			<h1 >Busqueda de parametro</h1>
-			<form th:action="@{/parametro/searchParametro}" method="post"
-				th:object="${parametro}">
-				<div class="form-group">
-					<div class="col-sm-12">
-						<input type="text" class="form-control" th:field="*{nParametro}"
-							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
+		<div class="container">
+			<div class="row clearfix">
+				<h1>Busqueda de parametro</h1>
+				<form th:action="@{/parametro/searchParametro}" method="post"
+					th:object="${parametro}">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" class="form-control" th:field="*{nParametro}"
+								id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
 
-						<div align="center">
-							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
-							<a href="/parametro/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
+							<div align="center">
+								<button type="submit" class="btn btn-primary"
+									style="background-color: #9D186F">Buscar</button>
+								<a href="/parametro/listar" class="btn btn-dark"
+									style="background-color: #FEF0FE">Cancelar</a>
 
+							</div>
 						</div>
+
 					</div>
 
-				</div>
+
+				</form>
+			</div>
 
 
-			</form>
+			<hr class="sidebar-divider">
+
+			<table class="table table-bordered table-hover table-striped"
+				id="tab_logic">
+				<thead th:if="${session.usuario.admin == 2}">
+					<tr>
+						<th class="text-center">PARAMETRO</th>
+						<th class="text-center">UNIDAD</th>
+						<th class="text-center">ELIMINAR</th>
+						<th class="text-center">MODIFICAR</th>
+					</tr>
+				</thead>
+				<thead th:if="${session.usuario.admin == 1}">
+					<tr>
+						<th class="text-center">CODIGO</th>
+						<th class="text-center">PARAMETRO</th>
+						<th class="text-center">UNIDAD</th>
+						<th class="text-center">ELIMINAR</th>
+						<th class="text-center">MODIFICAR</th>
+					</tr>
+				</thead>
+				
+				<tbody th:if="${session.usuario.admin == 2}">
+					<tr th:each="p: ${listaParametros}">
+						<td th:text="${p.nParametro}"></td>
+						<td th:text="${p.unidad.nUnidad}"></td>
+						<td><a th:href="@{/parametro/eliminar?id=}+${p.idParametro}"><i
+								class="glyphicon glyphicon-trash"></i></a></td>
+						<td><a th:href="@{'/parametro/modificar/'}+${p.idParametro}"><i
+								class="glyphicon glyphicon-pencil"></i></a></td>
+					</tr>
+				</tbody>
+				<tbody th:if="${session.usuario.admin == 1}">
+					<tr th:each="p: ${listaParametros}">
+						<td th:text="${p.idParametro}"></td>
+						<td th:text="${p.nParametro}"></td>
+						<td th:text="${p.unidad.nUnidad}"></td>
+						<td><a th:href="@{/parametro/eliminar?id=}+${p.idParametro}"><i
+								class="glyphicon glyphicon-trash"></i></a></td>
+						<td><a th:href="@{'/parametro/modificar/'}+${p.idParametro}"><i
+								class="glyphicon glyphicon-pencil"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<p th:text="${mensaje}" class="form-text text-dark"></p>
 		</div>
-
-
-		<hr class="sidebar-divider">
-
-		<table class="table table-bordered table-hover table-striped"
-			id="tab_logic">
-			<thead>
-				<tr>
-					<th class="text-center">CODIGO</th>
-					<th class="text-center">PARAMETRO</th>
-					<th class="text-center">UNIDAD</th>
-
-
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="p: ${listaParametros}">
-					<td th:text="${p.idParametro}"></td>
-					<td th:text="${p.nParametro}"></td>
-					<td th:text="${p.unidad.nUnidad}"></td>
-				</tr>
-			</tbody>
-		</table>
-
-
-		<p th:text="${mensaje}" class="form-text text-dark"></p>
-	</div>
 	</main>
-	
+
 	<div th:replace="fragments/footer :: footer"></div>
-	
+
 	<script th:src="@{/js/script.js}"></script>
 </body>
 </html>

@@ -78,6 +78,9 @@ public class LoginController {
 				return "redirect:/auth/login";
 			else
 			{
+				model.addAttribute("listaTipoIdentificacion", tiService.listar());
+				model.addAttribute("listaPaises", pService.listar());
+				model.addAttribute("listaMDP", mpService.listar());
 				model2.put("mensaje", "CORREO YA REGISTRADO");
 				return "insertarUsuario";
 			}

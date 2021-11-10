@@ -58,6 +58,9 @@ public class PublicController {
 	{
 		Optional<Usuario> objUsuario = rService.listarId(id);
 		if (objUsuario == null) {
+			model.addAttribute("listaTipoIdentificacion", tiService.listar());
+			model.addAttribute("listaPaises", pService.listar());
+			model.addAttribute("listaMDP", mpService.listar());
 			objRedir.addFlashAttribute("mensaje", "ERROR");
 			return "redirect:/insertarUsuario/bienvenido"; 
 		}

@@ -56,7 +56,17 @@
 
 						<table class="table table-bordered table-hover table-striped"
 							id="tab_logic">
-							<thead>
+							<thead th:if="${session.usuario.admin == 2}">
+								<tr>
+									<th class="text-center">PARAMETRO</th>
+									<th class="text-center">VALOR</th>
+									<th class="text-center">FECHA</th>
+									<th class="text-center">ANOTACIONES</th>
+									<th class="text-center">ELIMINAR</th>
+									<th class="text-center">EDITAR</th>
+								</tr>
+							</thead>
+							<thead th:if="${session.usuario.admin == 1}">
 								<tr>
 									<th class="text-center">CODIGO</th>
 									<th class="text-center">USUARIO</th>
