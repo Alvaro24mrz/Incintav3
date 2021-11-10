@@ -30,43 +30,10 @@
 
 </head>
 
-<body id="body" style="background-color: #FEF0FE">
+<body id="body" style="background-color: #F4E3EE">
 
-	<div th:fragment="header">
+	<div th:replace="fragments/headerInicio :: header"></div>
 
-		<!-- this is header -->
-		<nav class="navbar navbar-inverse" style="background-color: #FFFFFF">
-
-			<div class="container">
-
-				<ul class="nav nav-pills nav-justified">
-
-
-
-					<li><p class="navbar-text navbar-left">
-							<img class="logo" th:src="@{/imagenes/incintaLogo.png}"
-								style="height: 70px; width: 70px;">
-						</p></li>
-
-
-					<li>
-						<p class="navbar-text navbar-center" style="font-size: 30px">
-							<a style="color: #9D186F" th:href="@{/public/bienvenidoInicio}">INCINTA</a>
-						</p>
-					</li>
-
-
-					<li><p class="navbar-text navbar-right">
-							<img class="logo" th:src="@{/imagenes/incintaLogo.png}"
-								style="height: 70px; width: 70px;">
-						</p></li>
-				</ul>
-
-
-
-			</div>
-		</nav>
-	</div>
 
 	<div class="container">
 

@@ -7,7 +7,7 @@
 <title>INCINTA</title>
 
 
-		<link rel="stylesheet" th:href="@{/estilos/stylePublico.css}">
+<link rel="stylesheet" th:href="@{/estilos/stylePublico.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -31,18 +31,21 @@
 
 </head>
 
-<body style="background-color: #FEF0FE">
+<body style="background-color: #F4E3EE">
 
 	<div th:replace="fragments/headerInicio :: header"></div>
-
+	
 	<div class="container">
+	<div align="right" >
+		<a th:href="@{/auth/login}" class="btn btn-primary btn2">Log-in</a>
+	</div>
 		<form id="myform">
 			<div class="row clearfix">
 				<div class="col-md-12 column" align="center">
 					<h1>Bienvenida a Incinta</h1>
 					<h2>La applicación web que te ayudará a llevar un control de
 						tu embarazo</h2>
-					<img th:src="@{/imagenes/incintaLogo.png}" width="300" height="300"
+					<img th:src="@{/imagenes/IncintaLogoRosa.png}" width="300" height="300"
 						alt="incintaLogo" align="middle"> </img>
 				</div>
 			</div>
@@ -84,7 +87,7 @@
 
 				</div>
 				<div class="col-md-6 column" align="right">
-					<img th:src="@{/imagenes/bienvenida2.png}" width="400" height="400"
+					<img th:src="@{/imagenes/pregnant2.jpg}"
 						alt="bienvenida2" align="middle"> </img>
 				</div>
 			</div>
@@ -95,7 +98,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200"
+						<img th:src="@{/imagenes/lottusCuadrado.jpeg}" width="400" height="200"
 							alt="logoLottus"> </img>
 						<div class="caption">
 							<h3>¿Quienes somos?</h3>
@@ -108,7 +111,7 @@
 
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200"
+						<img th:src="@{/imagenes/pregnant1.jpg}" 
 							alt="logoLottus"> </img>
 						<div class="caption">
 							<h3>¿Qué es INCINTA?</h3>
@@ -118,15 +121,15 @@
 							<p>Podrás registrar tus consultas médicas, guardar las
 								preguntas que quieres hacerle a tu doctor, entre otras cosas.</p>
 							<p>
-								<a href="/auth/irRegistrar" 
-									class="btn btn-primary btn2" role="button">Ir a registrarme</a>
+								<a href="/auth/irRegistrar" class="btn btn-primary btn2"
+									role="button">Ir a registrarme</a>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img th:src="@{/imagenes/lottusLogo.png}" width="400" height="200"
+						<img th:src="@{/imagenes/IncintaLogoRosa.png}" width="400" height="200"
 							alt="logoLottus"> </img>
 						<div class="caption">
 							<h3>INCINTA</h3>

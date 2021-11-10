@@ -44,6 +44,12 @@ p {
 	font-size: 18px !important;
 }
 
+input {
+	font-family: 'Lato', sans-serif !important;
+	text-align: justify;
+	font-size: 14px !important;
+}
+
 .btn1 {
 	background-color: #FEF0FE !important;
 	color: black !important;
@@ -61,4 +67,18 @@ p {
 	height: auto !important;
 	border-color: #9D186F !important;
 	margin-right: 5px;
+}
+
+
+@media (min-width: 768px) {
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}
+
+.img-inicio{
+	margin-right: 50px;
+	margin-left: 50px;
 }

@@ -216,6 +216,12 @@ p {
 	font-size: 18px !important;
 }
 
+input {
+	font-family: 'Lato', sans-serif !important;
+	text-align: justify;
+	font-size: 14px !important;
+}
+
 .btn1 {
 	background-color: #FEF0FE !important;
 	color: black !important;
