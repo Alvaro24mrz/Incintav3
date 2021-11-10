@@ -52,7 +52,7 @@
 				
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">NOMBRE:</label> <input type="text"
+				      <label for="nombre">NOMBRE:</label> <input type="text" size="48"
 						class="form-control" th:field="*{nUsuario}" id="nombre" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
@@ -62,7 +62,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="apellido">APELLIDO:</label> <input type="text"
+				      <label for="apellido">APELLIDO:</label> <input size="50" type="text"
 						class="form-control" th:field="*{uApellido}" id="apellido"
 						required></input>
 
@@ -80,7 +80,7 @@
 				
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="correo">CORREO:</label> <input type="email"
+				      <label for="correo">CORREO:</label> <input type="email" size="48"
 						class="form-control" th:field="*{uCorreo}" id="correo" required></input>
 
 					<div class="alert alert-danger"
@@ -92,7 +92,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="password">PASSWORD:</label> <input type="text"
+				      <label for="password">PASSWORD:</label> <input type="text" size="48"
 
 						class="form-control" th:field="*{uPassword}" id="password"
 						required></input>
@@ -124,7 +124,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
+				      <label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input size="26"
 						type="text" class="form-control" th:field="*{numIdentificacion}"
 						id="numID"></input>
 
@@ -139,7 +139,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input
+				      <label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input 
 						type="date" class="form-control" th:field="*{dNacimiento}"
 						id="fnacimiento" required></input>
 
@@ -177,7 +177,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
+				      <label for="ntarjeta">NÚMERO DE TARJETA:</label> <input size="37"
 						type="text" class="form-control" th:field="*{numMetodoPago}"
 						id="ntarjeta" required></input>
 
@@ -243,7 +243,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <input type="text" class="form-control" th:field="*{admin}" id="ad"
+				      <input  type="text" class="form-control" th:field="*{admin}" id="ad"
 						style="visibility: hidden"></input>
 
 					<div class="alert alert-danger"
