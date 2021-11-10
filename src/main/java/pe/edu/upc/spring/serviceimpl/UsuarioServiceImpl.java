@@ -20,6 +20,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	//nuevo
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+
 	
 	@Override
 	@Transactional

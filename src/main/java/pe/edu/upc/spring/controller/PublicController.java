@@ -23,7 +23,7 @@ import pe.edu.upc.spring.service.IPaisService;
 import pe.edu.upc.spring.service.ITipoIdentificacionService;
 import pe.edu.upc.spring.service.IUsuarioService;
 
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Controller
 @RequestMapping("/public")
@@ -98,6 +98,7 @@ public class PublicController {
 	public String guardar(@Validated @ModelAttribute Usuario objUsuario, BindingResult binRes, Model model, Map<String, Object> model2) 
 		
 	{
+		
 		if (binRes.hasErrors())
 		{	
 			model.addAttribute("listaTipoIdentificacion", tiService.listar());
@@ -108,14 +109,29 @@ public class PublicController {
 		}
 		else 
 		{
-			boolean flag = rService.modificar(objUsuario);
-			if (flag)
-				return "redirect:/insertarUsuario/bienvenido";
-			else
-			{
-				model.addAttribute("mensaje", "ERROR");
-				return "redirect:/insertarUsuario/bienvenido";
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			
+			Usuario u = rService.findBynUsuario(objUsuario.getnUsuario());
+			
+			if(passwordEncoder.matches(objUsuario.getuPassword(),  u.getuPassword())) {
+				boolean flag = rService.modificar(objUsuario);
+				if (flag)
+					return "redirect:/insertarUsuario/bienvenido";
+				else
+				{
+					model.addAttribute("mensaje", "ERROR");
+					return "redirect:/insertarUsuario/bienvenido";
+				}
 			}
+			else {
+				model2.put("mensaje","Contraseña Incorrecta" );
+				model.addAttribute("listaTipoIdentificacion", tiService.listar());
+				model.addAttribute("listaPaises", pService.listar());
+				model.addAttribute("listaMDP", mpService.listar());
+
+				return "editInfoUser";
+			}
+			
 		}
 	}
 	
