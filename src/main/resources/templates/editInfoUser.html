@@ -100,7 +100,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="numID">NÃMERO DE IDENTIFICACIÃN:</label> <input
+						<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
 							type="text" class="form-control" th:field="*{numIdentificacion}"
 							id="numID"></input>
 
@@ -122,7 +122,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="nombre">PAIS:</label> <select class="form-control"
+						<label for="nombre">PAÍS:</label> <select class="form-control"
 							th:field="*{iDPais.idPais}">
 							<option th:each="p: ${listaPaises}" th:value="${p.idPais}"
 								th:text="${p.nombrePais}"
@@ -131,7 +131,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="nombre">MÃTODO DE PAGO:</label> <select
+						<label for="nombre">MÉTODO DE PAGO:</label> <select
 							class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
 							<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 								th:text="${mp.nombreMetodoPago}"
@@ -141,7 +141,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="ntarjeta">NÃMERO DE TARJETA:</label> <input
+						<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
 							type="text" class="form-control" th:field="*{numMetodoPago}"
 							id="ntarjeta" required></input>
 
@@ -152,7 +152,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="nombre">SEMANA DE GESTACIÃN:</label> <select
+						<label for="nombre">SEMANA DE GESTACIÓN:</label> <select
 							class="form-control" th:field="*{semanaGestacion}">
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -216,7 +216,7 @@
 				</div>
 				<button type="submit" class="btn btn-primary btn2">Aceptar</button>
 				<a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}"
-					class="btn btn-danger">Cancelar</a>
+					class="btn btn1">Cancelar</a>
 			</form>
 		</div>
 	</main>
