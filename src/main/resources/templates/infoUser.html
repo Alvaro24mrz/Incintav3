@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Registro</title>
 
-		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
+<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -34,130 +34,129 @@
 	<div th:if="${session.usuario.admin == 2}">
 		<div th:replace="fragments/headerUsuario :: header"></div>
 	</div>
-	
+
 	<main>
-	<div class="container">
-		<form th:action="@{/auth/registrar}" method="post"
-			th:object="${usuario}">
+		<div class="container">
+		<h1 >Mi Perfil</h1>		
+		
+			<form th:action="@{/auth/registrar}" method="post"
+				th:object="${usuario}">
 
-			<div th:if="${mensaje}" class="alert alert-danger">
-				<p th:text="${mensaje}"></p>
-			</div>
-
-			<div class="form-group">
-
-				<input type="text" class="form-control" th:field="*{usuarioID}"
-					style="visibility: hidden"> </input>
-
-				<div class="form-group">
-					<label for="nombre">NOMBRE:</label> <input type="text"
-						class="form-control" th:field="*{nUsuario}" id="nombre" readonly></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
-					</div>
-
+				<div th:if="${mensaje}" class="alert alert-danger">
+					<p th:text="${mensaje}"></p>
 				</div>
 
 				<div class="form-group">
-					<label for="apellido">APELLIDO:</label> <input type="text"
-						class="form-control" th:field="*{uApellido}" id="apellido"
-						readonly></input>
 
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('uApellido')}" th:errors="*{uApellido}">
-					</div>
-
-				</div>
-
-				<div class="form-group">
-					<label for="correo">CORREO:</label> <input type="email"
-						class="form-control" th:field="*{uCorreo}" id="correo" readonly></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('uCorreo')}" th:errors="*{uCorreo}">
-					</div>
-
-				</div>
-
-				<div class="form-group">
-					<label for="nombre">TIPO DE IDENTIFICACIÓN:</label> 
-					<input type="text"
-					class="form-control" th:field="*{iDTipoIdentificacion.nIdentificacion}" id="text"
-					readonly></input>
-				</div>
-
-				<div class="form-group">
-					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
-						type="text" class="form-control" th:field="*{numIdentificacion}"
-						id="numID" readonly></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('numIdentificacion')}"
-						th:errors="*{numIdentificacion}"></div>
-
-				</div>
-
-				<div class="form-group">
-					<label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input
-						type="date" class="form-control" th:field="*{dNacimiento}"
-						id="fnacimiento" readonly></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('dNacimiento')}"
-						th:errors="*{dNacimiento}"></div>
-
-				</div>
-
-				<div class="form-group">
-					<label for="nombre">PAÍS:</label> 
-					<input type="text"
-					class="form-control" th:field="*{iDPais.nombrePais}" id="text"
-					readonly></input>
-				</div>
-				
-				<div class="form-group">
-					<label for="nombre">MÉTODO DE PAGO:</label> 
-					<input type="text"
-					class="form-control" th:field="*{iDMetodoPago.nombreMetodoPago}" id="text"
-					readonly></input>
-				</div>
-
-				<div class="form-group">
-					<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
-						type="text" class="form-control" th:field="*{numMetodoPago}"
-						id="ntarjeta" readonly></input>
-
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('numMetodoPago')}"
-						th:errors="*{numMetodoPago}"></div>
-				</div>
-				
-				<div class="form-group">
-					<label for="nombre">SEMANA DE GESTACIÓN:</label> 
-					<input type="text"
-					class="form-control" th:field="*{semanaGestacion}" id="text"
-					readonly></input>
-				</div>
-
-				<input type="text" class="form-control" th:field="*{admin}"
-						style="visibility: hidden"> </input>
-						
-				<input type="text" class="form-control" th:field="*{uPassword}"
+					<input type="text" class="form-control" th:field="*{usuarioID}"
 						style="visibility: hidden"> </input>
 
-			</div>
+					<div class="form-group">
+						<label for="nombre">NOMBRE:</label> <input type="text"
+							class="form-control" th:field="*{nUsuario}" id="nombre" readonly></input>
 
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
+						</div>
 
-			<a th:href="@{'/public/modificar/'}+${session.usuario.usuarioID}" class="btn btn2 btn-info">EDITAR</a>
-			<a th:href="@{'/public/modificarP/'}+${session.usuario.usuarioID}" class="btn btn2 btn-info">CAMBIAR CONTRASEÑA</a>
+					</div>
 
-		</form>
-	</div>
+					<div class="form-group">
+						<label for="apellido">APELLIDO:</label> <input type="text"
+							class="form-control" th:field="*{uApellido}" id="apellido"
+							readonly></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('uApellido')}"
+							th:errors="*{uApellido}"></div>
+
+					</div>
+
+					<div class="form-group">
+						<label for="correo">CORREO:</label> <input type="email"
+							class="form-control" th:field="*{uCorreo}" id="correo" readonly></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('uCorreo')}" th:errors="*{uCorreo}">
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label for="nombre">TIPO DE IDENTIFICACIÓN:</label> <input
+							type="text" class="form-control"
+							th:field="*{iDTipoIdentificacion.nIdentificacion}" id="text"
+							readonly></input>
+					</div>
+
+					<div class="form-group">
+						<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
+							type="text" class="form-control" th:field="*{numIdentificacion}"
+							id="numID" readonly></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('numIdentificacion')}"
+							th:errors="*{numIdentificacion}"></div>
+
+					</div>
+
+					<div class="form-group">
+						<label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input
+							type="date" class="form-control" th:field="*{dNacimiento}"
+							id="fnacimiento" readonly></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('dNacimiento')}"
+							th:errors="*{dNacimiento}"></div>
+
+					</div>
+
+					<div class="form-group">
+						<label for="nombre">PAÍS:</label> <input type="text"
+							class="form-control" th:field="*{iDPais.nombrePais}" id="text"
+							readonly></input>
+					</div>
+
+					<div class="form-group">
+						<label for="nombre">MÉTODO DE PAGO:</label> <input type="text"
+							class="form-control" th:field="*{iDMetodoPago.nombreMetodoPago}"
+							id="text" readonly></input>
+					</div>
+
+					<div class="form-group">
+						<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
+							type="text" class="form-control" th:field="*{numMetodoPago}"
+							id="ntarjeta" readonly></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('numMetodoPago')}"
+							th:errors="*{numMetodoPago}"></div>
+					</div>
+
+					<div class="form-group">
+						<label for="nombre">SEMANA DE GESTACIÓN:</label> <input
+							type="text" class="form-control" th:field="*{semanaGestacion}"
+							id="text" readonly></input>
+					</div>
+
+					<input type="text" class="form-control" th:field="*{admin}"
+						style="visibility: hidden"> </input> <input type="text"
+						class="form-control" th:field="*{uPassword}"
+						style="visibility: hidden"> </input>
+
+				</div>
+
+				<a th:href="@{'/public/modificar/'}+${session.usuario.usuarioID}"
+					class="btn btn2 btn-info">EDITAR</a> <a
+					th:href="@{'/public/modificarP/'}+${session.usuario.usuarioID}"
+					class="btn btn2 btn-info">CAMBIAR CONTRASEÑA</a>
+
+			</form>
+		</div>
 	</main>
-	
+
 	<div th:replace="fragments/footer :: footer"></div>
-	
+
 	<script th:src="@{/js/script.js}"></script>
 </body>
 

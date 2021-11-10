@@ -34,19 +34,19 @@
 <body style="background-color: #F4E3EE">
 
 	<div th:replace="fragments/headerInicio :: header"></div>
-	
+
 	<div class="container">
-	<div align="right" >
-		<a th:href="@{/auth/login}" class="btn btn-primary btn2">Log-in</a>
-	</div>
+		<div align="right">
+			<a th:href="@{/auth/login}" class="btn btn-primary btn2">Log-in</a>
+		</div>
 		<form id="myform">
 			<div class="row clearfix">
 				<div class="col-md-12 column" align="center">
 					<h1>Bienvenida a Incinta</h1>
-					<h2>La applicación web que te ayudará a llevar un control de
-						tu embarazo</h2>
-					<img th:src="@{/imagenes/IncintaLogoRosa.png}" width="300" height="300"
-						alt="incintaLogo" align="middle"> </img>
+					<h2 class="especial">La applicación web que te ayudará a
+						llevar un control de tu embarazo</h2>
+					<img th:src="@{/imagenes/IncintaLogoRosa.png}" width="300"
+						height="300" alt="incintaLogo" align="middle"> </img>
 				</div>
 			</div>
 
@@ -87,19 +87,138 @@
 
 				</div>
 				<div class="col-md-6 column" align="right">
-					<img th:src="@{/imagenes/pregnant2.jpg}"
-						alt="bienvenida2" align="middle"> </img>
+					<img th:src="@{/imagenes/pregnant2.jpg}" alt="bienvenida2"
+						align="middle" class="img-formato"> </img>
 				</div>
 			</div>
 
 			<br>
+			<hr>
+			<br>
 
+
+			<h2>Guía de uso detallada</h2>
+			<br>
+			<div class="row clearfix">
+				<div class="col-md-6 column" align="Left">
+
+					<h4>Mis Eventos</h4>
+					<p>La sección de Mis Eventos cuenta con 5 apartados para
+						llenar. Te solicitará un título para el evento, la fecha del
+						evento, la hora de inicio y la hora de fin. El último apartado es
+						de comentarios, el cual puede ser llenado opcionalmente.</p>
+					<p>Luego de haber completado las casillas y de darle al botón
+						de “Aceptar”, la aplicación te re-direccionará a una tabla que
+						contendrá todos los eventos que hayas registrado.</p>
+					<p>Como acciones extra, hay un botón de un tacho y uno de un
+						lápiz. Estos botones sirven para que elimines o edites un evento.
+						También hay un botón de búsqueda, para buscar algún evento por
+						fecha.</p>
+					<p>Piensa en “Mis Eventos” como un calendario, pero listado.</p>
+
+				</div>
+				<div class="col-md-6 column" align="right">
+					<img th:src="@{/imagenes/misEventos.jpg}" alt="bienvenida2"
+						class="img-formato" align="middle"> </img>
+				</div>
+			</div>
+			<br> <br>
+
+			<div class="row clearfix">
+				<div class="col-md-6 column" align="Left">
+					<img th:src="@{/imagenes/misPreguntas.jpg}" alt="bienvenida2"
+						class="img-formato" align="middle"> </img>
+				</div>
+				<div class="col-md-6 column" align="Right">
+
+					<h4>Mis Preguntas</h4>
+					<p>La sección de Mis Preguntas cuenta con 3 apartados para
+						llenar. Te solicitará un título para la pregunta, una descripción
+						opcional y una fecha.</p>
+					<p>Luego de haber completado las casillas y de darle al botón
+						de “Aceptar”, la aplicación te re-direccionará a una tabla que
+						contendrá todas las preguntas que hayas registrado.</p>
+					<p>Como acciones extra, hay un botón de un tacho y uno de un
+						lápiz. Estos botones sirven para que elimines o edites un evento.
+						También hay un botón de búsqueda, para buscar alguna pregunta por
+						su título.</p>
+					<p>Piensa en “Mis Preguntas” como un apartado para registrar
+						una lista de preguntas y/o consultas que quisieras tener al
+						alcance cuando vayas a una cita médica.</p>
+
+
+				</div>
+			</div>
+			<br> <br>
+			<div class="row clearfix">
+				<div class="col-md-6 column" align="Left">
+
+					<h4>Mis Parámetros</h4>
+					<p>La sección de Mis Parámetros es algo especial, pues depende
+						de otra sección llamada “Unidades”, y luego le genera dependencia
+						a la sección de “Mis Registros”. Hay algunos parámetros
+						pre-definidos por nosotros, pero esta sección es para que crees
+						uno en caso no encuentres lo que buscas.</p>
+					<p>La sección de Mis Parámetros cuenta con 2 apartados para
+						llenar: un nombre y una unidad. Las Unidades también las proveemos
+						nosotros, pero, en caso no encuentres la que necesites, puedes
+						crear una propia y luego asignarla a un parámetro.</p>
+					<p>Luego de haber completado las casillas y de darle al botón
+						de “Aceptar”, la aplicación te re-direccionará a una tabla que
+						contendrá todos los parámetros que hayas registrado.</p>
+					<p>Como acciones extra, hay un botón de un tacho y uno de un
+						lápiz. Estos botones sirven para que elimines o edites un evento.
+						También hay un botón de búsqueda, para buscar algún parámetro por
+						su nombre.</p>
+					<p>“Mis Parámetros” es una sección que te permite crear los
+						parámetros que necesites para llenar tus registros de signos
+						vitales.</p>
+				</div>
+
+				<div class="col-md-6 column" align="right">
+					<img th:src="@{/imagenes/misParametros.jpg}" alt="bienvenida2"
+						class="img-formato" align="middle"> </img>
+				</div>
+			</div>
+			<br> <br>
+			<div class="row clearfix">
+				<div class="col-md-6 column" align="Left">
+					<img th:src="@{/imagenes/misRegistros.jpg}" alt="bienvenida2"
+						class="img-formato" align="middle"> </img>
+				</div>
+				<div class="col-md-6 column" align="Right">
+					<h4>Mis Registros</h4>
+					<p>La sección de Mis Registros cuenta con 4 apartados para
+						llenar. Te solicitará un parámetro, un valor (el número), una
+						fecha y alguna anotación. El último apartado puede ser llenado
+						opcionalmente.</p>
+					<p>Luego de haber completado las casillas y de darle al botón
+						de “Aceptar”, la aplicación te re-direccionará a una tabla que
+						contendrá todos los registros que hayas realizado.</p>
+					<p>Como acciones extra, hay un botón de un tacho y uno de un
+						lápiz. Estos botones sirven para que elimines o edites un evento.
+						También hay un botón de búsqueda, para buscar algún evento por
+						fecha.</p>
+					<p>Piensa en “Mis Registros” como una lista de signos vitales
+						registrados, que podrías utilizar al ir a una cita médica.</p>
+
+
+				</div>
+
+			</div>
+
+
+			<br>
+			<hr>
+			<br>
+			<h2>Resumen de nosotros</h2>
+			<br>
 
 			<div class="row">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img th:src="@{/imagenes/lottusCuadrado.jpeg}" width="400" height="200"
-							alt="logoLottus"> </img>
+						<img th:src="@{/imagenes/lottusCuadrado.jpeg}" width="400"
+							height="200" alt="logoLottus" class="img-cartas"> </img>
 						<div class="caption">
 							<h3>¿Quienes somos?</h3>
 							<p>Somos un grupo de estudiantes de la Universidad Peruana de
@@ -111,8 +230,7 @@
 
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img th:src="@{/imagenes/pregnant1.jpg}" 
-							alt="logoLottus"> </img>
+						<img th:src="@{/imagenes/pregnant1.jpg}" alt="logoLottus" class="img-cartas"> </img>
 						<div class="caption">
 							<h3>¿Qué es INCINTA?</h3>
 							<p>Incinta es una aplicación dirigida a todas las madres
@@ -129,8 +247,8 @@
 				</div>
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img th:src="@{/imagenes/IncintaLogoRosa.png}" width="400" height="200"
-							alt="logoLottus"> </img>
+						<img th:src="@{/imagenes/IncintaLogoRosa.png}" width="400"
+							height="200" alt="logoLottus" class="img-cartas"> </img>
 						<div class="caption">
 							<h3>INCINTA</h3>
 							<p>Es una aplicación de costo unico de $4.00</p>
@@ -139,6 +257,8 @@
 					</div>
 				</div>
 			</div>
+
+
 
 
 
