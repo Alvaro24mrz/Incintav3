@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Buscar Preguntas</title>
 
-		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
+<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -37,81 +37,96 @@
 	<div th:if="${session.usuario.admin == 2}">
 		<div th:replace="fragments/headerUsuario :: header"></div>
 	</div>
-	
+
 	<main>
-	<div class="container">
-		<div class="row clearfix">
-			<h1>Buscar Pregunta</h1>
-			<form th:action="@{/preguntasGestante/buscar}" method="post"
-				th:object="${preguntasGestante}">
-				<div class="form-group">
-					<div class="col-sm-12">
-						<input type="text" class="form-control" th:field="*{nTitulo}"
-							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
+		<div class="container">
+			<div class="row clearfix">
+				<h1>Buscar Pregunta</h1>
+				<form th:action="@{/preguntasGestante/buscar}" method="post"
+					th:object="${preguntasGestante}">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" class="form-control" th:field="*{nTitulo}"
+								id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
 
-						<div align="center">
-							<button type="submit" class="btn btn-primary btn2"
-								>Buscar</button>
-							<a href="/preguntasGestante/listar" class="btn btn2"
-								>Cancelar</a>
-
+							<div align="center">
+								<button type="submit" class="btn btn-primary btn2">Buscar</button>
+								<a href="/preguntasGestante/listar" class="btn btn1">Cancelar</a>
+							</div>
 						</div>
 					</div>
 
-				</div>
 
 
+				</form>
+			</div>
 
-			</form>
+
+			<hr class="sidebar-divider">
+
+			<table class="table table-bordered table-hover table-striped marcoTable"
+				id="tab_logic">
+
+				<thead th:if="${session.usuario.admin == 2}">
+					<tr>
+						<th class="text-center">Título de la Pregunta</th>
+						<th class="text-center">Descripción</th>
+						<th class="text-center">Fecha</th>
+						<th class="text-center">Eliminar</th>
+						<th class="text-center">Modificar</th>
+					</tr>
+				</thead>
+				<thead th:if="${session.usuario.admin == 1}">
+					<tr>
+						<th class="text-center">Código</th>
+						<th class="text-center">Usuario</th>
+						<th class="text-center">Título de la Pregunta</th>
+						<th class="text-center">Descripción</th>
+						<th class="text-center">Fecha</th>
+						<th class="text-center">Eliminar</th>
+						<th class="text-center">Modificar</th>
+					</tr>
+				</thead>
+
+				<tbody th:if="${session.usuario.admin == 2}">
+					<tr th:each="pg: ${listaPreguntasGestante}" th:object="${pg}"
+						th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
+						<td th:text="${pg.nTitulo}"></td>
+						<td th:text="${pg.tPregunta}"></td>
+						<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
+						
+						<td><a
+							th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
+								class="glyphicon glyphicon-trash"></i></a></td>
+						<td><a
+							th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
+								class="glyphicon glyphicon-pencil"></i></a></td>
+					</tr>
+				</tbody>
+				<tbody th:if="${session.usuario.admin == 1}">
+					<tr th:each="pg: ${listaPreguntasGestante}">
+						<td th:text="${pg.idPreguntasGestante}"></td>
+						<td th:text="${pg.usuario.nUsuario}"></td>
+						<td th:text="${pg.nTitulo}"></td>
+						<td th:text="${pg.tPregunta}"></td>
+						<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
+
+						<td><a
+							th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
+								class="glyphicon glyphicon-trash"></i></a></td>
+						<td><a
+							th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
+								class="glyphicon glyphicon-pencil"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p th:text="${mensaje}" class="form-text text-dark"></p>
 		</div>
-
-
-		<hr class="sidebar-divider">
-
-		<table class="table table-bordered table-hover table-striped"
-			id="tab_logic">
-			
-			<thead th:if="${session.usuario.admin == 2}">
-				<tr>
-					<th class="text-center">Título de la Pregunta</th>
-					<th class="text-center">Descripción</th>
-					<th class="text-center">Fecha</th>
-				</tr>
-			</thead>
-			
-			<thead th:if="${session.usuario.admin == 1}">
-				<tr>
-					<th class="text-center">Usuario</th>
-					<th class="text-center">Título de la Pregunta</th>
-					<th class="text-center">Descripción</th>
-					<th class="text-center">Fecha</th>
-				</tr>
-			</thead>
-
-			<tbody th:if="${session.usuario.admin == 2}">
-				<tr th:each="pg: ${listaPreguntasGestante}" th:object="${pg}"
-					th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
-					<td th:text="${pg.nTitulo}"></td>
-					<td th:text="${pg.tPregunta}"></td>
-					<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
-				</tr>
-			</tbody>
-			<tbody th:if="${session.usuario.admin == 1}">
-				<tr th:each="pg: ${listaPreguntasGestante}">
-					<td th:text="${pg.usuario.nUsuario}"></td>
-					<td th:text="${pg.nTitulo}"></td>
-					<td th:text="${pg.tPregunta}"></td>
-					<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
-				</tr>
-			</tbody>
-		</table>
-
-		<p th:text="${mensaje}" class="form-text text-dark"></p>
-	</div>
 	</main>
-	
+
 	<div th:replace="fragments/footer :: footer"></div>
-	
+
 	<script th:src="@{/js/script.js}"></script>
 </body>
 
