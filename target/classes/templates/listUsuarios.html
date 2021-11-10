@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Usuarios</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -45,12 +45,12 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 
-					<a style="background-color:#9D186F; width:250px"
+					<a 
 						th:href="@{/insertarUsuario/irRegistrar}" id="add-row"
-						type="button" class="btn btn-primary btn-md left-block"> <span
+						type="button" class="btn btn-primary btn-md left-block btn2"> <span
 						class="glyphicon glyphicon-plus"></span> Usuario
-					</a> <a style="background-color:#9D186F; width:250px"
-						th:href="@{/insertarUsuario/irSearch}" id="add-row" type="button"
+					</a> <a 
+						th:href="@{/insertarUsuario/irSearch}" id="add-row btn2" type="button"
 						class="btn btn-primary btn-md left-block"> <span
 						class="glyphicon glyphicon-search"></span> Buscar
 					</a>
@@ -59,20 +59,20 @@
 						id="tab_logic">
 						<thead>
 							<tr>
-								<th class="text-center">CODIGO</th>
-								<th class="text-center">NOMBRE</th>
-								<th class="text-center">APELLIDO</th>
-								<th class="text-center">CORREO</th>
-								<th class="text-center">PASSWORD</th>
-								<th class="text-center">TIPO DE IDENTIFICACION</th>
-								<th class="text-center">NUM IDENTIFICACION</th>
-								<th class="text-center">F. NACIMIENTO</th>
-								<th class="text-center">PAIS</th>
-								<th class="text-center">METODO DE PAGO</th>
-								<th class="text-center">NUM. TARJETA</th>
-								<th class="text-center">S. GESTACION</th>
-								<th class="text-center">ELIMINAR</th>
-								<th class="text-center">EDITAR</th>
+								<th class="text-center">Código</th>
+								<th class="text-center">Nombre</th>
+								<th class="text-center">Apellido</th>
+								<th class="text-center">Correo</th>
+								<th class="text-center">Password</th>
+								<th class="text-center">Tipo de identificación</th>
+								<th class="text-center">Num. idenfiticación</th>
+								<th class="text-center">F. Nacimiento</th>
+								<th class="text-center">País</th>
+								<th class="text-center">Método de pago</th>
+								<th class="text-center">Num. tarjeta</th>
+								<th class="text-center">S. Gestación</th>
+								<th class="text-center">Eliminar</th>
+								<th class="text-center">Editar</th>
 							</tr>
 						</thead>
 						<tbody>

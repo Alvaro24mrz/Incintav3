@@ -3,10 +3,10 @@
 
 <head>
 
-<meta charset="ISO-8859-1"></meta>
+<meta charset="UTF-8"></meta>
 <title>Registro</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -100,7 +100,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
+						<label for="numID">NÃMERO DE IDENTIFICACIÃN:</label> <input
 							type="text" class="form-control" th:field="*{numIdentificacion}"
 							id="numID"></input>
 
@@ -131,7 +131,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="nombre">MÉTODO DE PAGO:</label> <select
+						<label for="nombre">MÃTODO DE PAGO:</label> <select
 							class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
 							<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 								th:text="${mp.nombreMetodoPago}"
@@ -141,7 +141,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
+						<label for="ntarjeta">NÃMERO DE TARJETA:</label> <input
 							type="text" class="form-control" th:field="*{numMetodoPago}"
 							id="ntarjeta" required></input>
 
@@ -152,7 +152,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="nombre">SEMANA DE GESTACIÓN:</label> <select
+						<label for="nombre">SEMANA DE GESTACIÃN:</label> <select
 							class="form-control" th:field="*{semanaGestacion}">
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -203,7 +203,7 @@
 						style="visibility: hidden"> </input>
 
 					<div class="form-group">
-						<label for="password">CONFIRMAR CONTRASE�A:</label> <input
+						<label for="password">CONFIRMAR CONTRASEÑA:</label> <input
 							type="password" class="form-control" th:field="*{uPassword}"
 							id="password"></input>
 
@@ -214,7 +214,7 @@
 					</div>
 
 				</div>
-				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<button type="submit" class="btn btn-primary btn2">Aceptar</button>
 				<a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}"
 					class="btn btn-danger">Cancelar</a>
 			</form>

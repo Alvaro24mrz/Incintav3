@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Registro</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -44,13 +44,13 @@
 				<div class="row clearfix">
 					<div class="col-md-12 column">
 
-						<a style="background-color: #9D186F; width: 250px"
+						<a 
 							th:href="@{/registro/irRegistrar}" id="add-row" type="button"
-							class="btn btn-primary btn-md left-block"> <span
+							class="btn btn-primary btn-md left-block btn2"> <span
 							class="glyphicon glyphicon-plus"></span> Registro
-						</a> <a style="background-color: #9D186F; width: 250px"
+						</a> <a 
 							th:href="@{/registro/irSearch}" id="add-row" type="button"
-							class="btn btn-primary btn-md left-block"> <span
+							class="btn btn-primary btn-md left-block btn2"> <span
 							class="glyphicon glyphicon-search"></span> Buscar
 						</a>
 
@@ -58,14 +58,14 @@
 							id="tab_logic">
 							<thead>
 								<tr>
-									<th class="text-center">CODIGO</th>
-									<th class="text-center">USUARIO</th>
-									<th class="text-center">PARAMETRO</th>
-									<th class="text-center">VALOR</th>
-									<th class="text-center">FECHA</th>
-									<th class="text-center">ANOTACIONES</th>
-									<th class="text-center">ELIMINAR</th>
-									<th class="text-center">EDITAR</th>
+									<th class="text-center">Código</th>
+									<th class="text-center">Usuario</th>
+									<th class="text-center">Parámetro</th>
+									<th class="text-center">Valor</th>
+									<th class="text-center">Fecha</th>
+									<th class="text-center">Anotaciones</th>
+									<th class="text-center">Eliminar</th>
+									<th class="text-center">Editar</th>
 								</tr>
 							</thead>
 							<tbody th:if="${session.usuario.admin == 2}">

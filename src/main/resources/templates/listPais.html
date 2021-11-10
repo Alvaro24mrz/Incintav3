@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Paises</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -41,24 +41,24 @@
 	<main>
 	<div class="container">
 		<form id="myform">
-		<h1>Paises</h1>
+		<h1>Países</h1>
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 
-					<a style="background-color:#9D186F; width:250px"
+					<a 
 						th:href="@{/insertarPaises/irRegistrar}" id="add-row"
-						type="button" class="btn btn-primary btn-md left-block"> <span
-						class="glyphicon glyphicon-plus"></span> Pais
+						type="button" class="btn btn-primary btn-md left-block btn2"> <span
+						class="glyphicon glyphicon-plus"></span> País
 					</a>
 
 					<table class="table table-bordered table-hover table-striped"
 						id="tab_logic">
 						<thead>
 							<tr>
-								<th class="text-center">CODIGO</th>
-								<th class="text-center">PAIS</th>
-								<th class="text-center">ELIMINAR</th>
-								<th class="text-center">EDITAR</th>
+								<th class="text-center">Código</th>
+								<th class="text-center">PAíS</th>
+								<th class="text-center">Eliminar</th>
+								<th class="text-center">Editar</th>
 							</tr>
 						</thead>
 						<tbody>

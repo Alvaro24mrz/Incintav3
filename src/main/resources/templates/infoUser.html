@@ -3,10 +3,10 @@
 
 <head>
 
-<meta charset="ISO-8859-1"></meta>
+<meta charset="UTF-8"></meta>
 <title>Registro</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -81,14 +81,14 @@
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">TIPO DE IDENTIFICACION:</label> 
+					<label for="nombre">TIPO DE IDENTIFICACIÓN:</label> 
 					<input type="text"
 					class="form-control" th:field="*{iDTipoIdentificacion.nIdentificacion}" id="text"
 					readonly></input>
 				</div>
 
 				<div class="form-group">
-					<label for="numID">NÃšMERO DE IDENTIFICACIÃ“N:</label> <input
+					<label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
 						type="text" class="form-control" th:field="*{numIdentificacion}"
 						id="numID" readonly></input>
 
@@ -110,21 +110,21 @@
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">PAIS:</label> 
+					<label for="nombre">PAÍS:</label> 
 					<input type="text"
 					class="form-control" th:field="*{iDPais.nombrePais}" id="text"
 					readonly></input>
 				</div>
 				
 				<div class="form-group">
-					<label for="nombre">MÃ‰TODO DE PAGO:</label> 
+					<label for="nombre">MÉTODO DE PAGO:</label> 
 					<input type="text"
 					class="form-control" th:field="*{iDMetodoPago.nombreMetodoPago}" id="text"
 					readonly></input>
 				</div>
 
 				<div class="form-group">
-					<label for="ntarjeta">NÃšMERO DE TARJETA:</label> <input
+					<label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
 						type="text" class="form-control" th:field="*{numMetodoPago}"
 						id="ntarjeta" readonly></input>
 
@@ -134,7 +134,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="nombre">SEMANA DE GESTACIÃ“N:</label> 
+					<label for="nombre">SEMANA DE GESTACIÓN:</label> 
 					<input type="text"
 					class="form-control" th:field="*{semanaGestacion}" id="text"
 					readonly></input>
@@ -149,8 +149,8 @@
 			</div>
 
 
-			<a th:href="@{'/public/modificar/'}+${session.usuario.usuarioID}" class="btn btn-info">EDITAR</a>
-			<a th:href="@{'/public/modificarP/'}+${session.usuario.usuarioID}" class="btn btn-info">CAMBIAR CONTRASEÑA</a>
+			<a th:href="@{'/public/modificar/'}+${session.usuario.usuarioID}" class="btn btn2 btn-info">EDITAR</a>
+			<a th:href="@{'/public/modificarP/'}+${session.usuario.usuarioID}" class="btn btn2 btn-info">CAMBIAR CONTRASEÑA</a>
 
 		</form>
 	</div>

@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Busqueda de Unidades</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -41,7 +41,7 @@
 	<main>
 	<div class="container">
 		<div class="row clearfix">
-			<h1 >Busqueda de Unidad</h1>
+			<h1 >Búsqueda de Unidad</h1>
 			<form th:action="@{/unidad/searchUnidad}" method="post"
 				th:object="${unidad}">
 				<div class="form-group">
@@ -50,8 +50,8 @@
 							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
 
 						<div align="center">
-							<button type="submit" class="btn btn-primary" style="background-color:#9D186F ">Buscar</button>
-							<a href="/unidad/listar" class="btn btn-dark" style="background-color:#FEF0FE">Cancelar</a>
+							<button type="submit" class="btn btn-primary btn2">Buscar</button>
+							<a href="/unidad/listar" class="btn btn1" >Cancelar</a>
 
 						</div>
 					</div>
@@ -69,8 +69,8 @@
 			id="tab_logic">
 			<thead>
 				<tr>
-					<th class="text-center">CODIGO</th>
-					<th class="text-center">UNIDAD</th>
+					<th class="text-center">Código</th>
+					<th class="text-center">Unidad</th>
 
 
 				</tr>

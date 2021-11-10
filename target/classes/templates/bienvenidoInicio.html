@@ -6,11 +6,17 @@
 <meta charset="UTF-8"></meta>
 <title>INCINTA</title>
 
-<link rel="stylesheet" th:href="@{/css/estilos1.css}">
+
+		<link rel="stylesheet" th:href="@{/estilos/stylePublico.css}">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js"
+	crossorigin="anonymous"></script>
 
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
 		</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
@@ -21,8 +27,7 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
 		</script>
 
-<script src="//code.jquery.com/jquery-1.11.1.min.js">
-		</script>
+<script type="text/javascript" th:src="@{/js/usuario.js}"></script>
 
 </head>
 
@@ -56,23 +61,27 @@
 						para tener un registro de tu embarazo.</p>
 					<h3>Detallando un poco más los campos:</h3>
 
-					<ul>
-						<li>Mis Eventos: Podrás agendar tus eventos en una lista para
-							tener todo ordenado. Por ejemplo, podrías enlistar una cita
-							médica.</li>
-						<li>Mis Preguntas: Podrás enlistar preguntas o consultas
-							triviales que quieras hacer a tu médico en alguna cita. De esta
-							manera, no te olvidarás de realizar alguna pregunta.</li>
-						<li>Mis Parámetros: Es una sección para registrar parámetros
-							como "metros", "cm", para que luego puedas registrar valores en
-							caso los necesites. Nosotros te proveemos algunos parámetros, la
-							sección existe por si tu quieres añadir alguno personalmente.</li>
+					<p>Mis Eventos: Podrás agendar tus eventos en una lista para
+						tener todo ordenado. Por ejemplo, podrías enlistar una cita
+						médica.</p>
 
-						<li>Mis Registros: Podrás registrar valores de signos vitales
-							importantes que quieras llevar un registro. Por ejemplo, podrás
-							mantener un registro de tu peso.</li>
+					<p>Mis Preguntas: Podrás enlistar preguntas o consultas
+						triviales que quieras hacer a tu médico en alguna cita. De esta
+						manera, no te olvidarás de realizar alguna pregunta.</p>
 
-					</ul>
+					<p>Mis Parámetros: Es una sección para registrar parámetros
+						como "metros", "cm", para que luego puedas registrar valores en
+						caso los necesites. Nosotros te proveemos algunos parámetros, la
+						sección existe por si tu quieres añadir alguno personalmente.</p>
+
+					<p>Mis Registros: Podrás registrar valores de signos vitales
+						importantes que quieras llevar un registro. Por ejemplo, podrás
+						mantener un registro de tu peso.</p>
+
+
+
+
+
 				</div>
 				<div class="col-md-6 column" align="right">
 					<img th:src="@{/imagenes/bienvenida2.png}" width="400" height="400"
@@ -109,8 +118,8 @@
 							<p>Podrás registrar tus consultas médicas, guardar las
 								preguntas que quieres hacerle a tu doctor, entre otras cosas.</p>
 							<p>
-								<a href="/auth/irRegistrar" style="background-color: #9D186F"
-									class="btn btn-primary" role="button">Ir a REGISTRARME</a>
+								<a href="/auth/irRegistrar" 
+									class="btn btn-primary btn2" role="button">Ir a registrarme</a>
 							</p>
 						</div>
 					</div>
@@ -134,6 +143,7 @@
 		</form>
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>
+	<script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

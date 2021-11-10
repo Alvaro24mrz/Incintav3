@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Unidades</title>
 
-<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -44,17 +44,17 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 
-					<a style="background-color:#9D186F; width:250px"
+					<a 
 						th:href="@{/unidad/irRegistrar}" id="add-row" type="button"
-						class="btn btn-primary btn-md left-block"> <span
+						class="btn btn-primary btn-md left-block btn2"> <span
 						class="glyphicon glyphicon-plus"></span> Unidad
-					</a> <a style="background-color:#9D186F; width:250px"
+					</a> <a 
 						th:href="@{/unidad/irSearch}" id="add-row" type="button"
-						class="btn btn-primary btn-md left-block"> <span
+						class="btn btn-primary btn-md left-block btn2"> <span
 						class="glyphicon glyphicon-search"></span> Buscar
-					</a> <a style="background-color:#9D186F; width:250px" th:href="@{/parametro/listar}"
+					</a> <a th:href="@{/parametro/listar}"
 						id="add-row" type="button"
-						class="btn btn-primary btn-md left-block"> <span
+						class="btn btn-primary btn-md left-block btn2"> <span
 						class="glyphicon glyphicon-chevron-left"></span> Regresar
 					</a>
 
@@ -64,10 +64,10 @@
 						id="tab_logic">
 						<thead>
 							<tr>
-								<th class="text-center">CODIGO</th>
-								<th class="text-center">UNIDAD</th>
-								<th class="text-center">ELIMINAR</th>
-								<th class="text-center">EDITAR</th>
+								<th class="text-center">Código</th>
+								<th class="text-center">Unidad</th>
+								<th class="text-center">Eliminar</th>
+								<th class="text-center">Editar</th>
 							</tr>
 						</thead>
 						<tbody>
