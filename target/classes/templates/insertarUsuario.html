@@ -7,6 +7,7 @@
 <title>Registro</title>
 
 		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
+		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -52,8 +53,8 @@
 				
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">NOMBRE:</label> <input type="text"
-						class="form-control" th:field="*{nUsuario}" id="nombre" required></input>
+				      <label for="nombre">NOMBRE:</label> 
+				      <input type="text" class="form-control" size="50" th:field="*{nUsuario}" id="nombre" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
 					</div>
@@ -62,9 +63,8 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="apellido">APELLIDO:</label> <input type="text"
-						class="form-control" th:field="*{uApellido}" id="apellido"
-						required></input>
+				      <label for="apellido">APELLIDO:</label> 
+				      <input type="text" class="form-control"  size="50" th:field="*{uApellido}" id="apellido" required></input>
 
 						<div class="alert alert-danger"
 							th:if="${#fields.hasErrors('uApellido')}" th:errors="*{uApellido}">
@@ -80,8 +80,8 @@
 				
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="correo">CORREO:</label> <input type="email"
-						class="form-control" th:field="*{uCorreo}" id="correo" required></input>
+				      <label for="correo">CORREO:</label>
+				       <input type="email" class="form-control" size="50" th:field="*{uCorreo}" id="correo" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uCorreo')}" th:errors="*{uCorreo}">
@@ -92,11 +92,8 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="password">PASSWORD:</label> <input type="text"
-
-						class="form-control" th:field="*{uPassword}" id="password"
-						required></input>
-
+				      <label for="password">PASSWORD:</label> 
+				      <input type="text" class="form-control" size="50" th:field="*{uPassword}" id="password" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('uPassword')}" th:errors="*{uPassword}">
 					</div>
@@ -110,9 +107,10 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">TIPO DE IDENTIFICACIÓN:</label> <select
+				      <label for="nombre">TIPO DE IDENTIFICACIÓN:</label> 
+				      <select  
 						class="form-control"
-						th:field="*{iDTipoIdentificacion.idTipoIdentificacion}">
+						th:field="*{iDTipoIdentificacion.idTipoIdentificacion}" style="width:100%">
 						<option th:each="ti: ${listaTipoIdentificacion}"
 							th:value="${ti.idTipoIdentificacion}"
 							th:text="${ti.nIdentificacion}"
@@ -124,9 +122,8 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> <input
-						type="text" class="form-control" th:field="*{numIdentificacion}"
-						id="numID"></input>
+				      <label for="numID">NÚMERO DE IDENTIFICACIÓN:</label> 
+				      <input type="text" class="form-control" th:field="*{numIdentificacion}" id="numID"></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('numIdentificacion')}"
@@ -139,7 +136,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input
+				      <label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input size="50"
 						type="date" class="form-control" th:field="*{dNacimiento}"
 						id="fnacimiento" required></input>
 
@@ -151,9 +148,9 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">PAÍS:</label> <select class="form-control"
+				      <label for="nombre">PAÍS:</label> <select class="form-control" 
 						th:field="*{iDPais.idPais}">
-						<option th:each="p: ${listaPaises}" th:value="${p.idPais}"
+						<option th:each="p: ${listaPaises}" th:value="${p.idPais}" style="width:100%"
 							th:text="${p.nombrePais}"
 							th:selected="(${p.idPais} == *{iDPais.idPais})"></option>
 					</select>
@@ -165,7 +162,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">MÉTODO DE PAGO:</label> <select
+				      <label for="nombre">MÉTODO DE PAGO:</label> <select style="width:100%"
 						class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
 						<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 							th:text="${mp.nombreMetodoPago}"
@@ -177,7 +174,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="ntarjeta">NÚMERO DE TARJETA:</label> <input
+				      <label for="ntarjeta">NÚMERO DE TARJETA:</label> <input size="40"
 						type="text" class="form-control" th:field="*{numMetodoPago}"
 						id="ntarjeta" required></input>
 
@@ -193,7 +190,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control"
+				      <label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control" style="width:100%"
 						th:field="*{semanaGestacion}">
 							<option value="1">1</option>
 							<option value="2">2</option>
