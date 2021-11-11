@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8"></meta>
+<title>Preguntas</title>
+
+<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js"
+	crossorigin="anonymous"></script>
+
+
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body id="body">
+
+	<div th:if="${session.usuario.admin == 1}">
+		<div th:replace="fragments/headerAdmin :: header"></div>
+	</div>
+	<div th:if="${session.usuario.admin == 2}">
+		<div th:replace="fragments/headerUsuario :: header"></div>
+	</div>
+
+	<main>
+		<div class="container">
+			<form id="myform">
+				<h1 th:if="${session.usuario.admin == 2}">Mis Preguntas</h1>
+				<h1 th:if="${session.usuario.admin == 1}">Preguntas</h1>
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+
+						<a th:href="@{/preguntasGestante/irRegistrar}" id="add-row"
+							type="button" class="btn btn-primary btn-md left-block btn2">
+							<span class="glyphicon glyphicon-plus"></span> Pregunta
+						</a> <a th:href="@{/preguntasGestante/irBuscar}" id="add-row"
+							type="button" class="btn btn-primary btn-md left-block btn2">
+							<span class="glyphicon glyphicon-search"></span> Buscar
+						</a>
+
+						<table class="table table-bordered table-hover table-striped marcoTable"
+							id="tab_logic">
+							<thead th:if="${session.usuario.admin == 2}">
+								<tr>
+									<th class="text-center">Título de la Pregunta</th>
+									<th class="text-center">Descripción</th>
+									<th class="text-center">Fecha</th>
+									<th class="text-center">Eliminar</th>
+									<th class="text-center">Modificar</th>
+								</tr>
+							</thead>
+							<thead th:if="${session.usuario.admin == 1}">
+								<tr>
+									<th class="text-center">Código</th>
+									<th class="text-center">Usuario</th>
+									<th class="text-center">Título de la Pregunta</th>
+									<th class="text-center">Descripción</th>
+									<th class="text-center">Fecha</th>
+									<th class="text-center">Eliminar</th>
+									<th class="text-center">Modificar</th>
+								</tr>
+							</thead>
+							<tbody th:if="${session.usuario.admin == 2}">
+								<tr th:each="pg: ${listaPreguntasGestante}" th:object="${pg}"
+									th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
+									<td th:text="${pg.nTitulo}"></td>
+									<td th:text="${pg.tPregunta}"></td>
+									<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
+
+									<td><a
+										th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
+											class="glyphicon glyphicon-trash"></i></a></td>
+									<td><a
+										th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
+											class="glyphicon glyphicon-pencil"></i></a></td>
+								</tr>
+							</tbody>
+							<tbody th:if="${session.usuario.admin == 1}">
+								<tr th:each="pg: ${listaPreguntasGestante}">
+									<td th:text="${pg.idPreguntasGestante}"></td>
+									<td th:text="${pg.usuario.nUsuario}"></td>
+									<td th:text="${pg.nTitulo}"></td>
+									<td th:text="${pg.tPregunta}"></td>
+									<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
+
+									<td><a
+										th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
+											class="glyphicon glyphicon-trash"></i></a></td>
+									<td><a
+										th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
+											class="glyphicon glyphicon-pencil"></i></a></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+				<div th:if="${mensaje}" class="alert alert-danger">
+					<p th:text="${mensaje}"></p>
+				</div>
+			</form>
+		</div>
+	</main>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+	<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

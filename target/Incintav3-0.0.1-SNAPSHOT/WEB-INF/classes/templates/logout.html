@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8"></meta>
+<title>Login</title>
+
+		<link rel="stylesheet" th:href="@{/estilos/stylePublico.css}">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js"
+	crossorigin="anonymous"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+<script type="text/javascript" th:src="@{/js/usuario.js}"></script>
+
+</head>
+
+<body id="body" style="background-color:#F4E3EE">
+	<div th:replace="fragments/headerInicio :: header"></div>
+	
+	<main>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card card-body">
+					<h2 class="text">Gracias por su visita</h2>
+					<h3>¡Esperamos que vuelvas pronto!</h3>
+					
+					<div style="text-align:center">
+						<a style="width:50%" th:href="@{/auth/login}" class="btn btn-primary mt-3 btn2" >Aceptar</a>	
+					</div>
+					
+				</div>
+
+			</div>
+			
+			<div class="col-md-6" align="center">
+				<div class="card card-body">
+					<img th:src="@{/imagenes/logout.png}" width="600"
+					height="300" alt="adiosGestante" align="middle"> </img>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+
+	</div>
+	</main>
+	
+	<div th:replace="fragments/footer :: footer"></div>
+	
+	<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>
