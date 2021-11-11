@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link rel="icon" type="image/x-icon" href="/imagenes/incintaLogo.png">
+
+<meta charset="UTF-8"></meta>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+</head>
+
+<body>
+
+	<div th:fragment="header">
+		<!-- this is header -->
+
+		<header class="centrarElemento">
+			<div class="icon__menu">
+				<h1>INCINTA</h1>
+			</div>
+		</header>
+
+		<div class="menu__side" id="menu_side">
+
+			<div class="name__page">
+				<img class="iconper" th:src="@{/imagenes/flor-de-loto.png}" id="btn_open">
+				<h4>INCINTA</h4>
+			</div>
+
+			<div class="options__menu" id="opciones_menu">
+
+				<a th:href="@{/insertarUsuario/bienvenido}" class="noSelect">
+					<div class="option">
+						<i class="fas fa-heart" title="Inicio"></i>
+						<h4>Inicio</h4>
+					</div>
+				</a> 
+				
+				<a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}" class="noSelect" >
+					<div class="option">
+						<i class="fas fa-user-circle" title="Mi Perfil"></i>
+						<h4>Mi Perfil</h4>
+					</div>
+				</a> 
+				
+				<a th:href="@{/eventos/listar}" class="noSelect">
+					<div class="option">
+						<i class="far fa-calendar" title="Calendario"></i>
+						<h4>Mis Eventos</h4>
+					</div>
+				</a> 
+				
+				<a th:href="@{/preguntasGestante/listar}" class="noSelect">
+					<div class="option">
+						<i class="far fa-sticky-note" title="Anotaciones"></i>
+						<h4>Mis Preguntas</h4>
+					</div>
+				</a> 
+				
+				<a th:href="@{/parametro/listar}" class="noSelect">
+					<div class="option">
+						<i class="fas fa-notes-medical" title="Parámetros"></i>
+						<h4>Mis Parámetros</h4>
+					</div>
+				</a> 
+				
+				<a th:href="@{/registro/listar}" class="noSelect">
+					<div class="option">
+						<i class="fas fa-heartbeat" title="Signos Vitales"></i>
+						<h4>Mis Registros</h4>
+					</div>
+				</a>
+
+				<form th:action="@{/public/logout}" method="post" class="noSelect" name="myform" >
+					<span class="glyphicon glyphicon-off punteroActivado" onclick="myform.submit()"></span>
+					<button type="submit" class="btn btn-primary mt-3 btnPer">
+						<h4>Log-Out</h4>
+					</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
