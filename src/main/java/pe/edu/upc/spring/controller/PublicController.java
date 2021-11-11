@@ -124,7 +124,7 @@ public class PublicController {
 				}
 			}
 			else {
-				model2.put("mensaje","Contraseña Incorrecta" );
+				model2.put("mensaje","Contraseña Incorrecta." );
 				model.addAttribute("listaTipoIdentificacion", tiService.listar());
 				model.addAttribute("listaPaises", pService.listar());
 				model.addAttribute("listaMDP", mpService.listar());

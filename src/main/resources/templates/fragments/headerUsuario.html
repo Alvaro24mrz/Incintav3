@@ -78,8 +78,8 @@
 					</div>
 				</a>
 
-				<form th:action="@{/public/logout}" method="post" class="noSelect" >
-					<i class="fas fa-power-off" title="Signos Vitales"></i>
+				<form th:action="@{/public/logout}" method="post" class="noSelect" name="myform" >
+					<span class="glyphicon glyphicon-off punteroActivado" onclick="myform.submit()"></span>
 					<button type="submit" class="btn btn-primary mt-3 btnPer">
 						<h4>Log-Out</h4>
 					</button>

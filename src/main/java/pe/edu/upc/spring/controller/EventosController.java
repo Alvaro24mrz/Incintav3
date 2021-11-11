@@ -28,113 +28,106 @@ public class EventosController {
 	private IEventosService rService;
 	@Autowired
 	private IUsuarioService uService;
-	
+
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
-		return "bienvenido"; // 
+		return "bienvenido"; //
 	}
-	
+
 	@RequestMapping("/")
 	public String irPaginaListadoEventos(Map<String, Object> model) {
 		model.put("listaEventos", rService.listar());
-		return "listEventos"; 
+		return "listEventos";
 	}
 
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
-		
+
 		model.addAttribute("listaUsuarios", uService.listar());
-		
+
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("eventos", new Eventos());
-		return "insertEventos"; 
+		return "insertEventos";
 	}
-	
+
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Eventos objEventos, BindingResult binRes, Model model) 
-		throws ParseException
-	{
-		if (binRes.hasErrors())
-		{
-			
+	public String registrar(@ModelAttribute Eventos objEventos, BindingResult binRes, Model model, Map<String, Object> model2)
+			throws ParseException {
+		if (binRes.hasErrors()) {
+
 			model.addAttribute("listaUsuarios", uService.listar());
 			return "insertEventos";
-		}
-		else {
-			boolean flag = rService.grabar(objEventos);
-			if (flag)
-				return "redirect:/eventos/listar";
-			else {
-				model.addAttribute("mensaje", "ERROR");
-				return "redirect:/insertEventos/irRegistrar";
+		} else {
+
+			if (objEventos.gethInicio().compareTo(objEventos.gethFin()) < 0) {
+				boolean flag = rService.grabar(objEventos);
+				if (flag)
+					return "redirect:/eventos/listar";
+				else {
+					model.addAttribute("mensaje", "ERROR");
+					return "redirect:/insertEventos/irRegistrar";
+				}
+			} else {
+				model2.put("mensaje", "Los eventos no terminan antes de comenzar.");
+				return "insertEventos";
 			}
 		}
 	}
-	
+
 	@RequestMapping("/modificar/{id}")
-	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
-		throws ParseException
-	{
+	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
 		Optional<Eventos> objEventos = rService.listarId(id);
 		if (objEventos == null) {
 			objRedir.addFlashAttribute("mensaje", "ERROR");
 			return "redirect:/insertEventos/listar";
-		}
-		else {
+		} else {
 			model.addAttribute("listaUsuarios", uService.listar());
-			if(objEventos.isPresent())
-				objEventos.ifPresent(o->model.addAttribute("eventos",o));
+			if (objEventos.isPresent())
+				objEventos.ifPresent(o -> model.addAttribute("eventos", o));
 			return "insertEventos";
 		}
 	}
-		
+
 	@RequestMapping("/eliminar")
-	public String eliminar(Map<String, Object> model,  @RequestParam(value="id") Integer id) {
+	public String eliminar(Map<String, Object> model, @RequestParam(value = "id") Integer id) {
 		try {
-			if (id!=null && id>0) {
+			if (id != null && id > 0) {
 				rService.eliminar(id);
 				model.put("listaEventos", rService.listar());
 			}
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
 			model.put("listaEventos", rService.listar());
 		}
 		return "listEventos";
 	}
-		
+
 	@RequestMapping("/listar")
-	public String listar(Map<String, Object> model ) {
+	public String listar(Map<String, Object> model) {
 		model.put("listaEventos", rService.listar());
 		return "listEventos";
 	}
-	
+
 	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) 
-	{
+	public String irBuscar(Model model) {
 		model.addAttribute("eventos", new Eventos());
 		return "searchEventos";
-	}	
-
-	
+	}
 
 	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Eventos eventos ) 
-	throws ParseException
-	{
-		
+	public String buscar(Map<String, Object> model, @ModelAttribute Eventos eventos) throws ParseException {
+
 		List<Eventos> listaEventos;
 		eventos.setFechaEvento(eventos.getFechaEvento());
 		listaEventos = rService.findByFechaEvento(eventos.getFechaEvento());
-		
-		
-		if(listaEventos.isEmpty()) {
+
+		if (listaEventos.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}
-		
+
 		model.put("listaEventos", listaEventos);
 		return "searchEventos";
-	}	
-	
+	}
+
 }
