@@ -42,12 +42,20 @@
 				<div class="card card-body">
 
 					
-					<span th:if="${session.usuario !=null}"><h3 class="text">Bienvenida a INCINTA 
-						</h3> <span class="font-italic" th:text="${session.usuario.nUsuario}"></span>
+					<span th:if="${session.usuario !=null}">
+						<h2 class="text">Bienvenida a INCINTA </h2> 
+						<br>
+						<h3 class="text" >Hola querida: </h3>
+						<h1 th:text="${session.usuario.nUsuario}"></h1>
+						<p style="text-align:justify;" class="text">Sabemos que estás pasando por una hermosa etapa de tu vida, 
+						así que te damos la bienvenida a INCINTA, donde podrás
+						llevar un registro adecuado para tu etapa de embarazo. De parte de todo el equipo de INCINTA
+						te deseamos un buen día y que nuestra aplicación sea de tu ayuda</p>
+						
 					</span>
-					<div>
+					<div style="text-align: center;">
 						<form th:action="@{/insertarUsuario/bienvenido}" method="POST">
-							<button type="submit" class="btn btn-primary btn2 mt-3">Ir a
+							<button type="submit" class="btn btn-primary btn2 mt-3" style="width:50%">Ir a
 								Inicio</button>
 						</form>
 					</div>
