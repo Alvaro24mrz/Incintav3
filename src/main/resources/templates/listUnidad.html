@@ -56,45 +56,46 @@
 					</a>
 
 
-
-					<table class="table table-bordered table-hover table-striped marcoTable"
-						id="tab_logic">
-						<thead th:if="${session.usuario.admin == 2}">
-							<tr>
-								<th class="text-center">Unidad</th>
-								<th class="text-center">Eliminar</th>
-								<th class="text-center">Editar</th>
-							</tr>
-						</thead>
-						<thead th:if="${session.usuario.admin == 1}">
-							<tr>
-								<th class="text-center">Código</th>
-								<th class="text-center">Unidad</th>
-								<th class="text-center">Eliminar</th>
-								<th class="text-center">Editar</th>
-							</tr>
-						</thead>
-						<tbody th:if="${session.usuario.admin == 2}">
-							<tr th:each="rac: ${listaUnidades}">
-								<td th:text="${rac.nUnidad}"></td>
-								<td><a th:href="@{/unidad/eliminar?id=}+${rac.idUnidad}"><i
-										class="glyphicon glyphicon-trash"></i></a></td>
-								<td><a th:href="@{'/unidad/modificar/'}+${rac.idUnidad}"><i
-										class="glyphicon glyphicon-pencil"></i></a></td>
-							</tr>
-						</tbody>
-						<tbody th:if="${session.usuario.admin == 1}">
-							<tr th:each="rac: ${listaUnidades}">
-								<td th:text="${rac.idUnidad}"></td>
-								<td th:text="${rac.nUnidad}"></td>
-								<td><a th:href="@{/unidad/eliminar?id=}+${rac.idUnidad}"><i
-										class="glyphicon glyphicon-trash"></i></a></td>
-								<td><a th:href="@{'/unidad/modificar/'}+${rac.idUnidad}"><i
-										class="glyphicon glyphicon-pencil"></i></a></td>
-							</tr>
-						</tbody>
-					</table>
-
+					<div class="table-responsive">
+						<table
+							class="table table-bordered table-hover table-striped marcoTable"
+							id="tab_logic">
+							<thead th:if="${session.usuario.admin == 2}">
+								<tr>
+									<th class="text-center">Unidad</th>
+									<th class="text-center">Eliminar</th>
+									<th class="text-center">Editar</th>
+								</tr>
+							</thead>
+							<thead th:if="${session.usuario.admin == 1}">
+								<tr>
+									<th class="text-center">Código</th>
+									<th class="text-center">Unidad</th>
+									<th class="text-center">Eliminar</th>
+									<th class="text-center">Editar</th>
+								</tr>
+							</thead>
+							<tbody th:if="${session.usuario.admin == 2}">
+								<tr th:each="rac: ${listaUnidades}">
+									<td th:text="${rac.nUnidad}"></td>
+									<td><a th:href="@{/unidad/eliminar?id=}+${rac.idUnidad}"><i
+											class="glyphicon glyphicon-trash"></i></a></td>
+									<td><a th:href="@{'/unidad/modificar/'}+${rac.idUnidad}"><i
+											class="glyphicon glyphicon-pencil"></i></a></td>
+								</tr>
+							</tbody>
+							<tbody th:if="${session.usuario.admin == 1}">
+								<tr th:each="rac: ${listaUnidades}">
+									<td th:text="${rac.idUnidad}"></td>
+									<td th:text="${rac.nUnidad}"></td>
+									<td><a th:href="@{/unidad/eliminar?id=}+${rac.idUnidad}"><i
+											class="glyphicon glyphicon-trash"></i></a></td>
+									<td><a th:href="@{'/unidad/modificar/'}+${rac.idUnidad}"><i
+											class="glyphicon glyphicon-pencil"></i></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div th:if="${mensaje}" class="alert alert-danger">

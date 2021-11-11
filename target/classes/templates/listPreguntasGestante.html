@@ -53,62 +53,63 @@
 							type="button" class="btn btn-primary btn-md left-block btn2">
 							<span class="glyphicon glyphicon-search"></span> Buscar
 						</a>
+						<div class="table-responsive">
+							<table
+								class="table table-bordered table-hover table-striped marcoTable"
+								id="tab_logic">
+								<thead th:if="${session.usuario.admin == 2}">
+									<tr>
+										<th class="text-center">Título de la Pregunta</th>
+										<th class="text-center">Descripción</th>
+										<th class="text-center">Fecha</th>
+										<th class="text-center">Eliminar</th>
+										<th class="text-center">Modificar</th>
+									</tr>
+								</thead>
+								<thead th:if="${session.usuario.admin == 1}">
+									<tr>
+										<th class="text-center">Código</th>
+										<th class="text-center">Usuario</th>
+										<th class="text-center">Título de la Pregunta</th>
+										<th class="text-center">Descripción</th>
+										<th class="text-center">Fecha</th>
+										<th class="text-center">Eliminar</th>
+										<th class="text-center">Modificar</th>
+									</tr>
+								</thead>
+								<tbody th:if="${session.usuario.admin == 2}">
+									<tr th:each="pg: ${listaPreguntasGestante}" th:object="${pg}"
+										th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
+										<td th:text="${pg.nTitulo}"></td>
+										<td th:text="${pg.tPregunta}"></td>
+										<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
 
-						<table class="table table-bordered table-hover table-striped marcoTable"
-							id="tab_logic">
-							<thead th:if="${session.usuario.admin == 2}">
-								<tr>
-									<th class="text-center">Título de la Pregunta</th>
-									<th class="text-center">Descripción</th>
-									<th class="text-center">Fecha</th>
-									<th class="text-center">Eliminar</th>
-									<th class="text-center">Modificar</th>
-								</tr>
-							</thead>
-							<thead th:if="${session.usuario.admin == 1}">
-								<tr>
-									<th class="text-center">Código</th>
-									<th class="text-center">Usuario</th>
-									<th class="text-center">Título de la Pregunta</th>
-									<th class="text-center">Descripción</th>
-									<th class="text-center">Fecha</th>
-									<th class="text-center">Eliminar</th>
-									<th class="text-center">Modificar</th>
-								</tr>
-							</thead>
-							<tbody th:if="${session.usuario.admin == 2}">
-								<tr th:each="pg: ${listaPreguntasGestante}" th:object="${pg}"
-									th:if="${pg.usuario.usuarioID == session.usuario.usuarioID}">
-									<td th:text="${pg.nTitulo}"></td>
-									<td th:text="${pg.tPregunta}"></td>
-									<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
+										<td><a
+											th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
+												class="glyphicon glyphicon-trash"></i></a></td>
+										<td><a
+											th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
+												class="glyphicon glyphicon-pencil"></i></a></td>
+									</tr>
+								</tbody>
+								<tbody th:if="${session.usuario.admin == 1}">
+									<tr th:each="pg: ${listaPreguntasGestante}">
+										<td th:text="${pg.idPreguntasGestante}"></td>
+										<td th:text="${pg.usuario.nUsuario}"></td>
+										<td th:text="${pg.nTitulo}"></td>
+										<td th:text="${pg.tPregunta}"></td>
+										<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
 
-									<td><a
-										th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
-											class="glyphicon glyphicon-trash"></i></a></td>
-									<td><a
-										th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
-											class="glyphicon glyphicon-pencil"></i></a></td>
-								</tr>
-							</tbody>
-							<tbody th:if="${session.usuario.admin == 1}">
-								<tr th:each="pg: ${listaPreguntasGestante}">
-									<td th:text="${pg.idPreguntasGestante}"></td>
-									<td th:text="${pg.usuario.nUsuario}"></td>
-									<td th:text="${pg.nTitulo}"></td>
-									<td th:text="${pg.tPregunta}"></td>
-									<td th:text="${#dates.format(pg.fecha, 'dd/MM/yyyy')}"></td>
-
-									<td><a
-										th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
-											class="glyphicon glyphicon-trash"></i></a></td>
-									<td><a
-										th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
-											class="glyphicon glyphicon-pencil"></i></a></td>
-								</tr>
-							</tbody>
-						</table>
-
+										<td><a
+											th:href="@{/preguntasGestante/eliminar?id=}+${pg.idPreguntasGestante}"><i
+												class="glyphicon glyphicon-trash"></i></a></td>
+										<td><a
+											th:href="@{'/preguntasGestante/modificar/'}+${pg.idPreguntasGestante}"><i
+												class="glyphicon glyphicon-pencil"></i></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div th:if="${mensaje}" class="alert alert-danger">

@@ -52,65 +52,70 @@
 							class="btn btn-primary btn-md left-block btn2"> <span
 							class="glyphicon glyphicon-search"></span> Buscar
 						</a>
+						<div class="table-responsive">
+							<table
+								class="table table-bordered table-hover table-striped marcoTable"
+								id="tab_logic">
+								<thead th:if="${session.usuario.admin == 2}">
+									<tr>
+										<th class="text-center">Parámetro</th>
+										<th class="text-center">Valor</th>
+										<th class="text-center">Fecha</th>
+										<th class="text-center">Anotaciones</th>
+										<th class="text-center">Eliminar</th>
+										<th class="text-center">Editar</th>
+									</tr>
+								</thead>
+								<thead th:if="${session.usuario.admin == 1}">
+									<tr>
+										<th class="text-center">Código</th>
+										<th class="text-center">Usuario</th>
+										<th class="text-center">Parámetro</th>
+										<th class="text-center">Valor</th>
+										<th class="text-center">Fecha</th>
+										<th class="text-center">Anotaciones</th>
+										<th class="text-center">Eliminar</th>
+										<th class="text-center">Editar</th>
+									</tr>
+								</thead>
+								<tbody th:if="${session.usuario.admin == 2}">
+									<tr th:each="p: ${listaRegistros}" th:object="${p}"
+										th:if="${p.usuario.usuarioID == session.usuario.usuarioID}">
+										<td th:text="${p.parametro.nParametro}"></td>
+										<td th:text="${p.numValor}"></td>
+										<td th:text="${#dates.format(p.fechaRegistro, 'dd/MM/yyyy')}"></td>
+										<td th:text="${p.tAnotaciones}"></td>
 
-						<table class="table table-bordered table-hover table-striped marcoTable"
-							id="tab_logic">
-							<thead th:if="${session.usuario.admin == 2}">
-								<tr>
-									<th class="text-center">Parámetro</th>
-									<th class="text-center">Valor</th>
-									<th class="text-center">Fecha</th>
-									<th class="text-center">Anotaciones</th>
-									<th class="text-center">Eliminar</th>
-									<th class="text-center">Editar</th>
-								</tr>
-							</thead>
-							<thead th:if="${session.usuario.admin == 1}">
-								<tr>
-									<th class="text-center">Código</th>
-									<th class="text-center">Usuario</th>
-									<th class="text-center">Parámetro</th>
-									<th class="text-center">Valor</th>
-									<th class="text-center">Fecha</th>
-									<th class="text-center">Anotaciones</th>
-									<th class="text-center">Eliminar</th>
-									<th class="text-center">Editar</th>
-								</tr>
-							</thead>
-							<tbody th:if="${session.usuario.admin == 2}">
-								<tr th:each="p: ${listaRegistros}" th:object="${p}"
-									th:if="${p.usuario.usuarioID == session.usuario.usuarioID}">
-									<td th:text="${p.parametro.nParametro}"></td>
-									<td th:text="${p.numValor}"></td>
-									<td th:text="${#dates.format(p.fechaRegistro, 'dd/MM/yyyy')}"></td>
-									<td th:text="${p.tAnotaciones}"></td>
+										<td><a
+											th:href="@{/registro/eliminar?id=}+${p.idRegistro}"> <i
+												class="glyphicon glyphicon-trash"></i>
+										</a></td>
+										<td><a
+											th:href="@{'/registro/modificar/'}+${p.idRegistro}"> <i
+												class="glyphicon glyphicon-pencil"></i>
+										</a></td>
+									</tr>
+								</tbody>
+								<tbody th:if="${session.usuario.admin == 1}">
+									<tr th:each="p: ${listaRegistros}">
+										<td th:text="${p.idRegistro}"></td>
+										<td th:text="${p.usuario.nUsuario}"></td>
+										<td th:text="${p.parametro.nParametro}"></td>
+										<td th:text="${p.numValor}"></td>
+										<td th:text="${#dates.format(p.fechaRegistro, 'dd/MM/yyyy')}"></td>
+										<td th:text="${p.tAnotaciones}"></td>
 
-									<td><a th:href="@{/registro/eliminar?id=}+${p.idRegistro}">
-											<i class="glyphicon glyphicon-trash"></i>
-									</a></td>
-									<td><a th:href="@{'/registro/modificar/'}+${p.idRegistro}">
-											<i class="glyphicon glyphicon-pencil"></i>
-									</a></td>
-								</tr>
-							</tbody>
-							<tbody th:if="${session.usuario.admin == 1}">
-								<tr th:each="p: ${listaRegistros}">
-									<td th:text="${p.idRegistro}"></td>
-									<td th:text="${p.usuario.nUsuario}"></td>
-									<td th:text="${p.parametro.nParametro}"></td>
-									<td th:text="${p.numValor}"></td>
-									<td th:text="${#dates.format(p.fechaRegistro, 'dd/MM/yyyy')}"></td>
-									<td th:text="${p.tAnotaciones}"></td>
-
-									<td><a th:href="@{/registro/eliminar?id=}+${p.idRegistro}"><i
-											class="glyphicon glyphicon-trash"></i> </a></td>
-									<td><a th:href="@{'/registro/modificar/'}+${p.idRegistro}">
-											<i class="glyphicon glyphicon-pencil"></i>
-									</a></td>
-								</tr>
-							</tbody>
-						</table>
-
+										<td><a
+											th:href="@{/registro/eliminar?id=}+${p.idRegistro}"><i
+												class="glyphicon glyphicon-trash"></i> </a></td>
+										<td><a
+											th:href="@{'/registro/modificar/'}+${p.idRegistro}"> <i
+												class="glyphicon glyphicon-pencil"></i>
+										</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div th:if="${mensaje}" class="alert alert-danger">

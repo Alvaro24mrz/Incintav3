@@ -6,7 +6,7 @@
 <meta charset="UTF-8"></meta>
 <title>Busqueda de Usuario</title>
 
-		<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
+<link rel="stylesheet" th:href="@{/estilos/styleUsuario.css}">
 
 <script src="https://kit.fontawesome.com/41bcea2ae3.js"
 	crossorigin="anonymous"></script>
@@ -37,73 +37,74 @@
 	<div th:if="${session.usuario.admin == 2}">
 		<div th:replace="fragments/headerUsuario :: header"></div>
 	</div>
-		
-	<main>
-	<div class="container">
-		<div class="row clearfix">
-			<h1 >Búsqueda de Usuario</h1>
-			<form th:action="@{/insertarUsuario/searchUsuario}" method="post"
-				th:object="${usuario}">
-				<div class="form-group">
-					<div class="col-sm-12">
-						<input type="text" class="form-control" th:field="*{nUsuario}"
-							id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
 
-						<div align="center">
-							<button type="submit" class="btn btn-primary btn2" >Buscar</button>
-							<a href="/insertarUsuario/listar" class="btn btn1" >Cancelar</a>
+	<main>
+		<div class="container">
+			<div class="row clearfix">
+				<h1>Búsqueda de Usuario</h1>
+				<form th:action="@{/insertarUsuario/searchUsuario}" method="post"
+					th:object="${usuario}">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" class="form-control" th:field="*{nUsuario}"
+								id="nombre" placeholder="Ingrese el nombre a buscar"> </input>
+
+							<div align="center">
+								<button type="submit" class="btn btn-primary btn2">Buscar</button>
+								<a href="/insertarUsuario/listar" class="btn btn1">Cancelar</a>
+							</div>
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
+
+
+			<hr class="sidebar-divider">
+			<div class="table-responsive">
+				<table
+					class="table table-bordered table-hover table-striped marcoTable"
+					id="tab_logic">
+					<thead>
+						<tr>
+							<th class="text-center">Código</th>
+							<th class="text-center">Nombre</th>
+							<th class="text-center">Apellido</th>
+							<th class="text-center">Correo</th>
+							<th class="text-center">Password</th>
+							<th class="text-center">Tipo de identificación</th>
+							<th class="text-center">Num. Identificación</th>
+							<th class="text-center">F. Nacimiento</th>
+							<th class="text-center">País</th>
+							<th class="text-center">Método de pago</th>
+							<th class="text-center">Num. Tarjeta</th>
+							<th class="text-center">S. Gestación</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="u: ${listaUsuarios}">
+							<td th:text="${u.usuarioID}"></td>
+							<td th:text="${u.nUsuario}"></td>
+							<td th:text="${u.uApellido}"></td>
+							<td th:text="${u.uCorreo}"></td>
+							<td th:text="${u.uPassword}"></td>
+							<td th:text="${u.iDTipoIdentificacion.nIdentificacion}"></td>
+							<td th:text="${u.numIdentificacion}"></td>
+							<td th:text="${#dates.format(u.dNacimiento, 'dd/MM/yyyy')}"></td>
+							<td th:text="${u.iDPais.nombrePais}"></td>
+							<td th:text="${u.iDMetodoPago.nombreMetodoPago}"></td>
+							<td th:text="${u.numMetodoPago}"></td>
+							<td th:text="${u.semanaGestacion}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<p th:text="${mensaje}" class="form-text text-dark"></p>
 		</div>
-
-
-		<hr class="sidebar-divider">
-
-		<table class="table table-bordered table-hover table-striped marcoTable"
-			id="tab_logic">
-			<thead>
-				<tr>
-					<th class="text-center">Código</th>
-					<th class="text-center">Nombre</th>
-					<th class="text-center">Apellido</th>
-					<th class="text-center">Correo</th>
-					<th class="text-center">Password</th>
-					<th class="text-center">Tipo de identificación</th>
-					<th class="text-center">Num. Identificación</th>
-					<th class="text-center">F. Nacimiento</th>
-					<th class="text-center">País</th>
-					<th class="text-center">Método de pago</th>
-					<th class="text-center">Num. Tarjeta</th>
-					<th class="text-center">S. Gestación</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="u: ${listaUsuarios}">
-					<td th:text="${u.usuarioID}"></td>
-					<td th:text="${u.nUsuario}"></td>
-					<td th:text="${u.uApellido}"></td>
-					<td th:text="${u.uCorreo}"></td>
-					<td th:text="${u.uPassword}"></td>
-					<td th:text="${u.iDTipoIdentificacion.nIdentificacion}"></td>
-					<td th:text="${u.numIdentificacion}"></td>
-					<td th:text="${#dates.format(u.dNacimiento, 'dd/MM/yyyy')}"></td>
-					<td th:text="${u.iDPais.nombrePais}"></td>
-					<td th:text="${u.iDMetodoPago.nombreMetodoPago}"></td>
-					<td th:text="${u.numMetodoPago}"></td>
-					<td th:text="${u.semanaGestacion}"></td>
-				</tr>
-			</tbody>
-		</table>
-
-
-		<p th:text="${mensaje}" class="form-text text-dark"></p>
-	</div>
 	</main>
-	
+
 	<div th:replace="fragments/footer :: footer"></div>
-	
+
 	<script th:src="@{/js/script.js}"></script>
 </body>
 </html>
