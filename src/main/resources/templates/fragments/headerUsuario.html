@@ -34,41 +34,51 @@
 				<h4>INCINTA</h4>
 			</div>
 
-			<div class="options__menu">
+			<div class="options__menu" id="opciones_menu">
 
-				<a th:href="@{/insertarUsuario/bienvenido}" class="selected">
+				<a th:href="@{/insertarUsuario/bienvenido}" class="noSelect">
 					<div class="option">
 						<i class="fas fa-heart" title="Inicio"></i>
 						<h4>Inicio</h4>
 					</div>
-				</a> <a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}">
+				</a> 
+				
+				<a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}" class="noSelect" >
 					<div class="option">
 						<i class="fas fa-user-circle" title="Mi Perfil"></i>
 						<h4>Mi Perfil</h4>
 					</div>
-				</a> <a th:href="@{/eventos/listar}">
+				</a> 
+				
+				<a th:href="@{/eventos/listar}" class="noSelect">
 					<div class="option">
 						<i class="far fa-calendar" title="Calendario"></i>
 						<h4>Mis Eventos</h4>
 					</div>
-				</a> <a th:href="@{/preguntasGestante/listar}">
+				</a> 
+				
+				<a th:href="@{/preguntasGestante/listar}" class="noSelect">
 					<div class="option">
 						<i class="far fa-sticky-note" title="Anotaciones"></i>
 						<h4>Mis Preguntas</h4>
 					</div>
-				</a> <a th:href="@{/parametro/listar}">
+				</a> 
+				
+				<a th:href="@{/parametro/listar}" class="noSelect">
 					<div class="option">
 						<i class="fas fa-notes-medical" title="Parámetros"></i>
 						<h4>Mis Parámetros</h4>
 					</div>
-				</a> <a th:href="@{/registro/listar}">
+				</a> 
+				
+				<a th:href="@{/registro/listar}" class="noSelect">
 					<div class="option">
 						<i class="fas fa-heartbeat" title="Signos Vitales"></i>
 						<h4>Mis Registros</h4>
 					</div>
 				</a>
 
-				<form th:action="@{/public/logout}" method="post">
+				<form th:action="@{/public/logout}" method="post" class="noSelect" >
 					<i class="fas fa-power-off" title="Signos Vitales"></i>
 					<button type="submit" class="btn btn-primary mt-3 btnPer">
 						<h4>Log-Out</h4>
