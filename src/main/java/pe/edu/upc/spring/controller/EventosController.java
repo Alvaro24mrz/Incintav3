@@ -69,6 +69,7 @@ public class EventosController {
 				}
 			} else {
 				model2.put("mensaje", "Los eventos no terminan antes de comenzar.");
+				model.addAttribute("listaUsuarios", uService.listar());
 				return "insertEventos";
 			}
 		}

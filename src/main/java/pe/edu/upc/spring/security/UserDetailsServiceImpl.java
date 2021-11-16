@@ -23,13 +23,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		Usuario usuario = uDao.findBynUsuario(username);
 		UserBuilder builder = null;
 		
-		if(usuario != null) {
+		if(usuario != null && usuario.getAdmin()==1) {
+			builder = User.withUsername(username);
+			builder.disabled(false);
+			builder.password(usuario.getuPassword());
+			builder.authorities(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		}
+		
+		else if(usuario != null && usuario.getAdmin()==2) {
 			builder = User.withUsername(username);
 			builder.disabled(false);
 			builder.password(usuario.getuPassword());
 			builder.authorities(new SimpleGrantedAuthority("ROLE_USER"));
-			
 		}
+		
 		else {
 			throw new UsernameNotFoundException("Usuario no encontrado");
 		}
