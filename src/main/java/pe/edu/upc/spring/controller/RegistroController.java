@@ -1,7 +1,10 @@
 package pe.edu.upc.spring.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.sun.el.parser.ParseException;
 
@@ -134,8 +138,6 @@ public class RegistroController {
 		return "searchRegistro";
 	}
 	
-	
-	
 	@RequestMapping("/searchRegistro")
 	public String buscar(Map<String, Object> model, @ModelAttribute Registro registro ) throws ParseException
 	{
@@ -151,5 +153,29 @@ public class RegistroController {
 		model.put("listaRegistros", listaRegistros);
 		return "searchRegistro";
 	}
+	
+	@RequestMapping("/listar2")
+    public String getPieChart(Model model) {
+        Map<String, Integer> graphData = new TreeMap<>();
+        List<Registro> listaRegistros = rService.listar();
+        
+        List<Integer> valores = new ArrayList<Integer>();
+        List<String> fecha = new ArrayList<String>();
+        
+        for(int i = 0; i<listaRegistros.size();i++) {
+        	Registro r = listaRegistros.get(i);
+        	valores.add(r.getNumValor());
+        	SimpleDateFormat aux = new SimpleDateFormat("yyyy/MM/dd");
+        	String aux2 = aux.format(r.getFechaRegistro());
+        	fecha.add(aux2);
+        }
+        
+        for(int i = 0; i<listaRegistros.size();i++) {
+        	graphData.put(fecha.get(i), valores.get(i));
+        }
+        
+        model.addAttribute("chartData", graphData);
+        return "pruebaChart";
+    }
 	
 }
