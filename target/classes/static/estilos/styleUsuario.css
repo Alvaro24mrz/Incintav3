@@ -36,6 +36,14 @@ header {
 	z-index: 200 !important;
 }
 
+.prueba {
+	width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto !important;
+}
+
 .marcoTable {
 	margin-top: 20px;
 }

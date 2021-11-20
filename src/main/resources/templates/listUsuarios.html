@@ -38,6 +38,7 @@
 		<div th:replace="fragments/headerUsuario :: header"></div>
 	</div>
 
+
 	<main>
 		<div class="container">
 			<form id="myform">
@@ -52,6 +53,7 @@
 							type="button" class="btn btn-primary btn-md left-block btn2">
 							<span class="glyphicon glyphicon-search"></span> Buscar
 						</a>
+
 						<div class="table-responsive">
 							<table
 								class="table table-bordered table-hover table-striped marcoTable"
@@ -98,12 +100,15 @@
 								</tbody>
 							</table>
 						</div>
-
 					</div>
 				</div>
+
+				
+
 				<div th:if="${mensaje}" class="alert alert-danger">
 					<p th:text="${mensaje}"></p>
 				</div>
+
 			</form>
 		</div>
 	</main>

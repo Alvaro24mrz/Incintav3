@@ -60,6 +60,7 @@ public class EventosController {
 		} else {
 
 			if (objEventos.gethInicio().compareTo(objEventos.gethFin()) < 0) {
+				
 				boolean flag = rService.grabar(objEventos);
 				if (flag)
 					return "redirect:/eventos/listar";
