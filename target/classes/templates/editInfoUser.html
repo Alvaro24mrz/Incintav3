@@ -41,7 +41,7 @@
 
 	<main>
 		<div class="container">
-			<form th:action="@{/public/guardar}" method="post"
+			<form th:action="@{/user/guardar}" method="post"
 				th:object="${usuario}">
 
 				<div th:if="${mensaje}" class="alert alert-danger">
@@ -215,7 +215,7 @@
 
 				</div>
 				<button type="submit" class="btn btn-primary btn2">Aceptar</button>
-				<a th:href="@{'/public/mostrar/'}+${session.usuario.usuarioID}"
+				<a th:href="@{'/user/mostrar/'}+${session.usuario.usuarioID}"
 					class="btn btn1">Cancelar</a>
 			</form>
 		</div>

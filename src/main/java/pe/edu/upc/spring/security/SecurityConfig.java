@@ -31,13 +31,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/public/**","/auth/**","/static/estilos/**","/estilos/**","/public/**", "/imagenes/**", "/static/imagenes/**", "/static/js/**").permitAll().anyRequest().authenticated()
+		
+		http.authorizeRequests()
+		.antMatchers("/public/**","/auth/**","/static/estilos/**","/estilos/**","/public/**", "/imagenes/**", "/static/imagenes/**", "/static/js/**")
+		.permitAll()
+		.antMatchers("/user/**").access("hasRole('ROLE_USER')")
+		.antMatchers( "/insertarPaises/**", "/insertarMDP/**","/tipoIdentificacion/**").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/insertarUsuario/**", "/private/**","/eventos/**", "/preguntasGestante/**", "/parametro/**", "/registro/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+		.anyRequest().authenticated()
 
 		.and()
 			.formLogin().loginPage("/public/bienvenidoInicio").defaultSuccessUrl("/private/index",true).failureUrl("/auth/login?error=true")
 			.loginProcessingUrl("/auth/login-post").permitAll()
 		.and()
-			.logout().logoutUrl("/public/logout").logoutSuccessUrl("/public/logout");
+			.logout().logoutUrl("/public/logout").logoutSuccessUrl("/public/logout")
+		.and().exceptionHandling().accessDeniedPage("/error_403");
+		
 		
 	}
 
