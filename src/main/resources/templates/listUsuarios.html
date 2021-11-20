@@ -64,7 +64,6 @@
 										<th class="text-center">Nombre</th>
 										<th class="text-center">Apellido</th>
 										<th class="text-center">Correo</th>
-										<th class="text-center">Password</th>
 										<th class="text-center">Tipo de identificación</th>
 										<th class="text-center">Num. idenfiticación</th>
 										<th class="text-center">F. Nacimiento</th>
@@ -82,7 +81,6 @@
 										<td th:text="${u.nUsuario}"></td>
 										<td th:text="${u.uApellido}"></td>
 										<td th:text="${u.uCorreo}"></td>
-										<td th:text="${u.uPassword}"></td>
 										<td th:text="${u.iDTipoIdentificacion.nIdentificacion}"></td>
 										<td th:text="${u.numIdentificacion}"></td>
 										<td th:text="${#dates.format(u.dNacimiento, 'dd/MM/yyyy')}"></td>
