@@ -19,9 +19,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
+import pe.edu.upc.spring.model.MetodoDePago;
 import pe.edu.upc.spring.model.Parametro;
 import pe.edu.upc.spring.model.Registro;
 import pe.edu.upc.spring.model.Usuario;
+import pe.edu.upc.spring.service.IMetodoDePagoService;
 import pe.edu.upc.spring.service.IParametroService;
 import pe.edu.upc.spring.service.IRegistroService;
 import pe.edu.upc.spring.service.IUsuarioService;
@@ -38,38 +40,13 @@ public class InformesAdminController {
 	@Autowired
 	private IParametroService pService;
 	
-	
-	
+	@Autowired
+	private IMetodoDePagoService mpService;
+
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
 		return "bienvenido"; 
-	}
-	
-	@RequestMapping("/")
-	public String irPaginaListadoRegistros(Map<String, Object> model) {
-		model.put("listaRegistros", rService.listar());
-		return "listRegistro";  
-	}
-	
-	@RequestMapping("/modificar/{id}")
-	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
-		throws ParseException
-	{
-		Optional<Registro> objRegistro = rService.listarId(id);
-		if (objRegistro == null) {
-			objRedir.addFlashAttribute("mensaje", "ERROR");
-			return "redirect:/registro/listar";
-		}
-		else {
-			model.addAttribute("listaUsuarios",uService.listar());
-			model.addAttribute("listaParametros",pService.listar());
-
-			if(objRegistro.isPresent())
-				objRegistro.ifPresent(o -> model.addAttribute("registro",o));
-			
-			return "insertRegistro";
-		}
 	}
 	
 	@RequestMapping("/mostrar")
@@ -92,7 +69,42 @@ public class InformesAdminController {
         	graphData.put(fecha.get(i), valores.get(i));
         }
         
-        model.addAttribute("chartData", graphData);
+        // MÉTODOS DE PAGO
+        
+        Map<String, Integer> graphDataMP = new TreeMap<>();
+        
+        List<MetodoDePago> listaMP = mpService.listar();
+        List<Usuario> listaUserMP = uService.listar();
+        
+        List<Integer> valoresMP = new ArrayList<Integer>();
+        List<String> nombreMP = new ArrayList<String>();
+        
+        for(int i = 0; i<listaMP.size();i++) {
+        	MetodoDePago mp = listaMP.get(i);
+        	nombreMP.add(mp.getNombreMetodoPago());
+        }
+        
+        for(int i = 0; i<listaMP.size();i++) {
+        	MetodoDePago mp = listaMP.get(i);
+        	int q = 0;
+        	for(int j = 0; j<listaUserMP.size();j++) {
+        		Usuario u = listaUserMP.get(i);
+        		if(mp.getiDMetodoPago() == u.getiDMetodoPago().getiDMetodoPago()) q++;
+        	}
+        	valoresMP.add(q);
+        	
+        }
+        
+        for(int i = 0; i<listaMP.size();i++) {
+        	graphDataMP.put(nombreMP.get(i), valoresMP.get(i));
+        }
+        
+        // MANDAR DATA
+        
+        model.addAttribute("chartData", graphData); // ---
+        model.addAttribute("chartDataMP", graphDataMP); // Método de Pago
+        
+        
         return "informeAdmin";
     }
 	

@@ -43,7 +43,7 @@
 		<div class="container">
 			<h2>Método de Pago</h2>
 			
-			<div id="chart_div"></div>
+			<div id="piechart"></div>
 			
 			<h2>Tipo de Identificación</h2>
 			
@@ -54,6 +54,9 @@
 			<div id="regions_div"></div>
 			
 			<h2>Preguntas</h2>
+			
+			<div id="chart_div"></div>
+			
 			<h2>Registros</h2>
 			<h2>Parámetros</h2>
 		</div>
@@ -64,22 +67,40 @@
 
 	<script th:inline="javascript">
         var real_data = /*[[${chartData}]]*/'noValue';
+        var real_dataMP = /*[[${chartDataMP}]]*/'noValue';
         
         $(document).ready(function() {
             google.charts.load('current', {
-                packages : [ 'corechart', 'bar', 'geochart' ]
+                packages : [ 'bar','corechart', 'bar', 'geochart' ]
             });
+
+            google.charts.setOnLoadCallback(drawPieChart);
             google.charts.setOnLoadCallback(drawColumnChart);
             google.charts.setOnLoadCallback(drawChart);
             google.charts.setOnLoadCallback(drawRegionsMap);
         });
+
+        function drawPieChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Year');
+            data.addColumn('number', 'Views');
+            Object.keys(real_dataMP).forEach(function(key) {
+                data.addRow([ key, real_dataMP[key] ]);
+            });
+            var options = {
+                title : 'Blog stats'
+            };
+            var chart = new google.visualization.PieChart(document
+                    .getElementById('piechart'));
+            chart.draw(data, options);
+        }
         
         function drawColumnChart() {
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Fecha');
             data.addColumn('number', 'Peso');
-            Object.keys(real_data).forEach(function(key) {
-                data.addRow([ key, real_data[key] ]);
+            Object.keys(real_dataMP).forEach(function(key) {
+                data.addRow([ key, real_dataMP[key] ]);
             });
             var options = {
                 title : 'GAAAAAAAAAAA',
