@@ -114,9 +114,6 @@ public class ParametroController {
 		return "listParametro";
 	}
 	
-	
-	
-	
 	@RequestMapping("/irSearch")
 	public String irBuscar(Model model ) 
 	{
@@ -128,11 +125,9 @@ public class ParametroController {
 	public String buscar(Map<String, Object> model, @ModelAttribute Parametro parametro ) throws ParseException
 	{
 		
-		
 		List<Parametro> listaParametros;
 		parametro.setnParametro(parametro.getnParametro());
 		listaParametros = rService.buscarNombre(parametro.getnParametro());
-		
 		
 		if(listaParametros.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");

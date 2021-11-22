@@ -41,21 +41,20 @@
 	<main>
 
 		<div class="container">
-			<h2>Método de Pago</h2>
+			<h2>Método de Pago</h2>	<div id="piechartMP"></div>
 			
-			<div id="chart_div"></div>
+			<h2>Tipo de Identificación</h2> <div id="piechartTI"></div>
 			
-			<h2>Tipo de Identificación</h2>
+			<h2>Países</h2> <div id="regions_div"></div>
 			
-			<div id="curve_chart"></div>
+			<h2>Preguntas</h2> <div id="curve_chartPG"></div>
 			
-			<h2>Países</h2>
+			<h2>Eventos</h2> <div id="curve_chartEV"></div>
 			
-			<div id="regions_div"></div>
+			<h2>Registros</h2> <div id="curve_chartRE"></div>
 			
-			<h2>Preguntas</h2>
-			<h2>Registros</h2>
-			<h2>Parámetros</h2>
+			<h2>Parámetros</h2> <div id="chart_divPRM"></div>
+			
 		</div>
 
 	</main>
@@ -65,64 +64,68 @@
 	<script th:inline="javascript">
         var real_data = /*[[${chartData}]]*/'noValue';
         
+        var real_dataMP = /*[[${chartDataMP}]]*/'noValue';
+        var real_dataTI = /*[[${chartDataTI}]]*/'noValue';
+        var real_dataPAIS = /*[[${chartDataPAIS}]]*/'noValue';
+        var real_dataPG = /*[[${chartDataPG}]]*/'noValue';
+        var real_dataEV = /*[[${chartDataEV}]]*/'noValue';
+        var real_dataRE = /*[[${chartDataRE}]]*/'noValue';
+        var real_dataPRM = /*[[${chartDataPRM}]]*/'noValue';
+        
         $(document).ready(function() {
             google.charts.load('current', {
-                packages : [ 'corechart', 'bar', 'geochart' ]
+                packages : [ 'bar','corechart', 'bar', 'geochart' ]
             });
-            google.charts.setOnLoadCallback(drawColumnChart);
-            google.charts.setOnLoadCallback(drawChart);
-            google.charts.setOnLoadCallback(drawRegionsMap);
+
+            google.charts.setOnLoadCallback(drawMP);
+            google.charts.setOnLoadCallback(drawTI);
+            google.charts.setOnLoadCallback(drawPAIS);
+            google.charts.setOnLoadCallback(drawPG);
+            google.charts.setOnLoadCallback(drawEV);
+            google.charts.setOnLoadCallback(drawRE);
+            google.charts.setOnLoadCallback(drawPRM);
+            
         });
-        
-        function drawColumnChart() {
+
+        function drawMP() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Fecha');
-            data.addColumn('number', 'Peso');
-            Object.keys(real_data).forEach(function(key) {
-                data.addRow([ key, real_data[key] ]);
+            data.addColumn('string', 'Método de Pago');
+            data.addColumn('number', 'Usuarios');
+            Object.keys(real_dataMP).forEach(function(key) {
+                data.addRow([ key, real_dataMP[key] ]);
             });
             var options = {
-                title : 'GAAAAAAAAAAA',
-                hAxis : {
-                    title : 'Fechas',
-                },
-                vAxis : {
-                    title : 'Peso'
-                }
+                title : 'Método de Pago'
             };
-            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            var chart = new google.visualization.PieChart(document
+                    .getElementById('piechartMP'));
             chart.draw(data, options);
         }
 
-        function drawChart() {
+        function drawTI() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Fecha');
-            data.addColumn('number', 'Peso');
-            Object.keys(real_data).forEach(function(key) {
-                data.addRow([ key, real_data[key] ]);
+            data.addColumn('string', 'Tipo de Identificación');
+            data.addColumn('number', 'Usuarios');
+            Object.keys(real_dataTI).forEach(function(key) {
+                data.addRow([ key, real_dataTI[key] ]);
             });
-
             var options = {
-                    title : 'GAAAAAAAAAAA',
-                    hAxis : {
-                        title : 'Fechas',
-                    },
-                    vAxis : {
-                        title : 'Peso'
-                    },
-                    curveType: 'function',
-                    legend: { position: 'bottom' },
-                    pointsVisible: true
-                };
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                title : 'Tipo de Identificación'
+            };
+            var chart = new google.visualization.PieChart(document
+                    .getElementById('piechartTI'));
             chart.draw(data, options);
-          }
+        }
 
-        function drawRegionsMap() {
+        function drawPAIS() {
             var data = google.visualization.arrayToDataTable([
-              ['Country', 'Popularity'],
-              ['Argentina', 200],
+              ['Country', 'Popularidad'],
+              ['Argentina', 10],
             ]);
+
+            Object.keys(real_dataPAIS).forEach(function(key) {
+                data.addRow([ key, real_dataPAIS[key] ]);
+            });
 
             var options = {};
 
@@ -130,6 +133,99 @@
 
             chart.draw(data, options);
           }
+
+        function drawPG() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Fecha');
+            data.addColumn('number', 'Cantidad');
+            Object.keys(real_dataPG).forEach(function(key) {
+                data.addRow([ key, real_dataPG[key] ]);
+            });
+
+            var options = {
+                    title : 'Cantidad de preguntas por fecha',
+                    hAxis : {
+                        title : 'Fechas',
+                    },
+                    vAxis : {
+                        title : 'Preguntas'
+                    },
+                    curveType: 'function',
+                    legend: { position: 'bottom' },
+                    pointsVisible: true
+                };
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chartPG'));
+            chart.draw(data, options);
+          }
+
+        function drawEV() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Fecha');
+            data.addColumn('number', 'Cantidad');
+            Object.keys(real_dataEV).forEach(function(key) {
+                data.addRow([ key, real_dataEV[key] ]);
+            });
+
+            var options = {
+                    title : 'Cantidad de eventos por fecha',
+                    hAxis : {
+                        title : 'Fechas',
+                    },
+                    vAxis : {
+                        title : 'Eventos'
+                    },
+                    curveType: 'function',
+                    legend: { position: 'bottom' },
+                    pointsVisible: true
+                };
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chartEV'));
+            chart.draw(data, options);
+          }
+
+        function drawRE() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Fecha');
+            data.addColumn('number', 'Cantidad');
+            Object.keys(real_dataRE).forEach(function(key) {
+                data.addRow([ key, real_dataRE[key] ]);
+            });
+
+            var options = {
+                    title : 'Cantidad de eventos por fecha',
+                    hAxis : {
+                        title : 'Fechas',
+                    },
+                    vAxis : {
+                        title : 'Registros'
+                    },
+                    curveType: 'function',
+                    legend: { position: 'bottom' },
+                    pointsVisible: true
+                };
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chartRE'));
+            chart.draw(data, options);
+          }
+
+        function drawPRM() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Fecha');
+            data.addColumn('number', 'Peso');
+            Object.keys(real_dataPRM).forEach(function(key) {
+                data.addRow([ key, real_dataPRM[key] ]);
+            });
+            var options = {
+                title : 'Cantidad de parámetros utilizados',
+                hAxis : {
+                    title : 'Parametro',
+                },
+                vAxis : {
+                    title : 'Cantidad'
+                }
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_divPRM'));
+            chart.draw(data, options);
+        }
+        
     </script>
     
     <script th:src="@{/js/script.js}"></script>
