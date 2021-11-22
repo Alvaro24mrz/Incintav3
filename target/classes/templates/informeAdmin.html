@@ -41,24 +41,21 @@
 	<main>
 
 		<div class="container">
-			<h2>Método de Pago</h2>
+			<h2>Método de Pago</h2>	<div id="piechartMP"></div>
 			
-			<div id="piechart"></div>
+			<h2>Tipo de Identificación</h2> <div id="piechartTI"></div>
 			
-			<h2>Tipo de Identificación</h2>
-			
-			<div id="curve_chart"></div>
-			
-			<h2>Países</h2>
-			
-			<div id="regions_div"></div>
+			<h2>Países</h2> <div id="regions_div"></div>
 			
 			<h2>Preguntas</h2>
 			
-			<div id="chart_div"></div>
+			
 			
 			<h2>Registros</h2>
 			<h2>Parámetros</h2>
+			<h2>----------</h2>
+			<div id="curve_chart"></div>
+			<div id="chart_div"></div>
 		</div>
 
 	</main>
@@ -67,31 +64,50 @@
 
 	<script th:inline="javascript">
         var real_data = /*[[${chartData}]]*/'noValue';
+        
         var real_dataMP = /*[[${chartDataMP}]]*/'noValue';
+        var real_dataTI = /*[[${chartDataTI}]]*/'noValue';
         
         $(document).ready(function() {
             google.charts.load('current', {
                 packages : [ 'bar','corechart', 'bar', 'geochart' ]
             });
 
-            google.charts.setOnLoadCallback(drawPieChart);
+            google.charts.setOnLoadCallback(drawMP);
+            google.charts.setOnLoadCallback(drawTI);
+            
             google.charts.setOnLoadCallback(drawColumnChart);
             google.charts.setOnLoadCallback(drawChart);
             google.charts.setOnLoadCallback(drawRegionsMap);
         });
 
-        function drawPieChart() {
+        function drawMP() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Year');
-            data.addColumn('number', 'Views');
+            data.addColumn('string', 'Método de Pago');
+            data.addColumn('number', 'Usuarios');
             Object.keys(real_dataMP).forEach(function(key) {
                 data.addRow([ key, real_dataMP[key] ]);
             });
             var options = {
-                title : 'Blog stats'
+                title : 'Método de Pago'
             };
             var chart = new google.visualization.PieChart(document
-                    .getElementById('piechart'));
+                    .getElementById('piechartMP'));
+            chart.draw(data, options);
+        }
+
+        function drawTI() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Tipo de Identificación');
+            data.addColumn('number', 'Usuarios');
+            Object.keys(real_dataTI).forEach(function(key) {
+                data.addRow([ key, real_dataTI[key] ]);
+            });
+            var options = {
+                title : 'Tipo de Identificación'
+            };
+            var chart = new google.visualization.PieChart(document
+                    .getElementById('piechartTI'));
             chart.draw(data, options);
         }
         

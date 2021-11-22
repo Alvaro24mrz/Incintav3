@@ -22,10 +22,12 @@ import com.sun.el.parser.ParseException;
 import pe.edu.upc.spring.model.MetodoDePago;
 import pe.edu.upc.spring.model.Parametro;
 import pe.edu.upc.spring.model.Registro;
+import pe.edu.upc.spring.model.TipoIdentificacion;
 import pe.edu.upc.spring.model.Usuario;
 import pe.edu.upc.spring.service.IMetodoDePagoService;
 import pe.edu.upc.spring.service.IParametroService;
 import pe.edu.upc.spring.service.IRegistroService;
+import pe.edu.upc.spring.service.ITipoIdentificacionService;
 import pe.edu.upc.spring.service.IUsuarioService;
 
 @Controller
@@ -42,6 +44,9 @@ public class InformesAdminController {
 	
 	@Autowired
 	private IMetodoDePagoService mpService;
+	
+	@Autowired
+	private ITipoIdentificacionService tiService;
 
 	
 	@RequestMapping("/bienvenido")
@@ -92,18 +97,45 @@ public class InformesAdminController {
         		if(mp.getiDMetodoPago() == u.getiDMetodoPago().getiDMetodoPago()) q++;
         	}
         	valoresMP.add(q);
-        	
         }
         
         for(int i = 0; i<listaMP.size();i++) {
         	graphDataMP.put(nombreMP.get(i), valoresMP.get(i));
         }
         
+        // TIPO DE IDENTIFICACIÓN
+        
+        Map<String, Integer> graphDataTI = new TreeMap<>();
+        
+        List<TipoIdentificacion> listaTI = tiService.listar();
+        
+        List<Integer> valoresTI = new ArrayList<Integer>();
+        List<String> nombreTI = new ArrayList<String>();
+        
+        for(int i = 0; i<listaTI.size();i++) {
+        	TipoIdentificacion ti = listaTI.get(i);
+        	nombreTI.add(ti.getnIdentificacion());
+        }
+        
+        for(int i = 0; i<listaTI.size();i++) {
+        	TipoIdentificacion ti = listaTI.get(i);
+        	int q = 0;
+        	for(int j = 0; j<listaUserMP.size();j++) {
+        		Usuario u = listaUserMP.get(i);
+        		if(ti.getIdTipoIdentificacion() == u.getiDTipoIdentificacion().getIdTipoIdentificacion()) q++;
+        	}
+        	valoresTI.add(q);
+        }
+        
+        for(int i = 0; i<listaTI.size();i++) {
+        	graphDataTI.put(nombreTI.get(i), valoresTI.get(i));
+        }
+        
         // MANDAR DATA
         
         model.addAttribute("chartData", graphData); // ---
         model.addAttribute("chartDataMP", graphDataMP); // Método de Pago
-        
+        model.addAttribute("chartDataTI", graphDataTI); // Método de Pago
         
         return "informeAdmin";
     }
