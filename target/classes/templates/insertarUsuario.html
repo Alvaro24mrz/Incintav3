@@ -111,7 +111,7 @@
 				  <div class="col-lg-6">
 				    <div class="input-group">
 				      <label for="nombre">TIPO DE IDENTIFICACIÓN:</label> <select
-						class="form-control"
+						class="form-control"  style="width:480px;"
 						th:field="*{iDTipoIdentificacion.idTipoIdentificacion}">
 						<option th:each="ti: ${listaTipoIdentificacion}"
 							th:value="${ti.idTipoIdentificacion}"
@@ -140,7 +140,7 @@
 				  <div class="col-lg-6">
 				    <div class="input-group">
 				      <label for="fnacimiento">FECHA DE NACIMIENTO:</label> <input 
-						type="date" class="form-control" th:field="*{dNacimiento}"
+						type="date" class="form-control"  style="width:480px;" th:field="*{dNacimiento}"
 						id="fnacimiento" required></input>
 
 					<div class="alert alert-danger"
@@ -151,7 +151,7 @@
 				  
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">PAÍS:</label> <select class="form-control"
+				      <label for="nombre">PAÍS:</label> <select class="form-control"  style="width:514px;"
 						th:field="*{iDPais.idPais}">
 						<option th:each="p: ${listaPaises}" th:value="${p.idPais}"
 							th:text="${p.nombrePais}"
@@ -166,7 +166,7 @@
 				  <div class="col-lg-6">
 				    <div class="input-group">
 				      <label for="nombre">MÉTODO DE PAGO:</label> <select
-						class="form-control" th:field="*{iDMetodoPago.iDMetodoPago}">
+						class="form-control"  style="width:480px;" th:field="*{iDMetodoPago.iDMetodoPago}">
 						<option th:each="mp: ${listaMDP}" th:value="${mp.iDMetodoPago}"
 							th:text="${mp.nombreMetodoPago}"
 							th:selected="(${mp.iDMetodoPago} == *{iDMetodoPago.iDMetodoPago})">
@@ -193,7 +193,7 @@
 				<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control"
+				      <label for="nombre">SEMANA DE GESTACIÓN:</label> <select class="form-control"  style="width:480px;"
 						th:field="*{semanaGestacion}">
 							<option value="1">1</option>
 							<option value="2">2</option>
