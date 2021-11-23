@@ -142,5 +142,36 @@ public class UserUController {
 			return "editPasswordUser";
 		}
 	}
+	
+	@RequestMapping("/cambiarPass")
+	public String cambiarPass(@Validated @ModelAttribute Usuario objUsuario, BindingResult binRes, Model model, Map<String, Object> model2) 
+		
+	{
+		
+		if (binRes.hasErrors())
+		{	
+			model.addAttribute("listaTipoIdentificacion", tiService.listar());
+			model.addAttribute("listaPaises", pService.listar());
+			model.addAttribute("listaMDP", mpService.listar());
+			
+			return "redirect:/auth/registrar";
+		}
+		else 
+		{
+			boolean flag = rService.modificar(objUsuario);
+			if (flag)
+				return "redirect:/insertarUsuario/bienvenido";
+			else
+			{
+				model2.put("mensaje","Problemas de guardado." );
+				model.addAttribute("listaTipoIdentificacion", tiService.listar());
+				model.addAttribute("listaPaises", pService.listar());
+				model.addAttribute("listaMDP", mpService.listar());
+
+				return "editPasswordUser";
+			}
+			
+		}
+	}
 
 }
