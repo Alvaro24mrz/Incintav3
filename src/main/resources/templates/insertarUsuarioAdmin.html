@@ -40,7 +40,7 @@
 	<div class="container">
 		<form th:action="@{/insertarUsuario/registrar}" method="post"
 			th:object="${usuario}">
-			<h1>Agregar un nuevo Usuario desde administrador</h1>
+			<h1>Nuevo Usuario</h1>
 
 			<div th:if="${mensaje}" class="alert alert-danger">
 				<p th:text="${mensaje}"></p>
