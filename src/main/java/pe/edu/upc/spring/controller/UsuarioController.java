@@ -200,7 +200,7 @@ public class UsuarioController {
 			listaUsuarios = rService.buscarCorreo(usuario.getnUsuario());
 		}
 		if(listaUsuarios.isEmpty()) {
-			listaUsuarios = rService.buscarGestante(usuario.getnUsuario());
+			listaUsuarios = rService.buscarGestante(usuario.getnGestante());
 		}
 		if(listaUsuarios.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
