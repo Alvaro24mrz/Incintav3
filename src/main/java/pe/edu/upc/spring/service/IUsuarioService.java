@@ -15,6 +15,8 @@ public interface IUsuarioService {
 	public List<Usuario> buscarApellido(String uApellido);
 	public List<Usuario> buscarDNI(String numIdentificacion);
 	public List<Usuario> buscarCorreo(String uCorreo);
+	public List<Usuario> buscarGestante(String nGestante);
+	
 	
 	public Usuario findBynUsuario(String nUsuario);
 }

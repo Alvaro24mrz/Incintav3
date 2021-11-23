@@ -85,6 +85,13 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	
 	@Override
 	@Transactional(readOnly = true)
+	public List<Usuario> buscarGestante(String nGestante) {
+		return dUsuario.buscarGestante(nGestante);
+	}
+	
+	
+	@Override
+	@Transactional(readOnly = true)
 	public List<Usuario> buscarApellido(String uApellido) {
 		return dUsuario.buscarApellido(uApellido);
 	}

@@ -14,6 +14,9 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query("from Usuario u where u.nUsuario like %:nUsuario%")
 	List<Usuario> buscarNombre(@Param("nUsuario") String nameUser);
 	
+	@Query("from Usuario u where u.nGestante like %:nGestante%")
+	List<Usuario> buscarGestante(@Param("nGestante") String nGestante);
+	
 	@Query("from Usuario u where u.uApellido like %:uApellido%")
 	List<Usuario> buscarApellido(@Param("uApellido") String uApellido);
 	
@@ -25,6 +28,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer>{
 	
 	@Query("from Usuario u where u.uCorreo like %:uCorreo%")
 	String recuperarPassword(@Param("uCorreo") String uCorreo);
+	
 	
 	public Usuario findBynUsuario(String nUsuario);
 

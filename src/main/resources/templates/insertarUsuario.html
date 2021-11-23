@@ -52,7 +52,7 @@
 				
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <label for="nombre">NOMBRE:</label> <input type="text" size="48"
+				      <label for="nombre">USERNAME:</label> <input type="text" size="48"
 						class="form-control" th:field="*{nUsuario}" id="nombre" required></input>
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
@@ -61,6 +61,19 @@
 				  </div><!-- /.col-lg-6 -->
 				  
 				  <div class="col-lg-6">
+				    <div class="input-group">
+				      <label for="gestante">NOMBRE:</label> <input size="50" type="text"
+						class="form-control" th:field="*{nGestante}" id="gestante"
+						required></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('uApellido')}" th:errors="*{uApellido}">
+						</div>
+				    </div><!-- /input-group -->
+				  </div><!-- /.col-lg-6 -->
+				  
+				  
+				    <div class="col-lg-6">
 				    <div class="input-group">
 				      <label for="apellido">APELLIDO:</label> <input size="50" type="text"
 						class="form-control" th:field="*{uApellido}" id="apellido"

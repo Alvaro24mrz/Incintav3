@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,8 +27,12 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int usuarioID;
 	
-	@Column(name="nombreUsuario", nullable=false, length=30)
+	@NotEmpty(message = "Ingrese su username")
+	@Column(name="username", nullable=false, length=30)
 	private String nUsuario;
+	
+	@Column(name="nGestante", nullable=false, length=30)
+	private String nGestante;
 	
 	private String uApellido;
 	
@@ -63,14 +68,16 @@ public class Usuario implements Serializable {
 
 	public Usuario() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(int usuarioID, String nUsuario, String uApellido, String uCorreo, String uPassword,
+	public Usuario(int usuarioID, String nUsuario, String nGestante, String uApellido, String uCorreo, String uPassword,
 			String numIdentificacion, Date dNacimiento, TipoIdentificacion iDTipoIdentificacion, Pais iDPais,
 			MetodoDePago iDMetodoPago, int numMetodoPago, int semanaGestacion, int admin) {
 		super();
 		this.usuarioID = usuarioID;
 		this.nUsuario = nUsuario;
+		this.nGestante = nGestante;
 		this.uApellido = uApellido;
 		this.uCorreo = uCorreo;
 		this.uPassword = uPassword;
@@ -98,6 +105,14 @@ public class Usuario implements Serializable {
 
 	public void setnUsuario(String nUsuario) {
 		this.nUsuario = nUsuario;
+	}
+
+	public String getnGestante() {
+		return nGestante;
+	}
+
+	public void setnGestante(String nGestante) {
+		this.nGestante = nGestante;
 	}
 
 	public String getuApellido() {
@@ -187,8 +202,6 @@ public class Usuario implements Serializable {
 	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
-	
-	
 
 
 
