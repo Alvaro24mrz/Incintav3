@@ -14,7 +14,8 @@
 
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
-		</script>
+	
+</script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -25,7 +26,8 @@
 
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
-		</script>
+	
+</script>
 
 <script type="text/javascript" th:src="@{/js/usuario.js}"></script>
 
@@ -36,13 +38,25 @@
 	<div th:replace="fragments/headerInicio :: header"></div>
 
 	<div class="container">
-		<div align="right">
-			<a th:href="@{/auth/login}" class="btn btn-primary btn2">Log-in</a>
+		<div class="row clearfix">
+			<div class="col-md-6 column">
+				<div align="left">
+					<a href="/auth/irRegistrar" class="btn btn-primary btn2"
+						role="button">Ir a registrarme</a>
+				</div>
+			</div>
+			<div class="col-md-6 column">
+				<div align="right">
+					<a th:href="@{/auth/login}" class="btn btn-primary btn2">Log-in</a>
+				</div>
+			</div>
 		</div>
+
+
 		<form id="myform">
 			<div class="row clearfix">
 				<div class="col-md-12 column" align="center">
-					<h1> Bienvenida a Incinta </h1>
+					<h1>Bienvenida a Incinta</h1>
 					<h2 class="especial">La applicación web que te ayudará a
 						llevar un control de tu embarazo</h2>
 					<img th:src="@{/imagenes/IncintaLogoRosa.png}" width="300"
@@ -230,7 +244,8 @@
 
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img th:src="@{/imagenes/pregnant1.jpg}" alt="logoLottus" class="img-cartas"> </img>
+						<img th:src="@{/imagenes/pregnant1.jpg}" alt="logoLottus"
+							class="img-cartas"> </img>
 						<div class="caption">
 							<h3>¿Qué es INCINTA?</h3>
 							<p>Incinta es una aplicación dirigida a todas las madres
