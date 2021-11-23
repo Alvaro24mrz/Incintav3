@@ -13,35 +13,39 @@ import pe.edu.upc.spring.repository.IUsuarioRepository;
 import pe.edu.upc.spring.service.IUsuarioService;
 
 @Service
-public class UsuarioServiceImpl implements IUsuarioService{
+public class UsuarioServiceImpl implements IUsuarioService {
 	@Autowired
 	private IUsuarioRepository dUsuario;
-	
-	//nuevo
+
+	// nuevo
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-	
 	@Override
 	@Transactional
-	public boolean insertar(Usuario user) {
-		
-		List<Usuario> listaUsuarios;
-		listaUsuarios = dUsuario.buscarCorreo(user.getuCorreo());
-		
+	public boolean[] insertar(Usuario user) {
+
+		boolean[] v = new boolean[3];
+
+		List<Usuario> listaUsuarios = dUsuario.buscarCorreo(user.getuCorreo());
+		Usuario auxUser = dUsuario.findBynUsuario(user.getnUsuario());
+
 		if (listaUsuarios.isEmpty()) {
-			//nuevo password:
-			user.setuPassword(passwordEncoder.encode(user.getuPassword()));
-			Usuario objUser = dUsuario.save(user);
-			
-			if (objUser == null)
-				return false;
-			else
-				return true;
-		} else {
-			return false;
-		}
-		
+
+			if (auxUser == null) {
+				
+				// nuevo password:
+				user.setuPassword(passwordEncoder.encode(user.getuPassword()));
+				Usuario objUser = dUsuario.save(user);
+				
+				if (objUser == null){ v[0] = true; v[1] = true; v[2] = false; } 
+				else { v[0] = true; v[1] = true; v[2] = true; }
+				
+			} else { v[0] = true; v[1] = false; v[2] = false; }
+
+		} else { v[0] = false; v[1] = false; v[2] = false; }
+
+		return v;
 	}
 
 	@Override
@@ -52,8 +56,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 			user.setuPassword(passwordEncoder.encode(user.getuPassword()));
 			dUsuario.save(user);
 			flag = true;
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("Ocurrio un error");
 		}
 		return flag;
@@ -62,7 +65,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	@Override
 	@Transactional
 	public void eliminar(int idUser) {
-		dUsuario.deleteById(idUser);		
+		dUsuario.deleteById(idUser);
 	}
 
 	@Override
@@ -82,33 +85,32 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	public List<Usuario> buscarNombre(String nameUser) {
 		return dUsuario.buscarNombre(nameUser);
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Usuario> buscarGestante(String nGestante) {
 		return dUsuario.buscarGestante(nGestante);
 	}
-	
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Usuario> buscarApellido(String uApellido) {
 		return dUsuario.buscarApellido(uApellido);
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Usuario> buscarDNI(String numIdentificacion) {
 		return dUsuario.buscarDNI(numIdentificacion);
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Usuario> buscarCorreo(String uCorreo) {
 		return dUsuario.buscarCorreo(uCorreo);
 	}
-	
-	//nuevo
+
+	// nuevo
 	public Usuario findBynUsuario(String nUsuario) {
 		return dUsuario.findBynUsuario(nUsuario);
 	}

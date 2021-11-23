@@ -27,7 +27,6 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int usuarioID;
 	
-	@NotEmpty(message = "Ingrese su username")
 	@Column(name="username", nullable=false, length=30)
 	private String nUsuario;
 	

@@ -6,7 +6,7 @@ import java.util.Optional;
 import pe.edu.upc.spring.model.Usuario;
 
 public interface IUsuarioService {
-	public boolean insertar(Usuario user);
+	public boolean[] insertar(Usuario user);
 	public boolean modificar(Usuario user);
 	public void eliminar(int idRace);
 	public Optional<Usuario> listarId(int idUser);

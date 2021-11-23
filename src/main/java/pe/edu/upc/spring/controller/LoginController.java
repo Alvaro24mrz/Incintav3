@@ -72,15 +72,16 @@ public class LoginController {
 		else 
 		{
 			objUsuario.setAdmin(2);
-			boolean flag = uService.insertar(objUsuario);
-			if (flag)
+			boolean[] v = uService.insertar(objUsuario);
+			if ( v[0] == true && v[1] == true && v[2] == true)
 				return "redirect:/auth/login";
 			else
 			{
 				model.addAttribute("listaTipoIdentificacion", tiService.listar());
 				model.addAttribute("listaPaises", pService.listar());
 				model.addAttribute("listaMDP", mpService.listar());
-				model2.put("mensaje", "CORREO YA REGISTRADO");
+				if ( v[0] == true && v[1] == false && v[2] == false)	model2.put("mensaje", "USERNAME REGISTRADO");
+				if ( v[0] == false && v[1] == false && v[2] == false)	model2.put("mensaje", "CORREO REGISTRADO");
 				return "insertarUsuario";
 			}
 		}
