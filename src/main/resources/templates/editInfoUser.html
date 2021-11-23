@@ -56,7 +56,7 @@
 
 					<div class="form-group">
 						<label for="nombre">USERNAME:</label> <input type="text"
-							class="form-control" th:field="*{nUsuario}" id="nombre" required></input>
+							class="form-control" th:field="*{nUsuario}" id="nombre" readonly></input>
 
 						<div class="alert alert-danger"
 							th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
