@@ -70,7 +70,7 @@ public class InformesAdminController {
 	}
 	
 	@RequestMapping("/mostrar")
-    public String getPieChart(Model model) {
+    public String getPieChart(Model model, Map<String, Object> modelMY) {
 		
 		// HISTORIAL DE REGISTRO
 		
@@ -97,7 +97,7 @@ public class InformesAdminController {
         Map<String, Integer> graphDataMP = new TreeMap<>();
         
         List<MetodoDePago> listaMP = mpService.listar();
-        List<Usuario> listaUserMP = uService.listar();
+        List<Usuario> listaUser = uService.listar();
         
         List<Integer> valoresMP = new ArrayList<Integer>();
         List<String> nombreMP = new ArrayList<String>();
@@ -110,8 +110,8 @@ public class InformesAdminController {
         for(int i = 0; i<listaMP.size();i++) {
         	MetodoDePago mp = listaMP.get(i);
         	int q = 0;
-        	for(int j = 0; j<listaUserMP.size();j++) {
-        		Usuario u = listaUserMP.get(j);
+        	for(int j = 0; j<listaUser.size();j++) {
+        		Usuario u = listaUser.get(j);
         		if(mp.getiDMetodoPago() == u.getiDMetodoPago().getiDMetodoPago()) q++;
         	}
         	valoresMP.add(q);
@@ -138,8 +138,8 @@ public class InformesAdminController {
         for(int i = 0; i<listaTI.size();i++) {
         	TipoIdentificacion ti = listaTI.get(i);
         	int q = 0;
-        	for(int j = 0; j<listaUserMP.size();j++) {
-        		Usuario u = listaUserMP.get(j);
+        	for(int j = 0; j<listaUser.size();j++) {
+        		Usuario u = listaUser.get(j);
         		if(ti.getIdTipoIdentificacion() == u.getiDTipoIdentificacion().getIdTipoIdentificacion()) q++;
         	}
         	valoresTI.add(q);
@@ -158,6 +158,8 @@ public class InformesAdminController {
         List<Integer> valoresPais = new ArrayList<Integer>();
         List<String> nombrePais = new ArrayList<String>();
         
+        List<Integer> mayoresPais = new ArrayList<Integer>();
+        
         for(int i = 0; i<listaPais.size();i++) {
         	Pais pais = listaPais.get(i);
         	nombrePais.add(pais.getNombrePais());
@@ -166,8 +168,8 @@ public class InformesAdminController {
         for(int i = 0; i<listaPais.size();i++) {
         	Pais pais = listaPais.get(i);
         	int q = 0;
-        	for(int j = 0; j<listaUserMP.size();j++) {
-        		Usuario u = listaUserMP.get(j);
+        	for(int j = 0; j<listaUser.size();j++) {
+        		Usuario u = listaUser.get(j);
         		if(pais.getIdPais() == u.getiDPais().getIdPais()) q++;
         	}
         	valoresPais.add(q);
@@ -176,6 +178,15 @@ public class InformesAdminController {
         for(int i = 0; i<listaPais.size();i++) {
         	graphDataPAIS.put(nombrePais.get(i), valoresPais.get(i));
         }
+        
+        int mypais = 0;
+        for(int i = 0; i < valoresPais.size(); i++) {
+        	if(valoresPais.get(i) > valoresPais.get(mypais)) mypais = i;
+        }
+        mayoresPais.add(mypais);
+        
+        modelMY.put("myPais", nombrePais.get(mypais));
+        modelMY.put("myCantidad", valoresPais.get(mypais));
         
         // PREGUNTAS GESTANTE
         
@@ -187,7 +198,7 @@ public class InformesAdminController {
         
         for(int i = 0; i<listaPG.size();i++) {
         	PreguntasGestante pg = listaPG.get(i);
-        	SimpleDateFormat aux = new SimpleDateFormat("yyyy/MM/dd");
+        	SimpleDateFormat aux = new SimpleDateFormat("MMMMM");
         	String aux1 = aux.format(pg.getFecha());
         	fechaPG.add(aux1);
         }
@@ -197,7 +208,7 @@ public class InformesAdminController {
         	
         	for(int j = 0; j<listaPG.size();j++) {
         		PreguntasGestante pg = listaPG.get(j);
-        		SimpleDateFormat aux1 = new SimpleDateFormat("yyyy/MM/dd");
+        		SimpleDateFormat aux1 = new SimpleDateFormat("MMMMM");
             	String aux2 = aux1.format(pg.getFecha());
 
         		if(fechaPG.get(i).equals(aux2)) q++;
@@ -209,6 +220,35 @@ public class InformesAdminController {
         	graphDataPG.put(fechaPG.get(i), valoresPG.get(i));
         }
         
+        List<Integer> mayoresUserPG = new ArrayList<Integer>();
+        List<Integer> mayoresPG = new ArrayList<Integer>();
+        
+        for(int i = 0; i < listaUser.size(); i++) {
+        	int aux = 0;
+        	for(int j = 0; j < listaPG.size(); j++) {
+        		if(listaPG.get(j).getUsuario().getUsuarioID() == listaUser.get(i).getUsuarioID()) aux++;
+        	}
+        	mayoresUserPG.add(aux);
+        }
+        
+        int mypguser = 0;
+        for(int i = 0; i < mayoresUserPG.size(); i++) {
+        	if(mayoresUserPG.get(i) > mayoresUserPG.get(mypguser)) mypguser = i;
+        }
+        
+        modelMY.put("myPGUser", listaUser.get(mypguser).getnGestante());
+        modelMY.put("myCantidadPGUser", mayoresUserPG.get(mypguser));
+        
+        
+        int mypg = 0;
+        for(int i = 0; i < valoresPG.size(); i++) {
+        	if(valoresPG.get(i) > valoresPG.get(mypg)) mypg = i;
+        }
+        mayoresPG.add(mypg);
+        
+        modelMY.put("myPG", fechaPG.get(mypg));
+        modelMY.put("myCantidadPG", valoresPG.get(mypg));
+        
         // EVENTOS
 		
         Map<String, Integer> graphDataEV = new TreeMap<>();
@@ -219,7 +259,7 @@ public class InformesAdminController {
         
         for(int i = 0; i<listaEV.size();i++) {
         	Eventos ev = listaEV.get(i);
-        	SimpleDateFormat aux = new SimpleDateFormat("yyyy/MM/dd");
+        	SimpleDateFormat aux = new SimpleDateFormat("MMMM");
         	String aux1 = aux.format(ev.getFechaEvento());
         	fechaEV.add(aux1);
         }
@@ -229,7 +269,7 @@ public class InformesAdminController {
         	
         	for(int j = 0; j<listaEV.size();j++) {
         		Eventos ev = listaEV.get(j);
-        		SimpleDateFormat aux1 = new SimpleDateFormat("yyyy/MM/dd");
+        		SimpleDateFormat aux1 = new SimpleDateFormat("MMMM");
             	String aux2 = aux1.format(ev.getFechaEvento());
             	
         		if(fechaEV.get(i).equals(aux2)) p++;
@@ -241,6 +281,35 @@ public class InformesAdminController {
         	graphDataEV.put(fechaEV.get(i), valoresEV.get(i));
         }
         
+        List<Integer> mayoresUserEV = new ArrayList<Integer>();
+        List<Integer> mayoresEV = new ArrayList<Integer>();
+        
+        for(int i = 0; i < listaUser.size(); i++) {
+        	int aux = 0;
+        	for(int j = 0; j < listaEV.size(); j++) {
+        		if(listaEV.get(j).getUsuario().getUsuarioID() == listaUser.get(i).getUsuarioID()) aux++;
+        	}
+        	mayoresUserEV.add(aux);
+        }
+        
+        int myevuser = 0;
+        for(int i = 0; i < mayoresUserPG.size(); i++) {
+        	if(mayoresUserPG.get(i) > mayoresUserPG.get(myevuser)) myevuser = i;
+        }
+        
+        modelMY.put("myEVUser", listaUser.get(myevuser).getnGestante());
+        modelMY.put("myCantidadEVUser", mayoresUserEV.get(myevuser));
+        
+        
+        int myev = 0;
+        for(int i = 0; i < valoresEV.size(); i++) {
+        	if(valoresEV.get(i) > valoresEV.get(myev)) myev = i;
+        }
+        mayoresEV.add(mypg);
+        
+        modelMY.put("myEV", fechaEV.get(myev));
+        modelMY.put("myCantidadEV", valoresEV.get(myev));
+        
         // REGISTROS
         
         Map<String, Integer> graphDataRE = new TreeMap<>();
@@ -251,7 +320,7 @@ public class InformesAdminController {
         
         for(int i = 0; i<listarRE.size();i++) {
         	Registro re = listarRE.get(i);
-        	SimpleDateFormat aux = new SimpleDateFormat("yyyy/MM/dd");
+        	SimpleDateFormat aux = new SimpleDateFormat("MMMM");
         	String aux1 = aux.format(re.getFechaRegistro());
         	fechaRE.add(aux1);
         }
@@ -261,7 +330,7 @@ public class InformesAdminController {
         	
         	for(int j = 0; j<listarRE.size();j++) {
         		Registro re = listarRE.get(j);
-        		SimpleDateFormat aux1 = new SimpleDateFormat("yyyy/MM/dd");
+        		SimpleDateFormat aux1 = new SimpleDateFormat("MMMM");
             	String aux2 = aux1.format(re.getFechaRegistro());
             	
         		if(fechaRE.get(i).equals(aux2)) p++;
@@ -273,6 +342,34 @@ public class InformesAdminController {
         	graphDataRE.put(fechaRE.get(i), valoresRE.get(i));
         }
         
+        List<Integer> mayoresUserRE = new ArrayList<Integer>();
+        List<Integer> mayoresRE = new ArrayList<Integer>();
+        
+        for(int i = 0; i < listaUser.size(); i++) {
+        	int aux = 0;
+        	for(int j = 0; j < listarRE.size(); j++) {
+        		if(listarRE.get(j).getUsuario().getUsuarioID() == listaUser.get(i).getUsuarioID()) aux++;
+        	}
+        	mayoresUserRE.add(aux);
+        }
+        
+        int myreuser = 0;
+        for(int i = 0; i < mayoresUserRE.size(); i++) {
+        	if(mayoresUserRE.get(i) > mayoresUserRE.get(myreuser)) myreuser = i;
+        }
+        
+        modelMY.put("myREUser", listaUser.get(myreuser).getnGestante());
+        modelMY.put("myCantidadREUser", mayoresUserRE.get(myreuser));
+        
+        
+        int myre = 0;
+        for(int i = 0; i < valoresRE.size(); i++) {
+        	if(valoresRE.get(i) > valoresRE.get(myre)) myre = i;
+        }
+        mayoresRE.add(myre);
+        
+        modelMY.put("myRE", fechaRE.get(myre));
+        modelMY.put("myCantidadRE", valoresRE.get(myre));
         
         // PARÁMETRO
         

@@ -41,20 +41,90 @@
 	<main>
 
 		<div class="container">
-			<h2>Método de Pago</h2>	<div id="piechartMP" class="table-responsive"></div> <br>
+			<h2>Método de Pago</h2>
+			<div id="piechartMP" class="table-responsive"></div>
+			<br>
+
+			<h2>Tipo de Identificación</h2>
+			<div id="piechartTI" class="table-responsive"></div>
+			<br>
+
+			<h2>Países</h2>
+			<div id="regions_div" class="table-responsive"></div>
+			<br>
 			
-			<h2>Tipo de Identificación</h2> <div id="piechartTI" class="table-responsive"></div> <br>
+			<div class="table-responsive">
+				<h4>Mayor País con usuarios:</h4>
+				<p th:text="${myPais}"></p>
+				<h4>Cantidad de usuarios:</h4>
+				<p th:text="${myCantidad}"></p>
+			</div>
+			<br>
+
+			<h2>Preguntas</h2>
+			<div id="curve_chartPG" class="table-responsive"></div>
+			<br>
 			
-			<h2>Países</h2> <div id="regions_div" class="table-responsive"></div> <br>
+			<div class="table-responsive">
+				<h4>Mayor mes con preguntas:</h4>
+				<p th:text="${myPG}"></p>
+				<h4>Cantidad de preguntas:</h4>
+				<p th:text="${myCantidadPG}"></p>
+			</div>
+			<br>
 			
-			<h2>Preguntas</h2> <div id="curve_chartPG" class="table-responsive"></div> <br>
+			<div class="table-responsive">
+				<h4>Mayor usuario con preguntas:</h4>
+				<p th:text="${myPGUser}"></p>
+				<h4>Cantidad de preguntas:</h4>
+				<p th:text="${myCantidadPGUser}"></p>
+			</div>
+			<br>
+
+			<h2>Eventos</h2>
+			<div id="curve_chartEV" class="table-responsive"></div>
+			<br>
 			
-			<h2>Eventos</h2> <div id="curve_chartEV" class="table-responsive"></div> <br>
+			<div class="table-responsive">
+				<h4>Mayor mes con eventos:</h4>
+				<p th:text="${myEV}"></p>
+				<h4>Cantidad de eventos:</h4>
+				<p th:text="${myCantidadEV}"></p>
+			</div>
+			<br>
 			
-			<h2>Registros</h2> <div id="curve_chartRE" class="table-responsive"></div> <br>
+			<div class="table-responsive">
+				<h4>Mayor usuario con eventos:</h4>
+				<p th:text="${myEVUser}"></p>
+				<h4>Cantidad de eventos:</h4>
+				<p th:text="${myCantidadEVUser}"></p>
+			</div>
+			<br>
+
+			<h2>Registros</h2>
+			<div id="curve_chartRE" class="table-responsive"></div>
+			<br>
 			
-			<h2>Parámetros</h2> <div id="chart_divPRM" class="table-responsive"></div> <br>
+			<div class="table-responsive">
+				<h4>Mayor mes con registros:</h4>
+				<p th:text="${myRE}"></p>
+				<h4>Cantidad de registros:</h4>
+				<p th:text="${myCantidadRE}"></p>
+			</div>
+			<br>
 			
+			<div class="table-responsive">
+				<h4>Mayor usuario con registros:</h4>
+				<p th:text="${myREUser}"></p>
+				<h4>Cantidad de registros:</h4>
+				<p th:text="${myCantidadREUser}"></p>
+			</div>
+			<br>
+
+			<h2>Parámetros</h2>
+			<div id="chart_divPRM" class="table-responsive"></div>
+			<br>
+
 		</div>
 
 	</main>
@@ -143,9 +213,9 @@
             });
 
             var options = {
-                    title : 'Cantidad de preguntas por fecha',
+                    title : 'Cantidad de preguntas por Meses',
                     hAxis : {
-                        title : 'Fechas',
+                        title : 'Meses',
                     },
                     vAxis : {
                         title : 'Preguntas'
@@ -227,7 +297,7 @@
         }
         
     </script>
-    
-    <script th:src="@{/js/script.js}"></script>
+
+	<script th:src="@{/js/script.js}"></script>
 </body>
 </html>
