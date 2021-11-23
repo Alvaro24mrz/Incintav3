@@ -182,6 +182,7 @@
             var options = {
                 title : 'Tipo de Identificación'
             };
+            
             var chart = new google.visualization.PieChart(document
                     .getElementById('piechartTI'));
             chart.draw(data, options);
@@ -206,7 +207,7 @@
 
         function drawPG() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Fecha');
+            data.addColumn('string', 'Mes');
             data.addColumn('number', 'Cantidad');
             Object.keys(real_dataPG).forEach(function(key) {
                 data.addRow([ key, real_dataPG[key] ]);
@@ -230,7 +231,7 @@
 
         function drawEV() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Fecha');
+            data.addColumn('string', 'Mes');
             data.addColumn('number', 'Cantidad');
             Object.keys(real_dataEV).forEach(function(key) {
                 data.addRow([ key, real_dataEV[key] ]);
@@ -239,7 +240,7 @@
             var options = {
                     title : 'Cantidad de eventos por fecha',
                     hAxis : {
-                        title : 'Fechas',
+                        title : 'Meses',
                     },
                     vAxis : {
                         title : 'Eventos'
@@ -254,7 +255,7 @@
 
         function drawRE() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Fecha');
+            data.addColumn('string', 'Mes');
             data.addColumn('number', 'Cantidad');
             Object.keys(real_dataRE).forEach(function(key) {
                 data.addRow([ key, real_dataRE[key] ]);
@@ -263,7 +264,7 @@
             var options = {
                     title : 'Cantidad de eventos por fecha',
                     hAxis : {
-                        title : 'Fechas',
+                        title : 'Meses',
                     },
                     vAxis : {
                         title : 'Registros'
@@ -278,8 +279,8 @@
 
         function drawPRM() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Fecha');
-            data.addColumn('number', 'Peso');
+            data.addColumn('string', 'Parametro');
+            data.addColumn('number', 'Cantidad');
             Object.keys(real_dataPRM).forEach(function(key) {
                 data.addRow([ key, real_dataPRM[key] ]);
             });
