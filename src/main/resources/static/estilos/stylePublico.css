@@ -116,3 +116,10 @@ input {
 hr {
 	border-color: black !important;
 }
+
+.cajitas{
+	size: 100% !important;
+	width: 100% !important;
+	padding: 10px;
+}
+
