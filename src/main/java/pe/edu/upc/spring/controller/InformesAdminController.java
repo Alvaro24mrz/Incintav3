@@ -5,19 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Eventos;
 import pe.edu.upc.spring.model.MetodoDePago;
@@ -27,6 +19,7 @@ import pe.edu.upc.spring.model.PreguntasGestante;
 import pe.edu.upc.spring.model.Registro;
 import pe.edu.upc.spring.model.TipoIdentificacion;
 import pe.edu.upc.spring.model.Usuario;
+
 import pe.edu.upc.spring.service.IEventosService;
 import pe.edu.upc.spring.service.IMetodoDePagoService;
 import pe.edu.upc.spring.service.IPaisService;
@@ -62,7 +55,6 @@ public class InformesAdminController {
 	
 	@Autowired
 	private IEventosService evService;
-
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {

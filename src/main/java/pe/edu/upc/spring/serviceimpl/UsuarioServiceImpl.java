@@ -27,6 +27,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	public boolean insertar(Usuario user) {
 		
 		List<Usuario> listaUsuarios;
+
 		listaUsuarios = dUsuario.buscarCorreo(user.getuCorreo());
 		
 		if (listaUsuarios.isEmpty()) {
