@@ -61,6 +61,7 @@
 								<thead>
 									<tr>
 										<th class="text-center">Código</th>
+										<th class="text-center">Username</th>
 										<th class="text-center">Nombre</th>
 										<th class="text-center">Apellido</th>
 										<th class="text-center">Correo</th>
@@ -79,6 +80,7 @@
 									<tr th:each="u: ${listaUsuarios}">
 										<td th:text="${u.usuarioID}"></td>
 										<td th:text="${u.nUsuario}"></td>
+										<td th:text="${u.nGestante}"></td>
 										<td th:text="${u.uApellido}"></td>
 										<td th:text="${u.uCorreo}"></td>
 										<td th:text="${u.iDTipoIdentificacion.nIdentificacion}"></td>

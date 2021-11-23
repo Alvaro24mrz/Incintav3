@@ -53,11 +53,21 @@
 
 
 				<div class="form-group">
-					<label for="nombre">NOMBRE:</label> <input type="text"
+					<label for="nombre">USERNAME:</label> <input type="text"
 						class="form-control" th:field="*{nUsuario}" id="nombre" required></input>
 
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nUsuario')}" th:errors="*{nUsuario}">
+					</div>
+
+				</div>
+				
+				<div class="form-group">
+					<label for="gestante">NOMBRE:</label> <input type="text"
+						class="form-control" th:field="*{nGestante}" id="gestante"required></input>
+
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nGestante')}" th:errors="*{nGestante}">
 					</div>
 
 				</div>

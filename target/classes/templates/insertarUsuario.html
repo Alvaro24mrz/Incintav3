@@ -40,13 +40,10 @@
 			<div th:if="${mensaje}" class="alert alert-danger">
 				<p th:text="${mensaje}"></p>
 			</div>
-
 			<div class="form-group">
 
 				<input type="text" class="form-control" th:field="*{usuarioID}"
 					style="visibility: hidden"> </input>
-
-
 
 				<div class="row clearfix">
 				
@@ -60,9 +57,22 @@
 				    </div><!-- /input-group cajitas -->
 				  </div><!-- /.col-lg-6 -->
 				  
+				  <div class="col-lg-6">
+				    <div class="input-group">
+				      <label for="gestante">NOMBRE:</label> <input size="50" type="text"
+						class="form-control" th:field="*{nGestante}" id="gestante"
+						required></input>
+
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('uApellido')}" th:errors="*{uApellido}">
+						</div>
+				    </div><!-- /input-group -->
+				  </div><!-- /.col-lg-6 -->
+
 				  <div class="col-md-6">
-				    <div class="input-group cajitas cajitas">
+				    <div class="input-group cajitas ">
 				      <label for="apellido">APELLIDO:</label> <input type="text"
+
 						class="form-control" th:field="*{uApellido}" id="apellido"
 						required></input>
 

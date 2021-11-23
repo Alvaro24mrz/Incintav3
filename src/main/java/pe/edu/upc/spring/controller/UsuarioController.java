@@ -82,15 +82,16 @@ public class UsuarioController {
 		}
 		else 
 		{
-			boolean flag = rService.insertar(objUsuario);
-			if (flag)
+			boolean[] v = rService.insertar(objUsuario);
+			if ( v[0] == true && v[1] == true && v[2] == false)
 				return "redirect:/insertarUsuario/listar";
 			else
 			{
 				model.addAttribute("listaTipoIdentificacion", tiService.listar());
 				model.addAttribute("listaPaises", pService.listar());
 				model.addAttribute("listaMDP", mpService.listar());
-				model2.put("mensaje", "CORREO REGISTRADO");
+				if ( v[0] == false && v[1] == false && v[2] == false)	model2.put("mensaje", "CORREO REGISTRADO");
+				if ( v[0] == true && v[1] == false && v[2] == false)	model2.put("mensaje", "USERNAME REGISTRADO");
 				return "insertarUsuarioAdmin";
 			}
 		}
@@ -199,7 +200,9 @@ public class UsuarioController {
 		if(listaUsuarios.isEmpty()) {
 			listaUsuarios = rService.buscarCorreo(usuario.getnUsuario());
 		}
-		
+		if(listaUsuarios.isEmpty()) {
+			listaUsuarios = rService.buscarGestante(usuario.getnUsuario());
+		}
 		if(listaUsuarios.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}
